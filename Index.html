@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<title>Ash — Ik breng jouw droom tot leven</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#07070E;--bg2:#0C0B18;--bg3:#11101F;
+  --gold:#C9A84C;--gold2:#E8C46A;
+  --white:#F0EBE3;--muted:rgba(220,210,200,0.45);--dim:rgba(160,150,130,0.28);
+  --border:rgba(201,168,76,0.1);--border2:rgba(201,168,76,0.22);
+  --violet:#A78BFA;--blue:#60A5FA;--green:#34D399;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.75;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9000;opacity:0.5;}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity 0.9s cubic-bezier(.16,1,.3,1),transform 0.9s cubic-bezier(.16,1,.3,1);}
+.rv.in{opacity:1;transform:translateY(0);}
+.rv.d1{transition-delay:.1s;}.rv.d2{transition-delay:.2s;}.rv.d3{transition-delay:.3s;}.rv.d4{transition-delay:.4s;}
+
+.w{max-width:620px;margin:0 auto;padding:0 28px;}
+
+/* ══ NAV ══ */
+nav{position:fixed;top:0;left:0;right:0;z-index:800;background:rgba(7,7,14,0.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,0.08);height:54px;display:flex;align-items:center;padding:0 24px;justify-content:space-between;}
+.nav-logo{font-family:'Instrument Serif',serif;font-size:22px;font-style:italic;color:var(--gold);text-decoration:none;}
+.nav-links{display:flex;align-items:center;gap:6px;}
+.nav-link{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;padding:8px 13px;transition:all 0.3s;-webkit-tap-highlight-color:transparent;}
+.nav-link.free{color:#07070E;background:var(--gold);font-weight:500;}
+.nav-link.free:hover{background:var(--gold2);}
+.nav-link.info{color:rgba(201,168,76,0.55);border:1px solid rgba(201,168,76,0.16);}
+.nav-link.info:hover{color:var(--gold);border-color:rgba(201,168,76,0.38);}
+
+/* floating CTA */
+.float-cta{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);z-index:700;opacity:0;transition:all 0.5s cubic-bezier(.16,1,.3,1);pointer-events:none;white-space:nowrap;}
+.float-cta.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto;}
+.float-cta a{display:inline-block;padding:14px 28px;background:var(--gold);color:#07070E;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:0;box-shadow:0 8px 32px rgba(0,0,0,0.5);transition:all 0.25s;}
+.float-cta a:hover{background:var(--gold2);transform:translateY(-1px);}
+
+/* ══ HERO ══ */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:92px 0 60px;position:relative;overflow:hidden;text-align:center;}
+.hero-orb1{position:absolute;top:-10%;left:-20%;width:70vw;height:70vw;max-width:500px;max-height:500px;background:radial-gradient(circle,rgba(100,60,200,0.07) 0%,transparent 65%);pointer-events:none;animation:orbFloat 9s ease-in-out infinite;}
+.hero-orb2{position:absolute;bottom:-15%;right:-15%;width:55vw;height:55vw;max-width:380px;max-height:380px;background:radial-gradient(circle,rgba(201,168,76,0.05) 0%,transparent 65%);pointer-events:none;animation:orbFloat 11s ease-in-out infinite reverse;}
+.hero-orb3{position:absolute;top:30%;left:50%;transform:translateX(-50%);width:80vw;height:80vw;max-width:560px;max-height:560px;background:radial-gradient(circle,rgba(167,139,250,0.04) 0%,transparent 60%);pointer-events:none;animation:orbFloat 14s ease-in-out infinite;}
+@keyframes orbFloat{0%,100%{transform:translate(0,0);}50%{transform:translate(18px,-18px);}}
+
+/* eyebrow line + text */
+.hero-feel-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:32px;opacity:0;animation:fadeUp 1s ease 0.15s forwards;}
+.hero-feel-line{width:1px;height:40px;background:linear-gradient(to bottom,transparent,rgba(201,168,76,0.35),transparent);}
+.hero-feel{font-family:'Instrument Serif',serif;font-size:clamp(14px,3.5vw,18px);font-style:italic;color:rgba(220,210,200,0.42);letter-spacing:0.5px;}
+
+.hero-poem{margin-bottom:36px;opacity:0;animation:fadeUp 1s ease 0.35s forwards;}
+.hero-line-small{font-family:'Instrument Serif',serif;font-size:clamp(22px,5.5vw,36px);font-style:italic;color:rgba(240,235,227,0.45);display:block;line-height:1.15;}
+
+/* ── word crossfade — centered ── */
+.word-stage{
+  display:block;
+  height:clamp(80px,17vw,120px);
+  position:relative;
+  overflow:visible;
+  margin:2px 0 6px;
+}
+.word-item{
+  position:absolute;
+  left:50%;
+  top:0;
+  transform:translateX(-50%) translateY(6px);
+  white-space:nowrap;
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(60px,14vw,98px);
+  font-weight:600;
+  line-height:1.15;
+  letter-spacing:-1px;
+  padding-bottom:0.18em;
+  opacity:0;
+  pointer-events:none;
+  background:linear-gradient(125deg,#C9A84C 0%,#A78BFA 35%,#60A5FA 65%,#E8C46A 100%);
+  background-size:300% 300%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:wGrad 6s ease-in-out infinite;
+  filter:drop-shadow(0 0 0px rgba(167,139,250,0));
+  transition:opacity 0.32s cubic-bezier(.22,1,.36,1), transform 0.38s cubic-bezier(.22,1,.36,1), filter 0.32s ease;
+}
+.word-item.active{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+  filter:drop-shadow(0 0 28px rgba(167,139,250,0.3));
+}
+@keyframes wGrad{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+/* sub line */
+.hero-sub-wrap{height:30px;position:relative;overflow:hidden;margin-bottom:44px;opacity:0;animation:fadeUp 1s ease 0.55s forwards;}
+.hero-sub-a,.hero-sub-b{position:absolute;left:0;right:0;top:0;text-align:center;font-size:clamp(13px,3.2vw,16px);color:rgba(200,185,155,0.38);font-weight:300;letter-spacing:0.5px;transition:opacity 0.6s ease,transform 0.6s ease;}
+.hero-sub-b{opacity:0;transform:translateY(8px);}
+
+/* CTA centered */
+.hero-cta{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;max-width:320px;opacity:0;animation:fadeUp 1s ease 0.7s forwards;}
+.btn-primary{display:block;width:100%;padding:17px 28px;background:var(--gold);color:#07070E;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;text-align:center;transition:all 0.3s;position:relative;overflow:hidden;}
+.btn-primary::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.12);transform:translateX(-101%);transition:transform 0.35s ease;}
+.btn-primary:hover::after,.btn-primary:active::after{transform:translateX(0);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(201,168,76,0.22);}
+.btn-secondary{display:block;width:100%;padding:14px 28px;border:1px solid rgba(201,168,76,0.16);color:rgba(201,168,76,0.45);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;text-align:center;transition:all 0.3s;}
+.btn-secondary:hover{border-color:rgba(201,168,76,0.38);color:var(--gold);}
+.hero-cta-note{font-family:'DM Mono',monospace;font-size:8px;color:rgba(201,168,76,0.22);letter-spacing:1.5px;}
+
+/* ══ MARQUEE ══ */
+.marquee{overflow:hidden;border-top:1px solid rgba(201,168,76,0.1);border-bottom:1px solid rgba(201,168,76,0.1);background:rgba(8,8,18,0.95);}
+.mtrack{display:flex;width:max-content;animation:marquee 38s linear infinite;}
+.mitem{display:flex;align-items:center;gap:14px;padding:13px 28px;border-right:1px solid rgba(201,168,76,0.08);flex-shrink:0;white-space:nowrap;}
+.msym{font-size:9px;}
+.mtext{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:500;}
+@keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+.sdiv{height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.1),transparent);}
+.sp{padding:68px 0;}
+
+.tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:4px;text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.tag::before{content:'';width:24px;height:1px;opacity:0.35;}
+.tag.amber{color:#D97706;}.tag.amber::before{background:#D97706;}
+.tag.blue{color:#60A5FA;}.tag.blue::before{background:#60A5FA;}
+.tag.gold{color:#C9A84C;}.tag.gold::before{background:#C9A84C;}
+.tag.green{color:#34D399;}.tag.green::before{background:#34D399;}
+.tag.violet{color:#A78BFA;}.tag.violet::before{background:#A78BFA;}
+
+.sh{font-family:'Instrument Serif',serif;font-size:clamp(26px,6.5vw,42px);font-weight:400;font-style:italic;line-height:1.1;margin-bottom:6px;}
+.sh em{font-style:italic;}
+
+/* ══ ROADMAP — interactive ══ */
+.rm-bg{background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);}
+.rm-intro{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:28px;max-width:440px;}
+
+/* controls row */
+.rm-controls{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;}
+.rm-dots{display:flex;gap:6px;}
+.rm-step-dot{width:6px;height:6px;border-radius:50%;background:rgba(201,168,76,0.12);transition:all 0.4s ease;cursor:pointer;}
+.rm-step-dot.active{background:var(--gold);box-shadow:0 0 8px rgba(201,168,76,0.4);transform:scale(1.3);}
+.rm-play-btn{
+  font-family:'DM Mono',monospace;font-size:8px;letter-spacing:2.5px;
+  text-transform:uppercase;color:rgba(201,168,76,0.4);
+  border:1px solid rgba(201,168,76,0.12);
+  background:transparent;padding:7px 14px;cursor:pointer;
+  transition:all 0.3s;-webkit-tap-highlight-color:transparent;
+}
+.rm-play-btn:hover{color:var(--gold);border-color:rgba(201,168,76,0.35);}
+.rm-play-btn.playing{color:var(--gold);border-color:rgba(201,168,76,0.35);animation:borderPulse 2s ease-in-out infinite;}
+
+.rm-track{position:relative;padding-left:0;display:flex;flex-direction:column;gap:0;}
+
+/* vertical connector line */
+.rm-connector{position:absolute;left:22px;top:22px;bottom:22px;width:1px;background:rgba(201,168,76,0.07);z-index:0;}
+.rm-connector-fill{position:absolute;left:22px;top:22px;width:1px;height:0%;background:linear-gradient(to bottom,var(--gold),rgba(167,139,250,0.4));z-index:1;transition:height 0.7s cubic-bezier(.16,1,.3,1);}
+
+.rm-node{
+  position:relative;
+  display:grid;
+  grid-template-columns:44px 1fr;
+  gap:0 18px;
+  padding:0 0 36px 0;
+  z-index:2;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  transition:opacity 0.4s ease;
+}
+.rm-node:last-child{padding-bottom:0;}
+.rm-node.dimmed{opacity:0.35;}
+
+/* circle */
+.rm-dot{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--bg);border:1px solid rgba(201,168,76,0.14);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  transition:all 0.45s cubic-bezier(.16,1,.3,1);
+  font-size:18px;
+  position:relative;z-index:2;
+}
+/* ripple ring */
+.rm-dot::after{
+  content:'';position:absolute;inset:-6px;border-radius:50%;
+  border:1px solid rgba(201,168,76,0);
+  transition:all 0.5s ease;
+}
+.rm-node.active .rm-dot{
+  border-color:var(--gold);
+  box-shadow:0 0 0 6px rgba(201,168,76,0.07),0 0 24px rgba(201,168,76,0.2);
+  transform:scale(1.1);
+  background:rgba(201,168,76,0.06);
+}
+.rm-node.active .rm-dot::after{
+  border-color:rgba(201,168,76,0.2);
+  inset:-10px;
+}
+.rm-node.just-activated .rm-dot{animation:dotPop 0.5s cubic-bezier(.16,1,.3,1);}
+@keyframes dotPop{0%{transform:scale(1);}40%{transform:scale(1.22);}70%{transform:scale(1.05);}100%{transform:scale(1.1);}}
+
+.rm-content{padding-top:8px;}
+.rm-num{font-family:'DM Mono',monospace;font-size:8px;color:rgba(201,168,76,0.2);letter-spacing:1.5px;display:block;margin-bottom:3px;transition:color 0.4s;}
+.rm-node.active .rm-num{color:rgba(201,168,76,0.55);}
+.rm-title{font-family:'Instrument Serif',serif;font-size:20px;font-style:italic;color:rgba(240,235,227,0.2);margin-bottom:0;display:block;transition:all 0.4s ease;}
+.rm-node.active .rm-title{color:var(--white);}
+.rm-body{max-height:0;overflow:hidden;transition:max-height 0.6s cubic-bezier(.16,1,.3,1),opacity 0.5s ease;opacity:0;}
+.rm-node.active .rm-body{max-height:400px;opacity:1;}
+.rm-text{font-size:13px;color:rgba(200,183,150,0.5);line-height:1.85;margin-top:6px;display:block;}
+.rm-pain{margin-top:10px;padding:10px 14px;background:rgba(215,119,6,0.05);border-left:2px solid rgba(215,119,6,0.2);font-size:12px;color:rgba(215,170,100,0.5);font-style:italic;line-height:1.7;}
+
+@media(max-width:480px){
+  .rm-node{grid-template-columns:36px 1fr;gap:0 12px;padding:0 0 28px 0;}
+  .rm-dot{width:36px;height:36px;font-size:15px;}
+  .rm-connector{left:18px;}
+  .rm-connector-fill{left:18px;}
+  .rm-title{font-size:18px;}
+  .rm-text{font-size:13px;}
+  .rm-pain{font-size:12px;}
+  .rm-controls{flex-wrap:wrap;gap:12px;}
+}
+
+/* ══ HERKENNING ══ */
+.herk-bg{background:linear-gradient(180deg,var(--bg2) 0%,#110A04 60%,#0D0905 100%);}
+.vragen{display:flex;flex-direction:column;gap:9px;margin:22px 0;}
+.vraag{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:rgba(215,119,6,0.03);border-left:2px solid rgba(215,119,6,0.14);transition:border-color 0.3s;}
+.vraag:hover{border-color:rgba(215,119,6,0.32);}
+.vraag-icon{font-size:15px;flex-shrink:0;margin-top:1px;opacity:0.8;}
+.vraag p{font-size:14px;color:rgba(210,185,145,0.52);line-height:1.75;}
+.vraag p strong{color:var(--white);font-weight:500;}
+.bridge{margin-top:8px;padding:18px 16px;background:rgba(215,119,6,0.03);border:1px solid rgba(215,119,6,0.09);}
+.bridge p{font-size:14px;color:rgba(205,180,135,0.52);line-height:1.9;}
+.bridge p strong{color:var(--white);font-weight:500;}
+.bridge p em{color:#D97706;font-style:italic;}
+
+/* ══ GAMIFICATION — ACCORDION CARDS ══ */
+.pad-bg{background:linear-gradient(180deg,#0D0905 0%,var(--bg2) 100%);}
+.pad-intro{font-size:14px;color:var(--muted);margin-bottom:22px;line-height:1.85;}
+
+.pad-grid{display:flex;flex-direction:column;gap:8px;}
+
+.pad-card{
+  background:rgba(14,12,24,0.9);
+  border:1px solid rgba(130,100,200,0.11);
+  padding:18px 16px;
+  cursor:pointer;
+  transition:all 0.3s ease;
+  position:relative;
+  overflow:hidden;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+}
+.pad-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--acc,var(--violet));transform:scaleX(0);transform-origin:left;transition:transform 0.4s cubic-bezier(.16,1,.3,1);}
+.pad-card.selected{border-color:var(--acc,var(--violet));background:rgba(167,139,250,0.04);}
+.pad-card.selected::before{transform:scaleX(1);}
+.pad-card.dimmed{opacity:0.38;}
+.pad-card:not(.selected):not(.dimmed):hover{border-color:rgba(167,139,250,0.25);transform:translateX(3px);}
+.pad-card.pop{animation:cardPop 0.4s cubic-bezier(.16,1,.3,1);}
+@keyframes cardPop{0%{transform:scale(1);}30%{transform:scale(1.02);}70%{transform:scale(0.99);}100%{transform:scale(1);}}
+
+/* top row: icon + title + check */
+.pad-top{display:flex;align-items:flex-start;gap:12px;}
+.pad-icon{font-size:20px;flex-shrink:0;margin-top:1px;transition:transform 0.3s ease;}
+.pad-card.selected .pad-icon{animation:iconBounce 0.5s cubic-bezier(.16,1,.3,1);}
+@keyframes iconBounce{0%{transform:scale(1);}40%{transform:scale(1.3) rotate(8deg);}70%{transform:scale(0.9);}100%{transform:scale(1);}}
+.pad-main{flex:1;}
+.pad-title{font-size:13px;font-weight:500;color:var(--white);line-height:1.4;margin-bottom:3px;transition:color 0.3s;}
+.pad-desc{font-size:12px;color:rgba(170,160,210,0.35);line-height:1.5;}
+.pad-check{
+  width:20px;height:20px;border-radius:50%;flex-shrink:0;
+  background:var(--acc,var(--violet));
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;color:#07070E;font-weight:700;
+  opacity:0;transform:scale(0);
+  transition:opacity 0.25s,transform 0.35s cubic-bezier(.16,1,.3,1);
+  margin-top:1px;
+}
+.pad-card.selected .pad-check{opacity:1;transform:scale(1);}
+
+/* particles */
+.pad-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.pad-particle{position:absolute;width:3px;height:3px;border-radius:50%;opacity:0;}
+@keyframes particleFly{0%{opacity:1;transform:translate(0,0) scale(1);}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(0);}}
+
+/* inline result — accordion */
+.pad-inline-result{
+  max-height:0;overflow:hidden;
+  transition:max-height 0.55s cubic-bezier(.16,1,.3,1),opacity 0.45s ease,margin-top 0.4s ease;
+  opacity:0;margin-top:0;
+}
+.pad-card.selected .pad-inline-result{
+  max-height:600px;opacity:1;margin-top:14px;
+}
+.pad-result-inner{
+  padding:14px 16px;
+  background:rgba(0,0,0,0.25);
+  border-left:2px solid var(--acc,var(--violet));
+  position:relative;
+}
+@media(max-width:480px){
+  .pad-card{padding:16px 14px;}
+  .pad-top{gap:10px;}
+  .pad-icon{font-size:18px;}
+  .pad-title{font-size:12px;}
+  .pad-result-inner{padding:12px 13px;}
+  .pad-result-text{font-size:12px;}
+  .pad-cta{font-size:10px;padding:9px 16px;}
+}
+.pad-unlock{
+  font-family:'DM Mono',monospace;font-size:7px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--acc,var(--violet));opacity:0.7;
+  display:block;margin-bottom:8px;
+}
+.pad-result-text{font-size:13px;color:rgba(192,178,235,0.65);line-height:1.85;margin-bottom:12px;}
+.pad-result-text strong{color:var(--white);}
+.pad-cta{
+  display:inline-block;padding:10px 20px;
+  background:var(--acc,var(--violet));color:#07070E;
+  font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;
+  transition:all 0.25s;position:relative;overflow:hidden;
+}
+.pad-cta::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.15);transform:translateX(-101%);transition:transform 0.3s ease;}
+.pad-cta:hover::after{transform:translateX(0);}
+.pad-cta:hover{filter:brightness(1.1);transform:translateY(-1px);}
+
+/* ══ STAPPEN ══ */
+.stap-bg{background:linear-gradient(180deg,var(--bg2) 0%,#0A0E18 100%);}
+.stap-cards{display:flex;flex-direction:column;gap:1px;background:rgba(96,165,250,0.05);border:1px solid rgba(96,165,250,0.08);margin-top:22px;}
+.stap-card{background:#0A0E14;padding:22px 20px;display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:flex-start;transition:background 0.25s;}
+.stap-card:hover{background:#0D1219;}
+.stap-num{font-family:'Instrument Serif',serif;font-size:38px;font-style:italic;color:rgba(96,165,250,0.13);line-height:1;transition:color 0.3s;}
+.stap-card:hover .stap-num{color:rgba(96,165,250,0.35);}
+.stap-title{font-size:15px;font-weight:500;color:var(--white);margin-bottom:4px;margin-top:4px;}
+.stap-desc{font-size:13px;color:rgba(158,182,225,0.42);line-height:1.8;}
+
+/* ══ BEWIJS — browser frame van Jo ══ */
+.bewijs-bg{background:linear-gradient(180deg,#0A0E18 0%,#0D0C07 100%);}
+.bewijs-lead{font-size:14px;color:rgba(182,160,108,0.45);line-height:1.9;margin-bottom:26px;}
+
+/* Clean browser frame — no phone */
+.jo-browser{border:1px solid rgba(201,168,76,0.16);overflow:hidden;margin-top:26px;}
+.jo-browser-bar{background:#0C0A09;border-bottom:1px solid rgba(201,168,76,0.08);padding:10px 14px;display:flex;align-items:center;gap:12px;}
+.jo-b-dots{display:flex;gap:5px;}
+.jo-b-dot{width:9px;height:9px;border-radius:50%;background:#222018;}
+.jo-b-url{flex:1;background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.07);border-radius:3px;padding:4px 10px;font-family:'DM Mono',monospace;font-size:9px;color:rgba(201,168,76,0.3);text-align:center;letter-spacing:0.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+/* Jo faithful content — full width */
+.jo-content{background:#080508;padding:0;position:relative;overflow:hidden;}
+.jo-stars-bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.jo-star{position:absolute;border-radius:50%;animation:twinkle var(--d,3s) ease-in-out infinite;animation-delay:var(--dl,0s);}
+@keyframes twinkle{0%,100%{opacity:0.07;}50%{opacity:0.5;}}
+.jo-page{position:relative;z-index:1;padding:36px 20px 32px;max-width:600px;margin:0 auto;}
+
+.jo-hero-section{text-align:center;margin-bottom:22px;}
+.jo-avatar-ring{width:70px;height:70px;border-radius:50%;border:1px solid rgba(201,168,76,0.35);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;background:radial-gradient(ellipse,rgba(140,58,85,0.2),transparent 70%);font-size:28px;animation:float 4s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+.jo-hero-label{font-family:'Cinzel',serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:rgba(201,168,76,0.6);display:block;margin-bottom:10px;}
+.jo-hero-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:36px;color:#F5EDE8;display:block;margin-bottom:6px;line-height:1.1;}
+.jo-hero-desc{font-family:'EB Garamond',Georgia,serif;font-size:13px;color:#A88898;font-style:italic;line-height:1.65;}
+.jo-hero-desc em{color:#D4789A;}
+.jo-divider{height:1px;background:linear-gradient(90deg,transparent,#C9A84C,transparent);margin:16px auto;width:200px;opacity:0.4;}
+
+/* live btn */
+.jo-live{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;background:linear-gradient(135deg,rgba(140,58,85,0.2),rgba(58,106,146,0.2));border:1px solid rgba(201,168,76,0.45);padding:16px 18px;margin-bottom:16px;position:relative;overflow:hidden;}
+.jo-live::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,120,154,0.4),rgba(201,168,76,0.8),rgba(122,175,212,0.4),transparent);}
+.jo-live::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(122,175,212,0.4),rgba(201,168,76,0.8),rgba(212,120,154,0.4),transparent);}
+.jo-live-left{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1;}
+.jo-live-top-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.jo-live-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(201,168,76,0.8);}
+.jo-live-notice{font-family:'Cinzel',serif;font-size:7px;letter-spacing:1px;text-transform:uppercase;color:#ff6b6b;background:rgba(255,80,80,0.1);border:1px solid rgba(255,80,80,0.4);padding:2px 5px;}
+.jo-live-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:#F5EDE8;}
+.jo-live-sub{font-size:10px;color:#605060;line-height:1.4;}
+.jo-live-right{text-align:right;flex-shrink:0;}
+.jo-live-price{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px;color:#EDD06A;display:block;margin-bottom:5px;}
+.jo-btn-sm{font-family:'Cinzel',serif;font-size:7px;letter-spacing:1px;text-transform:uppercase;padding:5px 8px;border:1px solid rgba(201,168,76,0.4);background:linear-gradient(135deg,rgba(140,58,85,0.4),rgba(58,106,146,0.4));color:#F5EDE8;display:block;text-align:center;margin-bottom:4px;white-space:nowrap;}
+.jo-wa-btn{font-family:'Cinzel',serif;font-size:7px;letter-spacing:1px;text-transform:uppercase;padding:5px 8px;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.3);color:#F5EDE8;display:block;text-align:center;white-space:nowrap;}
+
+/* section head */
+.jo-sec-ey{font-family:'Cinzel',serif;font-size:8px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(201,168,76,0.7);display:block;margin-bottom:8px;}
+.jo-sec-ti{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:20px;color:#F5EDE8;display:block;margin-bottom:5px;line-height:1.2;}
+.jo-sec-su{font-size:12px;color:#A88898;font-style:italic;margin-bottom:14px;display:block;}
+.jo-sec-su em{color:#D4789A;}
+
+/* ebooks combined */
+.jo-ebooks{display:grid;grid-template-columns:1fr 1px 1fr;border:1px solid rgba(201,168,76,0.2);background:linear-gradient(135deg,rgba(140,58,85,0.22) 0%,rgba(80,30,60,0.15) 35%,rgba(30,50,90,0.15) 65%,rgba(58,106,146,0.22) 100%);margin-bottom:18px;position:relative;overflow:hidden;}
+.jo-ebooks::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,rgba(212,120,154,0.6),rgba(201,168,76,0.4),rgba(122,175,212,0.6));}
+.jo-ebooks::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,rgba(122,175,212,0.6),rgba(201,168,76,0.4),rgba(212,120,154,0.6));}
+.jo-ebook{padding:16px 14px;display:flex;flex-direction:column;}
+.jo-ebook-div{width:1px;background:linear-gradient(180deg,transparent,rgba(201,168,76,0.25) 50%,transparent);align-self:stretch;}
+.jo-ebook-em{font-size:18px;margin-bottom:6px;}
+.jo-ebook-ti{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;line-height:1.35;margin-bottom:8px;flex:1;}
+.jo-ebook-ti.rose{color:#D4789A;}
+.jo-ebook-ti.blue{color:#7AAFD4;}
+.jo-ebook-pr{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:16px;color:#EDD06A;margin-bottom:8px;}
+.jo-ebook-btn{font-family:'Cinzel',serif;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 10px;border:1px solid rgba(201,168,76,0.35);color:#F5EDE8;text-align:center;display:block;}
+.jo-ebook-btn.rb{background:rgba(140,58,85,0.35);}
+.jo-ebook-btn.bb{background:rgba(58,106,146,0.35);}
+
+/* readings */
+.jo-toggle{width:100%;text-align:center;padding:14px;background:linear-gradient(135deg,rgba(140,58,85,0.18),rgba(58,106,146,0.12));border:1px solid rgba(201,168,76,0.35);font-family:'Cinzel',serif;font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:#EDD06A;cursor:pointer;margin-bottom:2px;-webkit-tap-highlight-color:transparent;animation:borderPulse 4s ease-in-out infinite;}
+@keyframes borderPulse{0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,0);border-color:rgba(201,168,76,0.35);}50%{box-shadow:0 0 18px 2px rgba(201,168,76,0.08);border-color:rgba(201,168,76,0.55);}}
+.jo-readings{display:none;flex-direction:column;gap:1px;}.jo-readings.open{display:flex;}
+.jo-reading{display:grid;grid-template-columns:36px 1fr auto;align-items:start;gap:0 10px;padding:13px 14px;background:rgba(8,5,8,0.6);border:1px solid rgba(140,58,85,0.14);text-decoration:none;transition:background 0.2s;}
+.jo-reading:hover{background:rgba(140,58,85,0.09);}
+.jo-r-icon{font-size:16px;text-align:center;padding-top:2px;}
+.jo-r-name{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#F5EDE8;display:block;margin-bottom:2px;}
+.jo-r-desc{font-size:10px;color:#605060;line-height:1.4;}
+.jo-r-cta{display:block;font-family:'Cinzel',serif;font-size:7px;letter-spacing:1px;text-transform:uppercase;color:#EDD06A;margin-top:4px;}
+
+/* mobile overrides for Jo */
+@media(max-width:500px){
+  .jo-page{padding:28px 14px 24px;}
+  .jo-hero-name{font-size:28px;}
+  .jo-live{flex-direction:column;gap:10px;}
+  .jo-live-right{text-align:left;display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .jo-live-price{margin-bottom:0;}
+  .jo-btn-sm,.jo-wa-btn{display:inline-block;margin-bottom:0;}
+  .jo-ebooks{grid-template-columns:1fr;border-radius:0;}
+  .jo-ebook-div{display:none;}
+  .jo-ebook{border-bottom:1px solid rgba(201,168,76,0.1);}
+  .jo-ebook:last-child{border-bottom:none;}
+  .jo-qt{font-size:14px;}
+}
+
+/* over jo */
+.jo-over{text-align:center;padding:32px 24px;background:rgba(8,5,8,0.5);border:1px solid rgba(201,168,76,0.1);margin-top:18px;position:relative;overflow:hidden;}
+.jo-over::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(140,58,85,0.09),transparent 65%);pointer-events:none;}
+.jo-qt{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:#A88898;display:block;margin-bottom:14px;line-height:1.75;position:relative;}
+.jo-qt em{color:#F5EDE8;}
+.jo-sig{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:#D4789A;display:block;}
+
+/* socials */
+.jo-socials{display:flex;justify-content:center;gap:16px;margin-top:20px;}
+.jo-social{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 14px;border:1px solid rgba(201,168,76,0.18);transition:border-color 0.2s;}
+.jo-social:hover{border-color:rgba(201,168,76,0.38);}
+.jo-social svg{width:20px;height:20px;fill:#A88898;}
+.jo-social-nm{font-family:'Cinzel',serif;font-size:7px;letter-spacing:2px;text-transform:uppercase;}
+.jo-social:nth-child(1) .jo-social-nm{color:#D4789A;}
+.jo-social:nth-child(2) .jo-social-nm{color:#c77daa;}
+.jo-social:nth-child(3) .jo-social-nm{color:#7AAFD4;}
+.jo-social:nth-child(4) .jo-social-nm{color:#e05252;}
+
+.jo-footer{text-align:center;padding:16px;font-family:'EB Garamond',Georgia,serif;font-size:12px;color:#605060;font-style:italic;border-top:1px solid rgba(201,168,76,0.06);}
+
+/* stats below browser */
+.jo-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.07);border-top:none;}
+.jo-stat{background:#0D0C07;padding:16px 8px;text-align:center;}
+.jo-sn{font-family:'Instrument Serif',serif;font-size:24px;font-style:italic;color:#E8C46A;display:block;line-height:1;margin-bottom:4px;}
+.jo-sl{font-family:'DM Mono',monospace;font-size:7px;color:rgba(170,148,90,0.38);letter-spacing:1px;text-transform:uppercase;}
+
+.bewijs-quote{margin-top:16px;padding:16px 18px;background:rgba(201,168,76,0.03);border-left:2px solid rgba(201,168,76,0.25);}
+.bewijs-quote p{font-style:italic;color:rgba(198,175,120,0.58);font-size:14px;line-height:1.85;}
+.bewijs-quote p strong{color:var(--white);font-style:normal;}
+.bewijs-meta{font-family:'DM Mono',monospace;font-size:8px;color:rgba(140,118,70,0.28);letter-spacing:0.5px;margin-top:6px;display:block;}
+
+/* ══ AANBOD ══ */
+.aanbod-bg{background:linear-gradient(180deg,#0D0C07 0%,var(--bg) 100%);}
+.blocks{display:flex;flex-direction:column;gap:8px;margin-top:22px;}
+
+.block-free{
+  border:1px solid rgba(52,211,153,0.18);
+  background:rgba(52,211,153,0.015);
+  padding:24px 20px;
+  position:relative;
+  overflow:hidden;
+}
+.block-free::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(52,211,153,0.35),rgba(201,168,76,0.25),transparent);
+  opacity:0.8;
+}
+
+/* animated "for who" element */
+.block-for-who{
+  position:relative;
+  margin:18px 0 20px;
+  padding:13px 16px;
+  background:rgba(2,1,8,0.4);
+  isolation:isolate;
+}
+.block-for-who::before{
+  content:'';
+  position:absolute;inset:0;
+  padding:1px;
+  background:linear-gradient(90deg,
+    rgba(201,168,76,0.6),
+    rgba(167,139,250,0.5),
+    rgba(96,165,250,0.45),
+    rgba(52,211,153,0.4),
+    rgba(201,168,76,0.6)
+  );
+  background-size:400% 100%;
+  animation:borderFlow 7s linear infinite;
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  pointer-events:none;
+  opacity:0.7;
+}
+@keyframes borderFlow{0%{background-position:0% 50%;}100%{background-position:400% 50%;}}
+
+.block-for-who-label{
+  font-family:'DM Mono',monospace;
+  font-size:7px;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(201,168,76,0.3);
+  display:block;margin-bottom:7px;
+}
+.block-for-who-text{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(13px,3.5vw,16px);
+  font-style:italic;
+  line-height:1.6;
+  background:linear-gradient(125deg,
+    rgba(232,196,106,0.9) 0%,
+    rgba(196,181,253,0.8) 28%,
+    rgba(110,231,183,0.75) 55%,
+    rgba(147,197,253,0.8) 75%,
+    rgba(232,196,106,0.9) 100%
+  );
+  background-size:300% 300%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:wGrad 9s ease-in-out infinite;
+}
+
+.badge{display:inline-flex;align-items:center;gap:7px;padding:4px 11px;margin-bottom:12px;}
+.badge.green{background:rgba(52,211,153,0.06);border:1px solid rgba(52,211,153,0.14);}
+.badge.gold{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.14);}
+.badge span{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;}
+.badge.green span{color:var(--green);}
+.badge.gold span{color:var(--gold);}
+
+.block-title{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(22px,5.5vw,28px);
+  font-style:italic;color:var(--white);
+  margin-bottom:8px;line-height:1.1;
+}
+.block-desc{font-size:13px;color:rgba(182,212,195,0.45);line-height:1.9;margin-bottom:0;}
+.block-desc strong{color:rgba(240,235,227,0.9);}
+
+.block-items{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.block-item{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:13px;color:rgba(182,212,195,0.45);
+  line-height:1.65;
+}
+.block-item::before{
+  content:'✓';color:var(--green);font-weight:700;
+  flex-shrink:0;margin-top:1px;
+  text-shadow:0 0 8px rgba(52,211,153,0.4);
+}
+
+.block-paid{border:1px solid rgba(201,168,76,0.08);overflow:hidden;}
+.bpaid-hdr{padding:18px 20px;border-bottom:1px solid rgba(201,168,76,0.05);}
+.bpaid-title{font-family:'Instrument Serif',serif;font-size:20px;font-style:italic;color:var(--white);margin-bottom:4px;}
+.bpaid-sub{font-size:12px;color:rgba(158,140,92,0.35);}
+
+.acc-cat{border-bottom:1px solid rgba(201,168,76,0.04);}
+.acc-cat:last-child{border-bottom:none;}
+.acc-btn{width:100%;padding:13px 20px;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;-webkit-tap-highlight-color:transparent;transition:background 0.2s;}
+.acc-btn:hover{background:rgba(201,168,76,0.015);}
+.acc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(200,175,120,0.65);}
+.acc-arrow{font-size:9px;color:rgba(201,168,76,0.18);transition:transform 0.3s;}
+.acc-cat.open .acc-arrow{transform:rotate(180deg);}
+.acc-body{display:none;padding:0 20px 10px;}
+.acc-cat.open .acc-body{display:block;}
+
+.svc{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:9px 0;border-bottom:1px solid rgba(201,168,76,0.03);}
+.svc:last-child{border-bottom:none;}
+.svc-name{font-size:14px;font-weight:500;color:var(--white);margin-bottom:3px;}
+.svc-desc{font-size:12px;color:rgba(190,170,120,0.55);line-height:1.6;}
+.svc-right{text-align:right;flex-shrink:0;}
+.svc-price{font-family:'Instrument Serif',serif;font-size:16px;font-style:italic;color:var(--gold);display:block;}
+.svc-cycle{font-family:'DM Mono',monospace;font-size:7px;color:rgba(140,120,75,0.25);letter-spacing:0.5px;line-height:1.8;}
+
+.revisie{padding:10px 20px;font-family:'DM Mono',monospace;font-size:8px;color:rgba(128,108,62,0.28);letter-spacing:0.3px;line-height:1.85;border-top:1px solid rgba(201,168,76,0.04);}
+
+/* ══ FORM ══ */
+.form-bg{background:linear-gradient(180deg,var(--bg) 0%,#0D0A07 100%);padding-bottom:80px;}
+.form-sub{font-size:14px;color:rgba(182,162,112,0.42);line-height:1.9;margin-bottom:26px;font-weight:300;}
+.form-sub strong{color:var(--white);font-weight:500;}
+.form-block{background:#0D0A07;border:1px solid rgba(201,168,76,0.12);padding:26px 20px;position:relative;overflow:hidden;}
+.form-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.fg{margin-bottom:15px;}
+label{display:block;font-family:'DM Mono',monospace;font-size:8px;color:rgba(162,142,88,0.38);letter-spacing:3px;text-transform:uppercase;margin-bottom:7px;}
+label .req{color:var(--gold);}
+input,select,textarea{width:100%;background:var(--bg);border:1px solid rgba(201,168,76,0.08);color:var(--white);font-family:'DM Sans',sans-serif;font-size:15px;padding:12px 14px;outline:none;transition:border-color 0.25s;appearance:none;-webkit-appearance:none;border-radius:0;}
+input:focus,select:focus,textarea:focus{border-color:rgba(201,168,76,0.32);}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A84C' stroke-width='1.5' fill='none' opacity='0.25'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer;}
+select option{background:#0D0A07;}
+textarea{resize:vertical;min-height:88px;}
+.btn-submit{width:100%;padding:16px;background:var(--gold);color:#07070E;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;border:none;cursor:pointer;transition:all 0.25s;margin-top:5px;}
+.btn-submit:hover,.btn-submit:active{background:var(--gold2);}
+.form-note{font-family:'DM Mono',monospace;font-size:8px;color:rgba(128,108,62,0.25);letter-spacing:0.5px;text-align:center;margin-top:10px;line-height:1.9;}
+
+.bedankt{display:none;text-align:center;padding:42px 20px;background:#0D0A07;border:1px solid rgba(201,168,76,0.12);}
+.bedankt.on{display:block;animation:fadeUp 0.5s ease both;}
+.bedankt-icon{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--gold);color:var(--gold);font-size:18px;border-radius:50%;margin-bottom:14px;}
+.bedankt h3{font-family:'Instrument Serif',serif;font-size:24px;font-style:italic;margin-bottom:10px;}
+.bedankt p{font-size:13px;color:rgba(182,162,112,0.45);line-height:1.85;}
+.bedankt p strong{color:var(--white);}
+
+footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.footer-logo{font-family:'Instrument Serif',serif;font-size:20px;font-style:italic;color:var(--gold);}
+.footer-note{font-family:'DM Mono',monospace;font-size:8px;color:rgba(128,108,62,0.22);letter-spacing:2px;text-transform:uppercase;}
+
+@media(max-width:400px){
+  .w{padding:0 18px;}
+  .pad-grid{grid-template-columns:1fr;}
+  footer{flex-direction:column;text-align:center;}
+}
+
+/* ══ RADIO OPTIONS ══ */
+.radio-group{display:flex;flex-direction:column;gap:8px;}
+.radio-opt{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px 16px;
+  background:var(--bg);border:1px solid rgba(201,168,76,0.08);
+  cursor:pointer;transition:all 0.25s;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+}
+.radio-opt:hover{border-color:rgba(201,168,76,0.22);}
+.radio-opt.selected{border-color:var(--gold);background:rgba(201,168,76,0.04);}
+.radio-box{
+  width:18px;height:18px;border-radius:50%;flex-shrink:0;margin-top:2px;
+  border:1px solid rgba(201,168,76,0.2);
+  transition:all 0.25s;position:relative;
+}
+.radio-opt.selected .radio-box{
+  border-color:var(--gold);background:var(--gold);
+}
+.radio-opt.selected .radio-box::after{
+  content:'';position:absolute;inset:4px;border-radius:50%;background:#07070E;
+}
+.radio-content{display:flex;flex-direction:column;gap:3px;}
+.radio-title{font-size:13px;font-weight:500;color:var(--white);line-height:1.3;}
+.radio-opt.selected .radio-title{color:var(--gold);}
+.radio-desc{font-size:11px;color:rgba(162,142,88,0.38);line-height:1.5;}
+
+/* ══ MOBILE OPTIMIZATIONS ══ */
+@media(max-width:600px){
+  .hero{padding:88px 0 52px;}
+  .hero-cta{max-width:100%;}
+  .btn-primary{font-size:10px;padding:15px 20px;letter-spacing:1.5px;}
+  .btn-secondary{font-size:8px;padding:12px 20px;}
+  .sh{font-size:clamp(24px,7vw,38px);}
+  .w{padding:0 20px;}
+  .block-free{padding:20px 16px;}
+  .form-block{padding:22px 16px;}
+  .radio-opt{padding:12px 14px;gap:10px;}
+  .radio-title{font-size:12px;}
+  .svc{flex-direction:column;gap:4px;}
+  .svc-right{text-align:left;}
+  .jo-browser{margin-left:-20px;margin-right:-20px;}
+  .jo-stats{margin-left:-20px;margin-right:-20px;}
+  .bpaid-hdr{padding:16px;}
+  nav{padding:0 16px;}
+  .nav-link{font-size:8px;padding:7px 10px;letter-spacing:1.5px;}
+  .float-cta a{font-size:11px;padding:13px 22px;}
+  .rm-node{grid-template-columns:36px 1fr;gap:0 10px;}
+  .rm-dot{width:36px;height:36px;font-size:14px;}
+  .rm-connector{left:18px;}
+  .rm-connector-fill{left:18px;}
+  .hero-sub-wrap{height:auto;min-height:30px;}
+  .hero-sub-a,.hero-sub-b{position:relative;font-size:clamp(13px,3.5vw,16px);}
+}
+@media(max-width:380px){
+  .w{padding:0 16px;}
+  .btn-primary{font-size:9px;letter-spacing:1px;}
+  .sh{font-size:clamp(22px,7vw,34px);}
+}
+
+/* ══ HERO TAGS — rainbow shimmer ══ */
+.hero-tags-wrap{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:8px 6px;max-width:380px;margin:0 auto 36px;
+  opacity:0;animation:fadeUp 1s ease 0.45s forwards;
+}
+.htag{
+  font-family:'DM Mono',monospace;font-size:8px;letter-spacing:2px;
+  text-transform:uppercase;padding:5px 11px;
+  border-radius:0;position:relative;overflow:hidden;
+  border:1px solid rgba(201,168,76,0.15);
+  background:
+    linear-gradient(90deg,#C9A84C,#A78BFA,#60A5FA,#34D399,#F59E0B,#C9A84C,#A78BFA,#C9A84C);
+  background-size:300% 100%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:rbTag 5s linear infinite;
+  animation-delay:var(--d,0s);
+}
+.htag::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.08) 50%,transparent 100%);
+  background-size:200% 100%;
+  animation:shimmer 3s linear infinite;
+  animation-delay:var(--d,0s);
+  pointer-events:none;
+}
+@keyframes rbTag{
+  0%{background-position:0% 50%;}
+  100%{background-position:300% 50%;}
+}
+@keyframes shimmer{
+  0%{background-position:200% 0;}
+  100%{background-position:-200% 0;}
+}
+
+/* ══ PLATFORM CHECKBOXES ══ */
+.check-group{display:flex;flex-wrap:wrap;gap:8px;}
+.check-opt{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 14px;
+  background:var(--bg);border:1px solid rgba(201,168,76,0.08);
+  cursor:pointer;transition:all 0.2s;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+}
+.check-opt:hover{border-color:rgba(201,168,76,0.22);}
+.check-opt.selected{border-color:var(--gold);background:rgba(201,168,76,0.04);}
+.check-box{
+  width:16px;height:16px;flex-shrink:0;
+  border:1px solid rgba(201,168,76,0.2);
+  transition:all 0.2s;position:relative;
+  border-radius:2px;
+}
+.check-opt.selected .check-box{
+  background:var(--gold);border-color:var(--gold);
+}
+.check-opt.selected .check-box::after{
+  content:'✓';position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;color:#07070E;font-weight:700;line-height:1;
+}
+.check-label{font-size:12px;font-weight:500;color:rgba(220,205,175,0.7);transition:color 0.2s;}
+.check-opt.selected .check-label{color:var(--white);}
+</style>
+</head>
+<body>
+
+<!-- FLOATING CTA -->
+<div class="float-cta" id="floatCta">
+  <a href="#aanvraag">Stel jezelf voor →</a>
+</div>
+
+<nav>
+  <a href="#top" class="nav-logo">Ash</a>
+  <div class="nav-links">
+    <a href="#aanvraag" class="nav-link free">Stel je voor</a>
+    <a href="#werkt" class="nav-link info">Hoe het werkt</a>
+  </div>
+</nav>
+
+<div class="w" id="top">
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-orb1"></div><div class="hero-orb2"></div><div class="hero-orb3"></div>
+
+  <div class="hero-poem" style="margin-bottom:20px;">
+    <span class="hero-line-small" style="font-size:clamp(18px,4.5vw,26px);color:rgba(240,235,227,0.5);margin-bottom:18px;display:block;">Je geeft al waarde.</span>
+
+    <div class="word-stage" id="wordStage" style="height:clamp(70px,15vw,110px);margin:0 0 4px;">
+      <span class="word-item" data-i="0">De wereld</span>
+      <span class="word-item" data-i="1">Je volgers</span>
+      <span class="word-item" data-i="2">Je niche</span>
+      <span class="word-item" data-i="3">Je publiek</span>
+    </div>
+
+    <span class="hero-line-small" style="font-size:clamp(18px,4.5vw,26px);color:rgba(240,235,227,0.5);margin-top:8px;display:block;">verdient eraan. Jij nog niet.</span>
+  </div>
+
+  <!-- Word stage 2 — who they are -->
+  <div class="hero-tags-wrap">
+    <span class="htag" style="--d:0s">filmmaker</span>
+    <span class="htag" style="--d:0.3s">trainer</span>
+    <span class="htag" style="--d:0.6s">coach</span>
+    <span class="htag" style="--d:0.9s">artiest</span>
+    <span class="htag" style="--d:1.2s">spreker</span>
+    <span class="htag" style="--d:1.5s">creator</span>
+    <span class="htag" style="--d:1.8s">schrijver</span>
+    <span class="htag" style="--d:2.1s">ondernemer</span>
+  </div>
+
+  <div class="hero-sub-wrap" style="margin-bottom:36px;">
+    <span class="hero-sub-a" id="subA" style="color:rgba(200,185,155,0.55);font-size:clamp(14px,3.5vw,17px);">Ik bouw het systeem achter jouw passie — zodat jij eindelijk verdient wat je waard bent.</span>
+    <span class="hero-sub-b" id="subB" style="color:rgba(200,185,155,0.55);font-size:clamp(14px,3.5vw,17px);">Ik bouw het systeem achter jouw passie — zodat jij eindelijk verdient wat je waard bent.</span>
+  </div>
+
+  <div class="hero-cta">
+    <a href="#model" class="btn-primary">Ik wil dit — vertel me meer →</a>
+    <a href="#werkt" class="btn-secondary">Bekijk hoe het werkt</a>
+    <span class="hero-cta-note">// €0 vooraf · ik verdien alleen als jij verdient</span>
+  </div>
+</section>
+
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="mtrack">
+    <div class="mitem"><span class="msym" style="color:#C9A84C;">◆</span><span class="mtext" style="color:rgba(201,168,76,0.75);">€0 Vooraf — Altijd</span></div>
+    <div class="mitem"><span class="msym" style="color:#A78BFA;">◆</span><span class="mtext" style="color:rgba(167,139,250,0.65);">Website & Funnels</span></div>
+    <div class="mitem"><span class="msym" style="color:#34D399;">◆</span><span class="mtext" style="color:rgba(52,211,153,0.65);">Jij Verdient — Ik Verdien</span></div>
+    <div class="mitem"><span class="msym" style="color:#60A5FA;">◆</span><span class="mtext" style="color:rgba(96,165,250,0.65);">TikTok · Instagram · YouTube</span></div>
+    <div class="mitem"><span class="msym" style="color:#F59E0B;">◆</span><span class="mtext" style="color:rgba(245,158,11,0.65);">Digitale Producten</span></div>
+    <div class="mitem"><span class="msym" style="color:#C9A84C;">◆</span><span class="mtext" style="color:rgba(201,168,76,0.75);">Percentage op Omzet</span></div>
+    <div class="mitem"><span class="msym" style="color:#A78BFA;">◆</span><span class="mtext" style="color:rgba(167,139,250,0.65);">Strategie & Schaling</span></div>
+    <div class="mitem"><span class="msym" style="color:#34D399;">◆</span><span class="mtext" style="color:rgba(52,211,153,0.65);">Jouw Passie — Mijn Werk</span></div>
+    <div class="mitem"><span class="msym" style="color:#60A5FA;">◆</span><span class="mtext" style="color:rgba(96,165,250,0.65);">Creators & Ondernemers</span></div>
+    <div class="mitem"><span class="msym" style="color:#F59E0B;">◆</span><span class="mtext" style="color:rgba(245,158,11,0.65);">Eén Partner. Alles Inbegrepen.</span></div>
+    <div class="mitem"><span class="msym" style="color:#C9A84C;">◆</span><span class="mtext" style="color:rgba(201,168,76,0.75);">€0 Vooraf — Altijd</span></div>
+    <div class="mitem"><span class="msym" style="color:#A78BFA;">◆</span><span class="mtext" style="color:rgba(167,139,250,0.65);">Website & Funnels</span></div>
+    <div class="mitem"><span class="msym" style="color:#34D399;">◆</span><span class="mtext" style="color:rgba(52,211,153,0.65);">Jij Verdient — Ik Verdien</span></div>
+    <div class="mitem"><span class="msym" style="color:#60A5FA;">◆</span><span class="mtext" style="color:rgba(96,165,250,0.65);">TikTok · Instagram · YouTube</span></div>
+    <div class="mitem"><span class="msym" style="color:#F59E0B;">◆</span><span class="mtext" style="color:rgba(245,158,11,0.65);">Digitale Producten</span></div>
+    <div class="mitem"><span class="msym" style="color:#C9A84C;">◆</span><span class="mtext" style="color:rgba(201,168,76,0.75);">Percentage op Omzet</span></div>
+    <div class="mitem"><span class="msym" style="color:#A78BFA;">◆</span><span class="mtext" style="color:rgba(167,139,250,0.65);">Strategie & Schaling</span></div>
+    <div class="mitem"><span class="msym" style="color:#34D399;">◆</span><span class="mtext" style="color:rgba(52,211,153,0.65);">Jouw Passie — Mijn Werk</span></div>
+    <div class="mitem"><span class="msym" style="color:#60A5FA;">◆</span><span class="mtext" style="color:rgba(96,165,250,0.65);">Creators & Ondernemers</span></div>
+    <div class="mitem"><span class="msym" style="color:#F59E0B;">◆</span><span class="mtext" style="color:rgba(245,158,11,0.65);">Eén Partner. Alles Inbegrepen.</span></div>
+  </div>
+</div>
+
+<div class="w">
+
+<!-- ══ HERKENNING ══ -->
+<section class="sp herk-bg">
+  <span class="tag amber rv">Herken jij dit?</span>
+  <h2 class="sh rv d1" style="color:var(--white);">"Ik wil zo graag —<br><em style="color:#D97706;">maar weet niet hoe."</em></h2>
+  <div class="vragen">
+    <div class="vraag rv d1"><span class="vraag-icon">💸</span><p>"Bureaus vragen duizenden euro's vooraf. <strong>Ik word niet goed begeleid</strong> — en sta er alsnog alleen voor."</p></div>
+    <div class="vraag rv d2"><span class="vraag-icon">🔀</span><p>"Ik moet een designer, copywriter, coach én techneut inhuren. <strong>Allemaal apart, allemaal duur.</strong> Ik wil één persoon die het snapt."</p></div>
+    <div class="vraag rv d3"><span class="vraag-icon">📉</span><p>"Ik ben al een tijdje bezig maar het <strong>groeit niet.</strong> Ik mis de strategie en weet niet wat ik fout doe."</p></div>
+    <div class="vraag rv d4"><span class="vraag-icon">🔁</span><p>"Ik heb het advies gevolgd. Consistent gepost. Alles geprobeerd. <strong>Maar ik doe hetzelfde als iedereen — en bereik ook hetzelfde: niets.</strong>"</p></div>
+    <div class="vraag rv d4"><span class="vraag-icon">🎯</span><p>"Ik post, maar ik bereik niet de mensen die écht iets bij mij willen kopen. <strong>Mijn content trekt de verkeerde mensen aan — of helemaal niemand.</strong>"</p></div>
+  </div>
+  <div class="bridge rv">
+    <p>Ik werk anders. <em>Geen uurtarief. Geen factuur vooraf.</em> Ik bouw jouw volledige online aanwezigheid en verdien alleen als jij verdient — <strong>want jouw succes is mijn succes.</strong> Één partner. Alles inbegrepen. Niets vooraf.</p>
+  </div>
+</section>
+
+<div class="sdiv"></div>
+
+
+<div class="sdiv"></div>
+<div class="sdiv"></div>
+
+<div class="sdiv"></div>
+
+<!-- ══ AANBOD ══ -->
+<!-- ══ AANBOD ══ -->
+<section class="sp aanbod-bg" id="model">
+  <span class="tag green rv">Het model</span>
+  <h2 class="sh rv d1" style="color:var(--white);">Jij betaalt me<br><em style="color:var(--green);">nooit iets vooraf.</em></h2>
+
+  <div class="rv d2" style="font-size:14px;color:rgba(182,212,195,0.45);line-height:1.9;margin-bottom:28px;">
+    Geen factuur. Geen uurtarief. Geen risico. <strong style="color:rgba(240,235,227,0.9);">Ik verdien een percentage van wat jij verkoopt — en pas als jij verdient.</strong> Dat percentage bepalen we samen. Want dit is geen aanbod dat ik aan iedereen doe.
+  </div>
+
+  <!-- HOOFDBLOK — €0 model — full width, maximale energie -->
+  <div class="block-free rv d2" style="margin-bottom:28px;">
+    <div class="badge green"><span>✦ Partnerschap — €0 vooraf · altijd</span></div>
+    <div class="block-title">Ik bouw alles. Jij betaalt me niets.</div>
+    <p class="block-desc">Ik bouw jouw volledige online aanwezigheid — website, digitale producten, funnels, strategie en schaling — <strong>volledig in jouw stem, volledig op maat.</strong> Ik verdien een percentage van wat jij verkoopt. Jij focust op je passie. De rest is mijn werk.</p>
+
+    <div class="block-for-who" style="margin-top:22px;margin-bottom:22px;">
+      <span class="block-for-who-label">✦ Dit is voor jou als je</span>
+      <span class="block-for-who-text">digitale producten · cursussen · e-books · diensten online wil verkopen — en klaar bent voor een samenwerking op de lange termijn</span>
+    </div>
+
+    <!-- Wat ik bouw -->
+    <div style="margin-bottom:20px;">
+      <div style="font-family:'DM Mono',monospace;font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(52,211,153,0.4);margin-bottom:12px;">✦ Wat ik voor jou bouw</div>
+      <div class="block-items">
+        <div class="block-item">Complete website of funnel — volledig gebouwd en live</div>
+        <div class="block-item">Digitale producten gemaakt in jouw stem — klaar om te verkopen</div>
+        <div class="block-item">Content strategie, ideeën en positionering — zodat jij opvalt op sociale media en de juiste doelgroep bereikt</div>
+        <div class="block-item">Strategie die niemand anders in jouw niche gebruikt — geen standaard playbook</div>
+        <div class="block-item">Schaling via nieuwe producten en kanalen — ik groei mee als jij groeit</div>
+      </div>
+    </div>
+
+    <!-- Hoe het financieel werkt — geen vaste percentages -->
+    <div style="padding:18px 16px;background:rgba(52,211,153,0.04);border:1px solid rgba(52,211,153,0.12);margin-bottom:22px;">
+      <div style="font-family:'DM Mono',monospace;font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(52,211,153,0.38);margin-bottom:14px;">✦ Hoe het financieel werkt</div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:16px;">
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <span style="color:var(--green);font-size:13px;margin-top:1px;flex-shrink:0;">→</span>
+          <span style="font-size:13px;color:rgba(182,212,195,0.6);line-height:1.7;">Jij betaalt me <strong style="color:rgba(240,235,227,0.85);">nooit iets vooraf.</strong> Geen factuur, geen uurtarief, geen risico.</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <span style="color:var(--green);font-size:13px;margin-top:1px;flex-shrink:0;">→</span>
+          <span style="font-size:13px;color:rgba(182,212,195,0.6);line-height:1.7;">Ik verdien een <strong style="color:rgba(240,235,227,0.85);">percentage op jouw omzet</strong> — automatisch uitbetaald, transparant, geen gedoe.</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <span style="color:var(--green);font-size:13px;margin-top:1px;flex-shrink:0;">→</span>
+          <span style="font-size:13px;color:rgba(182,212,195,0.6);line-height:1.7;"><strong style="color:rgba(240,235,227,0.85);">Het percentage bepalen we samen</strong> — in het eerste gesprek, eerlijk en transparant. Ik ga alleen een samenwerking aan als ik er volledig achter sta. En als jij er volledig achter staat.</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <span style="color:var(--green);font-size:13px;margin-top:1px;flex-shrink:0;">→</span>
+          <span style="font-size:13px;color:rgba(182,212,195,0.6);line-height:1.7;"><strong style="color:rgba(240,235,227,0.85);">Website, systemen en hosting blijven in mijn beheer</strong> zolang de samenwerking loopt. Alles wat ik bouw is er voor jou — en blijft werken zolang wij samenwerken.</span>
+        </div>
+      </div>
+
+      <!-- Selectiviteitsblok -->
+      <div style="padding:14px 16px;background:rgba(0,0,0,0.25);border-left:2px solid rgba(52,211,153,0.25);">
+        <div style="font-family:'DM Mono',monospace;font-size:7px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(52,211,153,0.35);margin-bottom:8px;">// dit is geen aanbod voor iedereen</div>
+        <p style="font-size:12px;color:rgba(162,195,178,0.5);line-height:1.85;font-style:italic;">Ik werk met een klein aantal creators tegelijk. Geen grote portfolio, geen snelle deals. Ik kies bewust voor mensen waar ik in geloof — zodat ik mijn volledige aandacht en expertise inzet voor jouw groei. Als wij een match zijn, merk je dat direct.</p>
+      </div>
+    </div>
+
+    <a href="#aanvraag" class="btn-primary" style="display:block;text-align:center;">Stel jezelf voor — ik lees het persoonlijk →</a>
+    <div style="font-family:'DM Mono',monospace;font-size:8px;color:rgba(52,211,153,0.22);letter-spacing:1px;text-align:center;margin-top:10px;">// ik reageer binnen 48u · alleen als ik zie dat wij een match zijn</div>
+  </div>
+
+  <!-- SCHEIDINGSLIJN met context -->
+
+<div class="sdiv"></div>
+
+<!-- ══ ROADMAP ══ -->
+<div id="werkt" style="margin-top:52px;padding-top:48px;border-top:1px solid rgba(201,168,76,0.07);">
+<span class="tag violet rv">Hoe het werkt</span>
+  <h2 class="sh rv d1" style="color:var(--white);">Zo werken<br><em style="color:var(--violet);">wij samen.</em></h2>
+  <p class="rm-intro rv d2">Van jouw eerste bericht tot een draaiend systeem — dit is hoe onze samenwerking eruitziet. Geen verrassingen, geen kleine lettertjes. Gewoon een eerlijk traject, stap voor stap.</p>
+
+  <div class="rm-controls rv d2">
+    <div class="rm-dots" id="rmDots">
+      <div class="rm-step-dot active" onclick="clickNode(document.querySelectorAll('.rm-node')[0])"></div>
+      <div class="rm-step-dot" onclick="clickNode(document.querySelectorAll('.rm-node')[1])"></div>
+      <div class="rm-step-dot" onclick="clickNode(document.querySelectorAll('.rm-node')[2])"></div>
+      <div class="rm-step-dot" onclick="clickNode(document.querySelectorAll('.rm-node')[3])"></div>
+      <div class="rm-step-dot" onclick="clickNode(document.querySelectorAll('.rm-node')[4])"></div>
+    </div>
+    <button class="rm-play-btn" id="rmPlayBtn" onclick="toggleAutoPlay()">▶ Auto-play</button>
+  </div>
+
+  <div class="rm-track rv d2" id="rmTrack" style="position:relative;">
+    <div class="rm-connector"></div>
+    <div class="rm-connector-fill" id="rmFill"></div>
+
+    <div class="rm-node" data-node="0" onclick="clickNode(this)">
+      <div class="rm-dot">🌱</div>
+      <div class="rm-content">
+        <span class="rm-num">01</span>
+        <span class="rm-title">Jij stelt jezelf voor</span>
+        <div class="rm-body">
+          <span class="rm-text">Vul het formulier in. Wees eerlijk over wie je bent, wat je doet en waar je vastloopt. Ik lees elke aanvraag persoonlijk — en reageer alleen als ik zie dat wij een echte match zijn.</span>
+          <div class="rm-pain">Dit is geen intake — het is de eerste filter. Ik werk met weinig mensen tegelijk. Jouw antwoord bepaalt of wij verder gaan.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rm-node" data-node="1" onclick="clickNode(this)">
+      <div class="rm-dot">💡</div>
+      <div class="rm-content">
+        <span class="rm-num">02</span>
+        <span class="rm-title">We voeren een gesprek</span>
+        <div class="rm-body">
+          <span class="rm-text">Als ik je aanvraag interessant vind, neem ik contact op via WhatsApp. We plannen een open gesprek — jouw situatie, jouw doel, wat ik zie en hoe ik denk dat we het aanpakken.</span>
+          <div class="rm-pain">Geen pitch, geen verkoopgesprek. Als het klikt, doen we het. Als het niet klikt, zeg ik dat ook.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rm-node" data-node="2" onclick="clickNode(this)">
+      <div class="rm-dot">😶</div>
+      <div class="rm-content">
+        <span class="rm-num">03</span>
+        <span class="rm-title">We spreken een percentage af</span>
+        <div class="rm-body">
+          <span class="rm-text">We leggen het percentage vast — eerlijk, transparant, voor beide partijen. Wat ik verdien hangt direct af van wat jij verdient. Geen vast bedrag, geen risico voor jou.</span>
+          <div class="rm-pain">Dit is het moment waarop het partnerschap officieel begint. Jij behoudt volledige eigendom van alles. Ik lever het werk.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rm-node" data-node="3" onclick="clickNode(this)">
+      <div class="rm-dot">🌀</div>
+      <div class="rm-content">
+        <span class="rm-num">04</span>
+        <span class="rm-title">Ik bouw alles</span>
+        <div class="rm-body">
+          <span class="rm-text">Website, digitale producten, funnels, strategie, positionering, schaling — ik regel alles achter de schermen. Volledig in jouw stem. Niemand ziet mij. Jij schittert.</span>
+          <div class="rm-pain">Jij focust op je passie en je publiek. Ik bouw het systeem dat voor jou verdient terwijl jij dat doet.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rm-node" data-node="4" onclick="clickNode(this)">
+      <div class="rm-dot">✨</div>
+      <div class="rm-content">
+        <span class="rm-num">05</span>
+        <span class="rm-title">Samen groeien</span>
+        <div class="rm-body">
+          <span class="rm-text">Als jij verkoopt, verdienen we allebei. Ik schaal mee — nieuwe producten, nieuwe kanalen, nieuwe omzetstromen. Het doel is een samenwerking die jaren standhoudt, niet één die na de eerste factuur stopt.</span>
+          <div class="rm-pain">Dit is waarom ik kieskeurig ben op wie ik binnenlaat. Drie partners die groeien zijn meer waard dan twintig losse klanten.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+
+<div class="sdiv"></div>
+
+<div class="sdiv"></div>
+
+<!-- ══ LOSSE DIENSTEN ══ -->
+<section class="sp aanbod-bg" style="padding-top:48px;">
+<div class="w">
+<div style="display:flex;align-items:center;gap:16px;margin:8px 0 24px;">
+    <div style="flex:1;height:1px;background:rgba(201,168,76,0.07);"></div>
+    <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.55);">Liever een losse dienst?</span>
+    <div style="flex:1;height:1px;background:rgba(201,168,76,0.07);"></div>
+  </div>
+
+  <!-- LOSSE DIENSTEN — secundair, gedimpt, met context -->
+  <div class="rv">
+    <p style="font-size:13px;color:rgba(162,142,88,0.42);line-height:1.85;margin-bottom:16px;">Wil je liever zelf de controle houden en voor een specifieke dienst betalen? Dat kan — maar elk traject begint altijd met een <strong style="color:rgba(201,168,76,0.6);">Visie Consult</strong>. Zo zorg ik dat mijn tijd en jouw investering zinvol zijn.</p>
+
+    <div class="block-paid" id="diensten">
+      <div class="bpaid-hdr">
+        <div class="badge gold"><span>◆ Losse diensten — vaste prijs</span></div>
+        <div class="bpaid-title">Specifieke hulp, vaste prijs</div>
+        <p class="bpaid-sub">Altijd te beginnen met een Visie Consult. Hogere bedragen in delen te betalen.</p>
+      </div>
+
+      <!-- CONSULT & COACHING -->
+      <div style="border-bottom:1px solid rgba(201,168,76,0.06);">
+        <div style="padding:14px 20px 8px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(167,139,250,0.7);">✦ Consult & Coaching</div>
+        <div class="acc-cat open"><button class="acc-btn" onclick="toggleAcc(this)"><span class="acc-label">Bekijk alle sessies</span><span class="acc-arrow">▼</span></button>
+          <div class="acc-body">
+            <div class="svc">
+              <div><div class="svc-name">Visie Consult</div><div class="svc-desc">Jouw startpunt. In 60 minuten brengen we jouw situatie, doel, positionering en de weg ernaartoe scherp in kaart. Je verlaat het gesprek met een werkdocument en een concrete richting.</div></div>
+              <div class="svc-right"><span class="svc-price">€97</span><span class="svc-cycle">60 min · eenmalig</span></div>
+            </div>
+            <div class="svc">
+              <div><div class="svc-name">Visie Consult + Strategie</div><div class="svc-desc">Alles van het Visie Consult — aangevuld met een volledig uitgewerkte contentstrategie op maat. Welke content, voor wie, op welk platform en hoe jij opvalt. Klaar om direct mee aan de slag te gaan.</div></div>
+              <div class="svc-right"><span class="svc-price">€167</span><span class="svc-cycle">90 min · eenmalig</span></div>
+            </div>
+            <div class="svc">
+              <div><div class="svc-name">Maandelijkse Begeleiding</div><div class="svc-desc">Twee sessies per maand — één gericht op contentstrategie, ideeën en positionering, één op wat je intern tegenhoudt. Samen zijn dit een Visie Consult en Breakthrough Sessie in één. Voor creators die structureel willen groeien op TikTok, Instagram, Facebook of YouTube.</div></div>
+              <div class="svc-right"><span class="svc-price">€297</span><span class="svc-cycle">/maand</span></div>
+            </div>
+            <div class="svc" style="border-bottom:none;">
+              <div><div class="svc-name">Breakthrough Sessie</div><div class="svc-desc">Voor creators die al bezig zijn maar ergens vastlopen — niet op techniek, maar van binnen. Je hoeft geen actiepunten — soms heb je één helder inzicht nodig dat alles verandert. Wat jij nodig hebt, bepalen we samen.</div></div>
+              <div class="svc-right"><span class="svc-price">€147</span><span class="svc-cycle">60 min · eenmalig</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEBSITE & HOSTING -->
+      <div>
+        <div style="padding:14px 20px 8px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(96,165,250,0.7);">✦ Website & Hosting</div>
+        <div class="acc-cat"><button class="acc-btn" onclick="toggleAcc(this)"><span class="acc-label">Bekijk alle opties</span><span class="acc-arrow">▼</span></button>
+          <div class="acc-body">
+            <div class="svc">
+              <div><div class="svc-name">1 pagina</div><div class="svc-desc">Design, bouw en teksten volledig in jouw stem. Ik zet het live — geen platform, geen gedoe aan jouw kant. Wil je betaallinks of digitale producten? Dat kan — in overleg.</div></div>
+              <div class="svc-right"><span class="svc-price">€97</span><span class="svc-cycle">eenmalig + €50 setup<br>+ €10/maand hosting</span></div>
+            </div>
+            <div class="svc">
+              <div><div class="svc-name">3 pagina's — Mini Funnel</div><div class="svc-desc">Landingspagina, informatiepagina en bedankpagina — ontworpen, gebouwd en live. Betaallinks of digitale producten zijn mogelijk als extra, in overleg.</div></div>
+              <div class="svc-right"><span class="svc-price">€247</span><span class="svc-cycle">of 2× €124 + €50 setup<br>+ €10/maand hosting</span></div>
+            </div>
+            <div class="svc" style="border-bottom:none;">
+              <div><div class="svc-name">5 pagina's — Volledige Website</div><div class="svc-desc">Jouw complete online aanwezigheid — design, bouw en copy op maat. Jij hoeft niets te installeren, configureren of beheren. Inclusief hosting.</div></div>
+              <div class="svc-right"><span class="svc-price">€397</span><span class="svc-cycle">of 2× €199 + €50 setup<br>+ €10/maand hosting</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="revisie">📌 Websites bevatten 1 revisieronde. Extra revisie: €47. Alle prijzen excl. BTW.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="sdiv"></div>
+
+<!-- ══ BEWIJS — browser frame ══ -->
+<section class="sp bewijs-bg">
+  <span class="tag gold rv">Portfolio</span>
+  <h2 class="sh rv d1" style="color:var(--white);">Wat ik bouw<br><em style="color:var(--gold);">voor mijn klanten.</em></h2>
+  <p class="bewijs-lead rv d2">Eerste klant. Spirituele creator uit Nederland. Geen technische kennis, geen budget vooraf. Vandaag: een volledige online aanwezigheid die voor haar werkt terwijl ze slaapt.</p>
+
+  <!-- Clean browser frame — faithful Jo replica -->
+  <div class="jo-browser rv d2">
+    <div class="jo-browser-bar">
+      <div class="jo-b-dots"><div class="jo-b-dot"></div><div class="jo-b-dot"></div><div class="jo-b-dot"></div></div>
+      <div class="jo-b-url"><span style="opacity:0.4;">🔒</span>&nbsp;&nbsp;spirituele creator · nederland</div>
+    </div>
+    <div class="jo-content">
+      <div class="jo-stars-bg" id="joStars"></div>
+      <div class="jo-page">
+
+        <!-- HERO — centered -->
+        <div class="jo-hero-section">
+          <div class="jo-avatar-ring">🌙</div>
+          <span class="jo-hero-label">Welkom in de wereld van</span>
+          <span class="jo-hero-name">Jolanda Koen</span>
+          <p class="jo-hero-desc">Energetische lezer · schrijver · gids.<br><em>Voor wie klaar is om zichzelf terug te vinden.</em></p>
+        </div>
+        <div class="jo-divider"></div>
+
+        <!-- Live Reading -->
+        <div class="jo-live">
+          <div class="jo-live-left">
+            <div class="jo-live-top-row">
+              <span class="jo-live-lbl">Nu beschikbaar</span>
+              <span class="jo-live-notice">🔴 Enkel tijdens Jo's TikTok Live</span>
+            </div>
+            <span class="jo-live-title">✨ Live Reading</span>
+            <span class="jo-live-sub">Live energetische reading met Jo · direct contact · jouw moment</span>
+          </div>
+          <div class="jo-live-right">
+            <span class="jo-live-price">€ 11,11</span>
+            <span class="jo-btn-sm">Boek een plek →</span>
+            <span class="jo-wa-btn">📲 Zet mij op de lijst →</span>
+          </div>
+        </div>
+
+        <!-- Ebooks header — left aligned -->
+        <div style="margin-bottom:14px;">
+          <span class="jo-sec-ey">Begin hier</span>
+          <span class="jo-sec-ti">Twee digitale gidsen.<br>Geschreven vanuit eigen ervaring.</span>
+          <span class="jo-sec-su">Laagdrempelig, direct te lezen, en <em>voelbaar van de eerste pagina.</em></span>
+        </div>
+
+        <!-- Ebooks grid -->
+        <div class="jo-ebooks">
+          <div class="jo-ebook">
+            <span class="jo-ebook-em" style="color:#D4789A;">♥</span>
+            <span class="jo-ebook-ti rose">Je Ultieme Relatie Manifesteren.</span>
+            <span style="font-size:10px;color:rgba(212,120,154,0.5);font-style:italic;line-height:1.4;margin-bottom:6px;display:block;">Waarom de ander jou nog niet kiest — en hoe jij dit verandert.</span>
+            <span class="jo-ebook-pr">€ 15,15</span>
+            <span class="jo-ebook-btn rb">Lees meer →</span>
+          </div>
+          <div class="jo-ebook-div"></div>
+          <div class="jo-ebook">
+            <span class="jo-ebook-em" style="color:#7AAFD4;">♥</span>
+            <span class="jo-ebook-ti blue">Je Bent Niet Zwak. Je Bent Je Kracht Vergeten.</span>
+            <span style="font-size:10px;color:rgba(122,175,212,0.5);font-style:italic;line-height:1.4;margin-bottom:6px;display:block;">Stop met jezelf weggeven. Jouw kracht wacht op je.</span>
+            <span class="jo-ebook-pr">€ 15,15</span>
+            <span class="jo-ebook-btn bb">Lees meer →</span>
+          </div>
+        </div>
+
+        <!-- Readings header — left aligned -->
+        <div style="margin-bottom:12px;">
+          <span class="jo-sec-ey">Persoonlijke begeleiding</span>
+          <span class="jo-sec-ti">Soms heeft jouw ziel<br>een persoonlijk antwoord nodig.</span>
+          <span class="jo-sec-su">De gidsen geven je de principes. Een reading geeft je <em>jouw</em> antwoord.</span>
+        </div>
+
+        <!-- Readings toggle — static label, always open -->
+        <div class="jo-toggle" style="pointer-events:none;cursor:default;animation:none;">↓ Bekijk alle readings van Jo</div>
+        <div class="jo-readings open" style="pointer-events:none;">
+          <div class="jo-reading">
+            <span class="jo-r-icon">🤍</span>
+            <div>
+              <span class="jo-r-name">Mini Reading</span>
+              <span class="jo-r-desc">Één gerichte vraag · snel inzicht · laagdrempelig</span>
+            </div>
+            <span class="jo-r-cta" style="display:block;">Ja, ik wil dit →</span>
+          </div>
+          <div class="jo-reading">
+            <span class="jo-r-icon">🌑</span>
+            <div>
+              <span class="jo-r-name">Schaduw Reading</span>
+              <span class="jo-r-desc">Verborgen patronen zichtbaar maken · diep en transformerend</span>
+            </div>
+            <span class="jo-r-cta" style="display:block;">Ja, ik wil dit →</span>
+          </div>
+          <div class="jo-reading">
+            <span class="jo-r-icon">✨</span>
+            <div>
+              <span class="jo-r-name">Zielspad Reading</span>
+              <span class="jo-r-desc">Jouw zielsmissie en energetische blokkades · richting en helderheid</span>
+            </div>
+            <span class="jo-r-cta" style="display:block;">Ja, ik wil dit →</span>
+          </div>
+          <div class="jo-reading">
+            <span class="jo-r-icon">🖤</span>
+            <div>
+              <span class="jo-r-name">Persoonlijke 1-op-1 Reading</span>
+              <span class="jo-r-desc">Volledig op jou afgestemd · intens · transformerend</span>
+            </div>
+            <span class="jo-r-cta" style="display:block;">Ja, ik wil dit →</span>
+          </div>
+          <div class="jo-reading">
+            <span class="jo-r-icon">📜</span>
+            <div>
+              <span class="jo-r-name">Zielscode Rapport</span>
+              <span class="jo-r-desc">Jouw unieke zielscode uitgewerkt in een persoonlijk rapport</span>
+            </div>
+            <span class="jo-r-cta" style="display:block;">Ja, ik wil dit →</span>
+          </div>
+        </div>
+
+        <!-- Quote — centered -->
+        <div class="jo-over">
+          <span class="jo-qt">"Ik weet hoe het voelt om te zoeken. <em>Naar liefde. Naar jezelf.</em><br>Naar antwoorden die niemand om je heen lijkt te hebben.<br><br>Ik ben iemand die voelt, ziet en deelt<br>vanuit het diepste van mijn hart.<br><br>En als jij hier bent —<br>dan weet ik dat jij ook klaar bent om te voelen."</span>
+          <span class="jo-sig">— Jo 🤍</span>
+          <!-- Social icons -->
+          <div class="jo-socials">
+            <a class="jo-social" style="text-decoration:none;">
+              <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.19 8.19 0 004.79 1.53V6.77a4.85 4.85 0 01-1.02-.08z"/></svg>
+              <span class="jo-social-nm">TikTok</span>
+            </a>
+            <a class="jo-social" style="text-decoration:none;">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              <span class="jo-social-nm">Instagram</span>
+            </a>
+            <a class="jo-social" style="text-decoration:none;">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              <span class="jo-social-nm">Facebook</span>
+            </a>
+            <a class="jo-social" style="text-decoration:none;">
+              <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+              <span class="jo-social-nm">YouTube</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="jo-footer">Met veel liefde gemaakt. 🤍</div>
+
+      </div><!-- end jo-page -->
+    </div><!-- end jo-content -->
+
+  <!-- Stats below browser -->
+  <div class="jo-stats rv">
+    <div class="jo-stat"><span class="jo-sn">8</span><span class="jo-sl">Pagina's live</span></div>
+    <div class="jo-stat"><span class="jo-sn">€0</span><span class="jo-sl">Upfront betaald</span></div>
+    <div class="jo-stat"><span class="jo-sn">5K+</span><span class="jo-sl">Volgers opgebouwd</span></div>
+  </div>
+
+  <div class="bewijs-quote rv">
+    <p>"Ash zag direct wat ik nodig had. <strong>Sindsdien focus ik op mijn passie en straal ik als nooit tevoren.</strong>"</p>
+    <span class="bewijs-meta">// Spirituele creator · Nederland</span>
+  </div>
+</section>
+
+<div class="sdiv"></div>
+
+
+<div class="sdiv"></div>
+<div class="sdiv"></div>
+
+<div class="sdiv"></div>
+
+<!-- ══ FORMULIER ══ -->
+<section class="sp form-bg" id="aanvraag">
+  <span class="tag violet rv">De eerste stap</span>
+  <h2 class="sh rv d1" style="color:var(--white);">Stel jezelf<br><em style="color:var(--gold);">voor.</em></h2>
+  <p class="form-sub rv d2">Ik lees elke aanvraag persoonlijk. <strong>Wees eerlijk — hoe concreter jij bent, hoe beter ik kan beoordelen of wij een match zijn.</strong> Als dat zo is, neem ik binnen 48 uur contact op via WhatsApp.</p>
+
+  <div class="form-block rv d2" id="formBlock">
+    <form id="ashForm" novalidate>
+
+      <div class="fg">
+        <label>Jouw naam <span class="req">*</span></label>
+        <input type="text" id="naam" placeholder="Hoe mag ik je noemen?" required/>
+      </div>
+
+      <div class="fg">
+        <label>Wat doe jij? <span class="req">*</span></label>
+        <input type="text" id="niche" placeholder="bijv. fitness coach, lifestyle creator, muzikant..." required/>
+      </div>
+
+      <div class="fg">
+        <label>Op welk platform wil jij groeien? <span class="req">*</span></label>
+        <p style="font-size:11px;color:rgba(162,142,88,0.45);margin:-4px 0 10px;line-height:1.6;">Vink aan waar jij op actief bent én waar je mee geholpen wil worden.</p>
+        <div class="check-group" id="platformGroup">
+          <label class="check-opt" onclick="toggleCheck(this,'TikTok')">
+            <span class="check-box"></span>
+            <span class="check-label">TikTok</span>
+          </label>
+          <label class="check-opt" onclick="toggleCheck(this,'Instagram')">
+            <span class="check-box"></span>
+            <span class="check-label">Instagram</span>
+          </label>
+          <label class="check-opt" onclick="toggleCheck(this,'Facebook')">
+            <span class="check-box"></span>
+            <span class="check-label">Facebook</span>
+          </label>
+          <label class="check-opt" onclick="toggleCheck(this,'YouTube')">
+            <span class="check-box"></span>
+            <span class="check-label">YouTube</span>
+          </label>
+          <label class="check-opt" onclick="toggleCheck(this,'Nog nergens actief')">
+            <span class="check-box"></span>
+            <span class="check-label">Nog nergens actief</span>
+          </label>
+        </div>
+        <input type="hidden" id="platform" required/>
+      </div>
+
+      <div class="fg">
+        <label>Jouw profiel <span style="opacity:0.45;font-size:11px;">(optioneel maar fijn)</span></label>
+        <input type="text" id="profiel" placeholder="@jouwnaam of link naar jouw profiel"/>
+      </div>
+
+      <div class="fg">
+        <label>Waarmee kan ik je helpen? <span class="req">*</span></label>
+        <div class="radio-group" id="hulpGroup">
+          <label class="radio-opt" onclick="selectRadio(this,'Partnerschap — €0 vooraf, percentage op omzet')">
+            <span class="radio-box"></span>
+            <span class="radio-content">
+              <span class="radio-title">Partnerschap — €0 vooraf</span>
+              <span class="radio-desc">Ik bouw alles. Jij betaalt me niets vooraf. We delen de omzet.</span>
+            </span>
+          </label>
+          <label class="radio-opt" onclick="selectRadio(this,'Consult of Coaching')">
+            <span class="radio-box"></span>
+            <span class="radio-content">
+              <span class="radio-title">Consult of Coaching</span>
+              <span class="radio-desc">Visie Consult, strategie of Breakthrough Sessie.</span>
+            </span>
+          </label>
+          <label class="radio-opt" onclick="selectRadio(this,'Website')">
+            <span class="radio-box"></span>
+            <span class="radio-content">
+              <span class="radio-title">Website</span>
+              <span class="radio-desc">Eén pagina, mini-funnel of volledige website. Extra's zoals betaallinks in overleg.</span>
+            </span>
+          </label>
+        </div>
+        <input type="hidden" id="hulp" required/>
+      </div>
+
+      <div class="fg">
+        <label>Waar loop je nu op vast? <span class="req">*</span></label>
+        <textarea id="blokkade" placeholder="Wees eerlijk — hoe directer jij bent, hoe beter ik kan beoordelen of wij een match zijn." required></textarea>
+      </div>
+
+      <div class="fg">
+        <label>Jouw WhatsApp <span class="req">*</span></label>
+        <input type="tel" id="whatsapp" placeholder="+32 4 00 00 00 00 of +31 6 00000000" required/>
+      </div>
+
+      <button type="submit" class="btn-submit">Stuur mijn aanvraag →</button>
+      <p class="form-note">// Ik reageer binnen 48 uur als wij een match zijn.</p>
+    </form>
+  </div>
+  <div class="bedankt" id="bedankt">
+    <span class="bedankt-icon">✓</span>
+    <h3>Aanvraag ontvangen.</h3>
+    <p>Ik lees jouw situatie persoonlijk.<br>Als wij een goede match zijn neem ik <strong>binnen 48 uur</strong> contact op via WhatsApp.</p>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">Ash</span>
+  <span class="footer-note">// Ik verdien alleen als jij verdient.</span>
+</footer>
+
+</div>
+
+<script>
+// REVEAL
+const rObs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in');});},{threshold:0.05,rootMargin:'0px 0px -10px 0px'});
+document.querySelectorAll('.rv').forEach(el=>rObs.observe(el));
+
+// FLOATING CTA
+const floatCta=document.getElementById('floatCta');
+const hero=document.getElementById('top');
+let heroBottom=0;
+function updateFloat(){
+  if(!heroBottom){const h=document.querySelector('.hero');if(h)heroBottom=h.offsetTop+h.offsetHeight;}
+  if(window.scrollY>heroBottom*0.7)floatCta.classList.add('show');
+  else floatCta.classList.remove('show');
+}
+window.addEventListener('scroll',updateFloat,{passive:true});
+
+// WORD CROSSFADE — variable pulse rhythm
+const wItems=document.querySelectorAll('.word-item');
+let wCur=0;
+// Variable durations per word — creates tension + surprise, like a racing heartbeat
+const wDurations=[2000,1600,2400,1800];
+function initWords(){
+  wItems.forEach(w=>{
+    w.style.opacity='0';
+    w.style.transform='translateX(-50%) translateY(6px)';
+  });
+  wItems[0].style.opacity='1';
+  wItems[0].style.transform='translateX(-50%) translateY(0)';
+  wItems[0].classList.add('active');
+}
+initWords();
+function nextWord(){
+  const prev=wCur;
+  wCur=(wCur+1)%wItems.length;
+  wItems[prev].style.opacity='0';
+  wItems[prev].style.transform='translateX(-50%) translateY(-5px)';
+  wItems[prev].classList.remove('active');
+  setTimeout(()=>{
+    wItems[wCur].style.transform='translateX(-50%) translateY(6px)';
+    wItems[wCur].style.opacity='0';
+    requestAnimationFrame(()=>{
+      requestAnimationFrame(()=>{
+        wItems[wCur].style.opacity='1';
+        wItems[wCur].style.transform='translateX(-50%) translateY(0)';
+        wItems[wCur].classList.add('active');
+      });
+    });
+  },120);
+  setTimeout(nextWord, wDurations[wCur]);
+}
+setTimeout(nextWord, wDurations[0]);
+
+// SCROLL SUBLINE MORPH
+let morphed=false;
+const subA=document.getElementById('subA'),subB=document.getElementById('subB');
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  if(y>80&&!morphed){morphed=true;subA.style.cssText='opacity:0;transform:translateY(-7px);';subB.style.cssText='opacity:1;transform:translateY(0);';}
+  else if(y<30&&morphed){morphed=false;subA.style.cssText='opacity:1;transform:translateY(0);';subB.style.cssText='opacity:0;transform:translateY(7px);';}
+},{passive:true});
+
+// ROADMAP — auto-play + step dots + dimming
+const rmNodes=document.querySelectorAll('.rm-node');
+const rmFill=document.getElementById('rmFill');
+const rmStepDots=document.querySelectorAll('.rm-step-dot');
+let manualNode=-1;
+let autoPlaying=false;
+let autoPlayTimer=null;
+let currentActive=0;
+
+function activateNode(idx,fromAuto){
+  rmNodes.forEach((n,i)=>{
+    n.classList.remove('active','just-activated','dimmed');
+    if(i<idx)n.classList.add('active');
+    else if(i>idx)n.classList.add('dimmed');
+  });
+  rmNodes[idx].classList.add('active','just-activated');
+  setTimeout(()=>rmNodes[idx].classList.remove('just-activated'),600);
+  const pct=rmNodes.length>1?(idx/(rmNodes.length-1))*100:0;
+  rmFill.style.height=pct+'%';
+  // update step dots
+  rmStepDots.forEach((d,i)=>d.classList.toggle('active',i===idx));
+  currentActive=idx;
+}
+
+function updateRmScroll(){
+  if(manualNode>=0||autoPlaying)return;
+  const track=document.getElementById('rmTrack');
+  if(!track)return;
+  const rect=track.getBoundingClientRect();
+  const vh=window.innerHeight;
+  const progress=Math.max(0,Math.min(1,(vh*0.6-rect.top)/rect.height));
+  const idx=Math.floor(progress*(rmNodes.length));
+  activateNode(Math.min(idx,rmNodes.length-1));
+}
+
+function clickNode(node){
+  const idx=parseInt(node.dataset.node);
+  if(autoPlaying)stopAutoPlay();
+  manualNode=idx;
+  activateNode(idx);
+  setTimeout(()=>{manualNode=-1;},4000);
+}
+
+function stopAutoPlay(){
+  autoPlaying=false;
+  clearInterval(autoPlayTimer);
+  autoPlayTimer=null;
+  const btn=document.getElementById('rmPlayBtn');
+  if(btn){btn.textContent='▶ Auto-play';btn.classList.remove('playing');}
+}
+
+function toggleAutoPlay(){
+  if(autoPlaying){stopAutoPlay();return;}
+  autoPlaying=true;
+  const btn=document.getElementById('rmPlayBtn');
+  if(btn){btn.textContent='■ Stop';btn.classList.add('playing');}
+  // start from beginning
+  let step=0;
+  activateNode(step);
+  autoPlayTimer=setInterval(()=>{
+    step++;
+    if(step>=rmNodes.length){stopAutoPlay();return;}
+    activateNode(step,true);
+  },2200);
+}
+
+window.addEventListener('scroll',updateRmScroll,{passive:true});
+updateRmScroll();
+
+// STARS
+const sw=document.getElementById('joStars');
+if(sw){const c=['#D4789A','#C9A84C','#7AAFD4'];for(let i=0;i<70;i++){const s=document.createElement('div');s.className='jo-star';const sz=Math.random()*2+0.3;s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;background:${c[i%3]};opacity:${Math.random()*0.25+0.04};--d:${Math.random()*4+2}s;--dl:${Math.random()*5}s;`;sw.appendChild(s);}}
+
+// GAMIFICATION — inline accordion
+const padColors=['#A78BFA','#60A5FA','#34D399','#F59E0B'];
+
+function spawnParticles(card){
+  const pWrap=card.querySelector('.pad-particles');
+  if(!pWrap)return;
+  const cx=card.offsetWidth/2,cy=40;
+  for(let i=0;i<16;i++){
+    const p=document.createElement('div');
+    p.className='pad-particle';
+    const angle=(i/16)*360;
+    const dist=35+Math.random()*25;
+    const dx=Math.cos(angle*Math.PI/180)*dist+'px';
+    const dy=Math.sin(angle*Math.PI/180)*dist+'px';
+    p.style.cssText=`left:${cx}px;top:${cy}px;background:${padColors[i%padColors.length]};--dx:${dx};--dy:${dy};animation:particleFly ${0.35+Math.random()*0.3}s ease-out forwards;animation-delay:${i*10}ms;`;
+    pWrap.appendChild(p);
+    setTimeout(()=>p.remove(),700);
+  }
+}
+
+function selectPad(card){
+  const wasSelected=card.classList.contains('selected');
+  // collapse all
+  document.querySelectorAll('.pad-card').forEach(c=>{
+    c.classList.remove('selected','pop');
+    c.classList.add('dimmed');
+  });
+  if(wasSelected){
+    // toggle off — restore all
+    document.querySelectorAll('.pad-card').forEach(c=>c.classList.remove('dimmed'));
+    return;
+  }
+  card.classList.remove('dimmed');
+  card.classList.add('selected');
+  void card.offsetWidth;
+  card.classList.add('pop');
+  spawnParticles(card);
+  // smooth scroll to show result on mobile
+  setTimeout(()=>{
+    const result=card.querySelector('.pad-inline-result');
+    if(result){
+      const rect=card.getBoundingClientRect();
+      const scrollTarget=window.scrollY+rect.bottom-window.innerHeight+80;
+      if(scrollTarget>window.scrollY)window.scrollTo({top:scrollTarget,behavior:'smooth'});
+    }
+  },350);
+}
+
+function toggleAcc(btn){btn.closest('.acc-cat').classList.toggle('open');}
+
+const WA='32472891570';
+
+
+// PLATFORM CHECKBOX TOGGLE
+const selectedPlatforms = new Set();
+function toggleCheck(el, value) {
+  if (el.classList.contains('selected')) {
+    el.classList.remove('selected');
+    selectedPlatforms.delete(value);
+  } else {
+    el.classList.add('selected');
+    selectedPlatforms.add(value);
+  }
+  document.getElementById('platform').value = Array.from(selectedPlatforms).join(', ');
+}
+
+// RADIO SELECTION
+function selectRadio(el, value) {
+  document.querySelectorAll('.radio-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('hulp').value = value;
+}
+
+document.getElementById('ashForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const naam=document.getElementById('naam').value.trim();
+  const niche=document.getElementById('niche').value.trim();
+  const platform=document.getElementById('platform').value;
+  const profiel=document.getElementById('profiel').value.trim();
+  const blokkade=document.getElementById('blokkade').value.trim();
+  const hulp=document.getElementById('hulp').value;
+  const whatsapp=document.getElementById('whatsapp').value.trim();
+  if(!naam||!niche||!platform||!blokkade||!hulp||!whatsapp){alert('Vul alle verplichte velden in — vergeet ook niet een platform en hulpvraag te kiezen.');return;}
+  const msg=`🔔 NIEUWE AANVRAAG — ASH\n\n👤 Naam: ${naam}\n🎯 Wat zij doen: ${niche}\n📱 Platform: ${platform}${profiel?'\n🔗 Profiel: '+profiel:''}\n✦ Interesse in: ${hulp}\n📞 WhatsApp: ${whatsapp}\n\n❓ Waar lopen zij op vast:\n${blokkade}`;
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,'_blank');
+  document.getElementById('formBlock').style.display='none';
+  const b=document.getElementById('bedankt');b.classList.add('on');b.scrollIntoView({behavior:'smooth',block:'center'});
+});
+</script>
+</body>
+</html>
