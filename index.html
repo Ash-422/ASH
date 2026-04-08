@@ -740,6 +740,187 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
 }
 .check-label{font-size:12px;font-weight:500;color:rgba(220,205,175,0.7);transition:color 0.2s;}
 .check-opt.selected .check-label{color:var(--white);}
+
+/* ══ FAQ ══ */
+.faq-bg{background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%);}
+.faq-intro{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:28px;}
+.faq-list{display:flex;flex-direction:column;gap:1px;background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.08);}
+.faq-item{background:var(--bg);overflow:hidden;}
+.faq-q{
+  width:100%;padding:18px 20px;background:none;border:none;
+  cursor:pointer;display:flex;align-items:flex-start;justify-content:space-between;
+  gap:16px;text-align:left;
+  -webkit-tap-highlight-color:transparent;
+  transition:background 0.2s;
+}
+.faq-q:hover{background:rgba(201,168,76,0.02);}
+.faq-q-text{font-size:14px;font-weight:500;color:var(--white);line-height:1.5;flex:1;}
+.faq-icon{
+  font-family:'DM Mono',monospace;font-size:14px;
+  color:rgba(201,168,76,0.35);flex-shrink:0;
+  transition:transform 0.3s ease,color 0.2s;
+  margin-top:1px;
+}
+.faq-item.open .faq-icon{transform:rotate(45deg);color:var(--gold);}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height 0.5s cubic-bezier(.16,1,.3,1),opacity 0.4s ease;
+  opacity:0;
+}
+.faq-item.open .faq-a{max-height:600px;opacity:1;}
+.faq-a-inner{padding:0 20px 20px;font-size:13px;color:rgba(200,180,140,0.58);line-height:1.9;}
+.faq-a-inner strong{color:var(--white);}
+.faq-a-inner em{color:var(--gold);font-style:normal;}
+
+/* Price comparison table */
+.price-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12px;}
+.price-table th{
+  font-family:'DM Mono',monospace;font-size:7px;letter-spacing:2px;
+  text-transform:uppercase;color:rgba(162,142,88,0.45);
+  padding:8px 12px;text-align:left;border-bottom:1px solid rgba(201,168,76,0.08);
+}
+.price-table td{
+  padding:9px 12px;border-bottom:1px solid rgba(201,168,76,0.04);
+  vertical-align:top;color:rgba(200,180,140,0.55);
+}
+.price-table tr:last-child td{border-bottom:none;}
+.price-table .pt-item{color:rgba(220,205,175,0.7);}
+.price-table .pt-price{color:rgba(245,158,11,0.65);white-space:nowrap;}
+.price-table .pt-total td{
+  color:var(--white);font-weight:500;
+  border-top:1px solid rgba(201,168,76,0.12);
+  padding-top:12px;
+}
+.price-table .pt-ash td{color:var(--green);font-weight:600;}
+.faq-highlight{
+  padding:12px 16px;background:rgba(52,211,153,0.04);
+  border-left:2px solid rgba(52,211,153,0.25);
+  font-size:13px;color:rgba(162,195,178,0.65);
+  line-height:1.85;margin-top:12px;
+}
+.faq-highlight strong{color:var(--white);}
+@media(max-width:600px){
+  .faq-q{padding:16px;}
+  .faq-a-inner{padding:0 16px 16px;}
+  .faq-q-text{font-size:13px;}
+  .price-table{font-size:11px;}
+  .price-table th,.price-table td{padding:7px 8px;}
+}
+
+/* ══ OVER ASH ══ */
+.over-bg{background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);}
+.over-card{
+  padding:28px 24px;
+  background:rgba(12,11,20,0.8);
+  border:1px solid rgba(201,168,76,0.1);
+  position:relative;overflow:hidden;
+}
+.over-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(201,168,76,0.25),rgba(167,139,250,0.2),transparent);
+}
+.over-quote-mark{
+  font-family:'Instrument Serif',serif;font-size:72px;
+  color:rgba(201,168,76,0.08);line-height:0.8;
+  display:block;margin-bottom:16px;
+}
+.over-text{
+  font-size:14px;color:rgba(205,188,152,0.62);
+  line-height:2;font-weight:300;
+}
+.over-text strong{color:rgba(240,235,227,0.88);font-weight:500;}
+.over-text em{color:var(--gold);font-style:normal;}
+.over-sig{
+  margin-top:22px;padding-top:18px;
+  border-top:1px solid rgba(201,168,76,0.07);
+  display:flex;align-items:center;gap:14px;
+}
+.over-sig-line{flex:1;height:1px;background:rgba(201,168,76,0.07);}
+.over-sig-name{
+  font-family:'Instrument Serif',serif;font-size:20px;
+  font-style:italic;color:var(--gold);
+}
+.over-sig-role{
+  font-family:'DM Mono',monospace;font-size:7px;
+  letter-spacing:2px;text-transform:uppercase;
+  color:rgba(162,142,88,0.35);margin-top:4px;
+}
+@media(max-width:600px){
+  .over-card{padding:22px 18px;}
+  .over-text{font-size:13px;}
+}
+
+/* ══ CREATOR SELF-SCAN ══ */
+.scan-bg{background:linear-gradient(180deg,var(--bg2) 0%,#0A0E18 100%);}
+.scan-intro{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:24px;}
+.scan-progress-wrap{margin-bottom:28px;}
+.scan-progress-bar{height:2px;background:rgba(167,139,250,0.1);position:relative;overflow:hidden;}
+.scan-progress-fill{height:100%;background:linear-gradient(90deg,var(--violet),var(--blue));width:0%;transition:width 0.5s cubic-bezier(.16,1,.3,1);}
+.scan-progress-label{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(167,139,250,0.35);margin-top:6px;display:block;}
+
+.scan-step{display:none;}
+.scan-step.active{display:block;animation:fadeUp 0.4s ease both;}
+
+.scan-q{
+  font-family:'Instrument Serif',serif;font-size:clamp(20px,5vw,28px);
+  font-style:italic;color:var(--white);line-height:1.25;
+  margin-bottom:8px;
+}
+.scan-sub{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.7;}
+
+.scan-opts{display:flex;flex-direction:column;gap:8px;}
+.scan-opt{
+  padding:14px 18px;background:var(--bg);
+  border:1px solid rgba(167,139,250,0.1);
+  cursor:pointer;transition:all 0.25s;
+  display:flex;align-items:flex-start;gap:12px;
+  -webkit-tap-highlight-color:transparent;
+  text-align:left;width:100%;
+}
+.scan-opt:hover,.scan-opt:active{border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.04);}
+.scan-opt-icon{font-size:18px;flex-shrink:0;margin-top:1px;}
+.scan-opt-text{font-size:13px;color:rgba(210,195,165,0.7);line-height:1.5;}
+.scan-opt-text strong{color:var(--white);display:block;margin-bottom:2px;font-size:14px;}
+
+/* Result */
+.scan-result{display:none;animation:fadeUp 0.5s ease both;}
+.scan-result.show{display:block;}
+.scan-result-card{
+  padding:24px 20px;
+  border:1px solid rgba(201,168,76,0.18);
+  background:rgba(201,168,76,0.03);
+  position:relative;overflow:hidden;
+}
+.scan-result-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.scan-result-tag{
+  font-family:'DM Mono',monospace;font-size:7px;letter-spacing:3px;
+  text-transform:uppercase;color:rgba(201,168,76,0.45);
+  display:block;margin-bottom:12px;
+}
+.scan-result-title{
+  font-family:'Instrument Serif',serif;font-size:clamp(20px,5vw,26px);
+  font-style:italic;color:var(--white);margin-bottom:10px;line-height:1.2;
+}
+.scan-result-body{font-size:13px;color:rgba(200,180,140,0.6);line-height:1.9;margin-bottom:20px;}
+.scan-result-body strong{color:var(--white);}
+.scan-result-body em{color:var(--gold);font-style:normal;}
+.scan-cta-row{display:flex;flex-direction:column;gap:10px;}
+.scan-restart{
+  font-family:'DM Mono',monospace;font-size:8px;letter-spacing:2px;
+  text-transform:uppercase;color:rgba(162,142,88,0.35);
+  background:none;border:none;cursor:pointer;padding:8px 0;
+  text-align:center;transition:color 0.2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.scan-restart:hover{color:rgba(201,168,76,0.55);}
+@media(max-width:600px){
+  .scan-q{font-size:clamp(18px,5.5vw,24px);}
+  .scan-opt{padding:12px 14px;gap:10px;}
+  .scan-result-card{padding:20px 16px;}
+}
 </style>
 </head>
 <body>
@@ -753,7 +934,7 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
   <a href="#top" class="nav-logo">Ash</a>
   <div class="nav-links">
     <a href="#aanvraag" class="nav-link free">Stel je voor</a>
-    <a href="#werkt" class="nav-link info">Hoe het werkt</a>
+    <a href="#scan" class="nav-link info">Doe de scan</a>
   </div>
 </nav>
 
@@ -855,6 +1036,163 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
 
 <div class="sdiv"></div>
 
+<!-- ══ OVER ASH ══ -->
+<section class="sp over-bg">
+  <span class="tag violet rv">Wie is Ash?</span>
+  <h2 class="sh rv d1" style="color:var(--white);">Waarom ik dit<br><em style="color:var(--violet);">anders doe.</em></h2>
+
+  <div class="over-card rv d2">
+    <span class="over-quote-mark">"</span>
+    <p class="over-text">
+      Ik weet hoe het voelt om <strong>10.000 tutorials te kijken, alles te proberen en toch nergens te komen.</strong> Terwijl iedereen zegt "geloof in jezelf" — maar niemand je echt helpt.<br><br>
+      Ik heb van dichtbij gezien hoe bureaus duizenden euro's vooraf vragen voor websites, strategieën en campagnes. En hoe creators daarna alsnog alleen staan — met een factuur maar zonder resultaat.<br><br>
+      Ik ben creatief opgeleid, heb jaren marketingervaring en weet hoe je out-of-the-box denkt. Niet het standaard playbook dat iedereen gebruikt. <em>Echt anders.</em> Elke niche, elk verhaal, elke persoon vraagt een andere aanpak — en dat is precies wat ik doe.<br><br>
+      <strong>Ik doe dit omdat ik creators een eerlijke kans wil geven.</strong> Niet overspoeld met contracten en kosten vooraf. Maar iemand naast je die meedenkt, mee-investeert en pas verdient als jij verdient. Iemand die je niet laat vallen.<br><br>
+      Dat is het enige wat ik wil bouwen. En zo zorg ik dat jij opvalt.
+    </p>
+    <div class="over-sig">
+      <div>
+        <span class="over-sig-name">Ash</span>
+        <span class="over-sig-role">// Creatief strateeg · Backend partner · Creator van het model</span>
+      </div>
+      <div class="over-sig-line"></div>
+    </div>
+  </div>
+</section>
+
+<div class="sdiv"></div>
+
+<!-- ══ CREATOR SELF-SCAN ══ -->
+<section class="sp scan-bg" id="scan">
+  <span class="tag violet rv">Creator Zelf-Scan</span>
+  <h2 class="sh rv d1" style="color:var(--white);">Waar sta jij<br><em style="color:var(--violet);">nu echt?</em></h2>
+  <p class="scan-intro rv d2">Vijf vragen. Geen e-mail. Geen verkooppraatje. Gewoon eerlijk inzicht in wat jou tegenhoudt — en wat de volgende stap is.</p>
+
+  <div class="rv d2" id="scanWrap">
+    <!-- Progress -->
+    <div class="scan-progress-wrap">
+      <div class="scan-progress-bar"><div class="scan-progress-fill" id="scanFill"></div></div>
+      <span class="scan-progress-label" id="scanLabel">Vraag 1 van 5</span>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="scan-step active" data-step="1">
+      <p class="scan-q">Hoe lang ben je al bezig als creator?</p>
+      <p class="scan-sub">Eerlijk — er is geen goed of fout antwoord.</p>
+      <div class="scan-opts">
+        <button class="scan-opt" onclick="scanAnswer(1,'starter')">
+          <span class="scan-opt-icon">🌱</span>
+          <span class="scan-opt-text"><strong>Ik ben net begonnen</strong>Ik heb een idee maar weet nog niet hoe ik moet starten.</span>
+        </button>
+        <button class="scan-opt" onclick="scanAnswer(1,'growing')">
+          <span class="scan-opt-icon">📱</span>
+          <span class="scan-opt-text"><strong>Ik ben al een tijdje bezig</strong>Ik post, ik probeer — maar het groeit niet zoals ik wil.</span>
+        </button>
+        <button class="scan-opt" onclick="scanAnswer(1,'active')">
+          <span class="scan-opt-icon">🚀</span>
+          <span class="scan-opt-text"><strong>Ik ben actief en groeiend</strong>Ik heb een publiek maar verdien er nog niet genoeg aan.</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="scan-step" data-step="2">
+      <p class="scan-q">Heb je al iets verkocht aan je publiek?</p>
+      <p class="scan-sub">Een product, dienst, e-book — wat dan ook.</p>
+      <div class="scan-opts">
+        <button class="scan-opt" onclick="scanAnswer(2,'no')">
+          <span class="scan-opt-icon">❌</span>
+          <span class="scan-opt-text"><strong>Nog niet</strong>Ik weet niet goed hoe ik moet beginnen of wat ik moet aanbieden.</span>
+        </button>
+        <button class="scan-opt" onclick="scanAnswer(2,'tried')">
+          <span class="scan-opt-icon">⚡</span>
+          <span class="scan-opt-text"><strong>Ik heb het geprobeerd</strong>Maar het leverde weinig op of ik wist niet hoe ik het goed moest aanpakken.</span>
+        </button>
+        <button class="scan-opt" onclick="scanAnswer(2,'yes')">
+          <span class="scan-opt-icon">✅</span>
+          <span class="scan-opt-text"><strong>Ja, maar het kan veel meer</strong>Er komt omzet binnen, maar ik zie dat er veel meer in zit.</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="scan-step" data-step="3">
+      <p class="scan-q">Weet je wie je ideale klant is?</p>
+      <p class="scan-sub">De persoon die écht iets heeft aan wat jij doet.</p>
+      <div class="scan-opts">
+        <button class="scan-opt" onclick="scanAnswer(3,'unclear')">
+          <span class="scan-opt-icon">🌫️</span>
+          <span class="scan-opt-text"><strong>Niet echt</strong>Ik wil iedereen bereiken — of ik weet het gewoon nog niet precies.</span>
+        </button>
+        <button class="scan-opt" onclick="scanAnswer(3,'kinda')">
+          <span class="scan-opt-icon">🎯</span>
+          <span class="scan-opt-text"><strong>Een beetje</strong>Ik heb een idee, maar mijn content trekt niet altijd de juiste mensen aan.</span>
+        </button>
+        <button class="scan-opt" onclick="scanAnswer(3,'clear')">
+          <span class="scan-opt-icon">💡</span>
+          <span class="scan-opt-text"><strong>Ja, heel duidelijk</strong>Ik weet precies voor wie ik het doe — maar het schaalt niet.</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="scan-step" data-step="4">
+      <p class="scan-q">Wat houdt je het meeste tegen?</p>
+      <p class="scan-sub">Wees eerlijk — dit is de meest waardevolle vraag.</p>
+      <div class="scan-opts">
+        <button class="scan-opt" onclick="scanAnswer(4,'tech')">
+          <span class="scan-opt-icon">⚙️</span>
+          <span class="scan-opt-text"><strong>De techniek en het opzetten</strong>Website, betaallinks, systemen — ik weet niet waar ik moet beginnen.</span>
+        </button>
+        <button class="scan-opt" onclick="scanAnswer(4,'content')">
+          <span class="scan-opt-icon">✍️</span>
+          <span class="scan-opt-text"><strong>Wat ik moet posten en hoe</strong>Ik post maar het groeit niet. Ik mis richting en strategie.</span>
+        </button>
+        <button class="scan-opt" onclick="scanAnswer(4,'mindset')">
+          <span class="scan-opt-icon">🧠</span>
+          <span class="scan-opt-text"><strong>Mezelf</strong>Dat stemmetje dat zegt: wie ben jij om dit te doen? Wat als het mislukt?</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="scan-step" data-step="5">
+      <p class="scan-q">Wat zou jij doen als de techniek en strategie volledig geregeld waren?</p>
+      <p class="scan-sub">Sluit je ogen even. Wat zie je?</p>
+      <div class="scan-opts">
+        <button class="scan-opt" onclick="scanAnswer(5,'content')">
+          <span class="scan-opt-icon">🎬</span>
+          <span class="scan-opt-text"><strong>Volledig focussen op content en mijn publiek</strong>Eindelijk doen wat ik écht leuk vind, zonder afgeleid te worden.</span>
+        </button>
+        <button class="scan-opt" onclick="scanAnswer(5,'grow')">
+          <span class="scan-opt-icon">📈</span>
+          <span class="scan-opt-text"><strong>Groeien en schalen</strong>Meer bereik, meer producten, meer omzet — en weten hoe ik dat doe.</span>
+        </button>
+        <button class="scan-opt" onclick="scanAnswer(5,'free')">
+          <span class="scan-opt-icon">🌍</span>
+          <span class="scan-opt-text"><strong>Vrijheid</strong>Leven van wat ik maak, op mijn eigen voorwaarden, zonder aan een baas te hoeven vragen.</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Result -->
+    <div class="scan-result" id="scanResult">
+      <div class="scan-result-card">
+        <span class="scan-result-tag" id="srTag">✦ Jouw diagnose</span>
+        <div class="scan-result-title" id="srTitle"></div>
+        <div class="scan-result-body" id="srBody"></div>
+        <div class="scan-cta-row">
+          <a href="#aanvraag" class="btn-primary" style="display:block;text-align:center;">Stel jezelf voor — ik lees het persoonlijk →</a>
+          <button class="scan-restart" onclick="restartScan()">↩ Doe de scan opnieuw</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="sdiv"></div>
+
 <!-- ══ AANBOD ══ -->
 <!-- ══ AANBOD ══ -->
 <section class="sp aanbod-bg" id="model">
@@ -923,6 +1261,9 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
 
     <a href="#aanvraag" class="btn-primary" style="display:block;text-align:center;">Stel jezelf voor — ik lees het persoonlijk →</a>
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:rgba(52,211,153,0.22);letter-spacing:1px;text-align:center;margin-top:10px;">// ik reageer binnen 48u · alleen als ik zie dat wij een match zijn</div>
+    <div style="text-align:center;margin-top:14px;">
+      <a href="#faq" style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(201,168,76,0.35);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='rgba(201,168,76,0.65)'" onmouseout="this.style.color='rgba(201,168,76,0.35)'">Nog vragen? Bekijk de FAQ →</a>
+    </div>
   </div>
 
   <!-- SCHEIDINGSLIJN met context -->
@@ -1019,76 +1360,132 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
 
 <div class="sdiv"></div>
 
-<!-- ══ LOSSE DIENSTEN ══ -->
-<section class="sp aanbod-bg" style="padding-top:48px;">
-<div class="w">
-<div style="display:flex;align-items:center;gap:16px;margin:8px 0 24px;">
-    <div style="flex:1;height:1px;background:rgba(201,168,76,0.07);"></div>
-    <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.55);">Liever een losse dienst?</span>
-    <div style="flex:1;height:1px;background:rgba(201,168,76,0.07);"></div>
-  </div>
 
-  <!-- LOSSE DIENSTEN — secundair, gedimpt, met context -->
-  <div class="rv">
-    <p style="font-size:13px;color:rgba(162,142,88,0.42);line-height:1.85;margin-bottom:16px;">Wil je liever zelf de controle houden en voor een specifieke dienst betalen? Dat kan — maar elk traject begint altijd met een <strong style="color:rgba(201,168,76,0.6);">Visie Consult</strong>. Zo zorg ik dat mijn tijd en jouw investering zinvol zijn.</p>
+<!-- ══ FAQ ══ -->
+<section class="sp faq-bg" id="faq">
+  <span class="tag amber rv">Veelgestelde vragen</span>
+  <h2 class="sh rv d1" style="color:var(--white);">Alles wat je<br><em style="color:#D97706;">wil weten.</em></h2>
+  <p class="faq-intro rv d2">Eerlijke antwoorden op de vragen die de meeste mensen hebben — maar niet altijd durven stellen.</p>
 
-    <div class="block-paid" id="diensten">
-      <div class="bpaid-hdr">
-        <div class="badge gold"><span>◆ Losse diensten — vaste prijs</span></div>
-        <div class="bpaid-title">Specifieke hulp, vaste prijs</div>
-        <p class="bpaid-sub">Altijd te beginnen met een Visie Consult. Hogere bedragen in delen te betalen.</p>
-      </div>
+  <div class="faq-list rv d2">
 
-      <!-- CONSULT & COACHING -->
-      <div style="border-bottom:1px solid rgba(201,168,76,0.06);">
-        <div style="padding:14px 20px 8px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(167,139,250,0.7);">✦ Consult & Coaching</div>
-        <div class="acc-cat open"><button class="acc-btn" onclick="toggleAcc(this)"><span class="acc-label">Bekijk alle sessies</span><span class="acc-arrow">▼</span></button>
-          <div class="acc-body">
-            <div class="svc">
-              <div><div class="svc-name">Visie Consult</div><div class="svc-desc">Jouw startpunt. In 60 minuten brengen we jouw situatie, doel, positionering en de weg ernaartoe scherp in kaart. Je verlaat het gesprek met een werkdocument en een concrete richting.</div></div>
-              <div class="svc-right"><span class="svc-price">€97</span><span class="svc-cycle">60 min · eenmalig</span></div>
-            </div>
-            <div class="svc">
-              <div><div class="svc-name">Visie Consult + Strategie</div><div class="svc-desc">Alles van het Visie Consult — aangevuld met een volledig uitgewerkte contentstrategie op maat. Welke content, voor wie, op welk platform en hoe jij opvalt. Klaar om direct mee aan de slag te gaan.</div></div>
-              <div class="svc-right"><span class="svc-price">€167</span><span class="svc-cycle">90 min · eenmalig</span></div>
-            </div>
-            <div class="svc">
-              <div><div class="svc-name">Maandelijkse Begeleiding</div><div class="svc-desc">Twee sessies per maand — één gericht op contentstrategie, ideeën en positionering, één op wat je intern tegenhoudt. Samen zijn dit een Visie Consult en Breakthrough Sessie in één. Voor creators die structureel willen groeien op TikTok, Instagram, Facebook of YouTube.</div></div>
-              <div class="svc-right"><span class="svc-price">€297</span><span class="svc-cycle">/maand</span></div>
-            </div>
-            <div class="svc" style="border-bottom:none;">
-              <div><div class="svc-name">Breakthrough Sessie</div><div class="svc-desc">Voor creators die al bezig zijn maar ergens vastlopen — niet op techniek, maar van binnen. Je hoeft geen actiepunten — soms heb je één helder inzicht nodig dat alles verandert. Wat jij nodig hebt, bepalen we samen.</div></div>
-              <div class="svc-right"><span class="svc-price">€147</span><span class="svc-cycle">60 min · eenmalig</span></div>
-            </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">"Wat kost dit mij eigenlijk?"</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          <strong>Niets vooraf.</strong> Geen factuur, geen uurtarief, geen setup kosten. Ik verdien een percentage van wat jij verkoopt — pas als jij verdient. Dat percentage bepalen we samen in het eerste gesprek, eerlijk en transparant.
+          <div class="faq-highlight">
+            <strong>Ter vergelijking — wat dit los kost bij anderen:</strong>
+            <table class="price-table" style="margin-top:12px;">
+              <thead><tr><th>Wat ik lever</th><th>Losse marktprijs</th></tr></thead>
+              <tbody>
+                <tr><td class="pt-item">Website (5 pagina's)</td><td class="pt-price">€1.500 – €3.000</td></tr>
+                <tr><td class="pt-item">Digitale producten bouwen</td><td class="pt-price">€500 – €1.500</td></tr>
+                <tr><td class="pt-item">Content strategie</td><td class="pt-price">€800 – €2.000</td></tr>
+                <tr><td class="pt-item">Doorlopende begeleiding</td><td class="pt-price">€300/maand</td></tr>
+                <tr><td class="pt-item">Betaallinks & technisch beheer</td><td class="pt-price">€200 – €500</td></tr>
+                <tr class="pt-total"><td>Totaal upfront bij anderen</td><td>€3.300 – €8.000+</td></tr>
+                <tr class="pt-ash"><td>Wat jij betaalt bij mij</td><td>€0 vooraf</td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-
-      <!-- WEBSITE & HOSTING -->
-      <div>
-        <div style="padding:14px 20px 8px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(96,165,250,0.7);">✦ Website & Hosting</div>
-        <div class="acc-cat"><button class="acc-btn" onclick="toggleAcc(this)"><span class="acc-label">Bekijk alle opties</span><span class="acc-arrow">▼</span></button>
-          <div class="acc-body">
-            <div class="svc">
-              <div><div class="svc-name">1 pagina</div><div class="svc-desc">Design, bouw en teksten volledig in jouw stem. Ik zet het live — geen platform, geen gedoe aan jouw kant. Wil je betaallinks of digitale producten? Dat kan — in overleg.</div></div>
-              <div class="svc-right"><span class="svc-price">€97</span><span class="svc-cycle">eenmalig + €50 setup<br>+ €10/maand hosting</span></div>
-            </div>
-            <div class="svc">
-              <div><div class="svc-name">3 pagina's — Mini Funnel</div><div class="svc-desc">Landingspagina, informatiepagina en bedankpagina — ontworpen, gebouwd en live. Betaallinks of digitale producten zijn mogelijk als extra, in overleg.</div></div>
-              <div class="svc-right"><span class="svc-price">€247</span><span class="svc-cycle">of 2× €124 + €50 setup<br>+ €10/maand hosting</span></div>
-            </div>
-            <div class="svc" style="border-bottom:none;">
-              <div><div class="svc-name">5 pagina's — Volledige Website</div><div class="svc-desc">Jouw complete online aanwezigheid — design, bouw en copy op maat. Jij hoeft niets te installeren of te beheren. Betaallinks of digitale producten zijn mogelijk als extra, in overleg.</div></div>
-              <div class="svc-right"><span class="svc-price">€397</span><span class="svc-cycle">of 2× €199 + €50 setup<br>+ €10/maand hosting</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="revisie">📌 Websites bevatten 1 revisieronde. Extra revisie: €47. Alle prijzen excl. BTW.</div>
     </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">"Het percentage voelt hoog — waarom zoveel?"</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          Het percentage is alleen hoog als je vergeet dat <strong>zonder mij die omzet er niet is.</strong> Ik bouw het systeem, de producten, de strategie — en ik doe dat zonder een cent vooraf te vragen. Mijn percentage is de prijs van het risico dat ik neem.<br><br>
+          <em>Vergelijk het zo:</em> een investeerder die jouw bedrijf financiert en alles opbouwt vraagt ook een aandeel. Het verschil is dat ik geen aandelen neem — alleen een percentage van de omzet die ik help creëren. Zolang jij verdient, verdien ik. Als jij niks verdient, verdien ik ook niks.
+          <div class="faq-highlight">
+            <strong>Het percentage is geen kostenpost. Het is de vergoeding voor alles wat jij anders zelf had moeten betalen — of nooit had kunnen doen.</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">"Hoelang betaal ik dit percentage?"</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          Zolang wij samenwerken. Niet langer, niet korter. <strong>Er is geen verborgen looptijd, geen verplicht contract en geen minimum periode.</strong> Als jij op een punt komt dat je alles zelf wil beheren, is dat jouw keuze. Wij bespreken dat dan samen.<br><br>
+          Mijn belang is dat de samenwerking goed voelt voor ons allebei. Ik ga geen samenwerking aan om er zo lang mogelijk van te profiteren — ik ga een samenwerking aan om samen te groeien. Als dat niet meer klopt, stoppen we.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">"Hoe weet ik dat dit werkt? Ik ken je niet."</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          Terecht. Vertrouwen verdien je — dat geef je niet zomaar. Kijk naar het werk dat ik al heb gedaan — Jo's pagina staat hieronder. Dat is geen template, dat is gebouwd vanuit haar verhaal, haar doelgroep en haar stem.<br><br>
+          Daarnaast: <strong>het financiële risico ligt volledig bij mij.</strong> Ik werk pas, ik verdien pas. Als ik niets lever wat werkt, verdien ik niets. Dat is de sterkste garantie die ik kan geven.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">"Wat als ik al een website heb of zelf iets wil doen?"</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          Mijn werkwijze is dat ik alles bouw vanaf scratch — volledig op maat, in jouw stem. Geen bestaand systeem dat ik moet ombuigen, geen platform waar je afhankelijk van wordt. Ik bouw en host alles zelf, zodat er geen extra kosten zijn aan jouw kant en we allebei zo min mogelijk overhead hebben.<br><br>
+          <strong>Heb je al een website?</strong> Dan kijken we samen eerlijk wat er staat. Soms is het slimmer om opnieuw te beginnen — schoon, snel en zonder ballast. Dat beslissen we in het eerste gesprek.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">"Hoeveel plekken zijn er beschikbaar?"</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          Ik werk bewust met een <strong>klein aantal creators tegelijk.</strong> Niet voor de schaarste — maar omdat ik volledig aanwezig wil zijn voor iedereen met wie ik samenwerk. Een groot klantenbestand past niet bij mijn model.<br><br>
+          <em>Op dit moment zijn er nog een beperkt aantal plekken beschikbaar.</em> Als je twijfelt: het enige wat het kost om je voor te stellen is een paar minuten en eerlijkheid. Wacht je te lang, dan is de plek misschien weg.
+          <div class="faq-highlight">
+            <strong>Dit is geen verkooptruc.</strong> Het is gewoon de realiteit van een model waarbij kwaliteit boven kwantiteit gaat.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">"Voor wie is dit NIET geschikt?"</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">
+          Eerlijk is eerlijk. Dit is niet voor iedereen.<br><br>
+          <strong>Dit werkt niet als je:</strong><br>
+          — Geen richting hebt en ook niet wil nadenken over je niche of doelgroep<br>
+          — Verwacht dat ik alles doe terwijl jij niks bijdraagt aan content of bereik<br>
+          — Op korte termijn snel geld wil verdienen zonder in jezelf te investeren<br>
+          — Moeite hebt met een langdurige samenwerking waarbij vertrouwen centraal staat<br><br>
+          <em>Dit is voor creators die iets te zeggen hebben, hun passie willen omzetten in inkomen — en begrijpen dat dat samen gaat.</em>
+        </div>
+      </div>
+    </div>
+
   </div>
-</div>
 </section>
 
 <div class="sdiv"></div>
@@ -1264,6 +1661,80 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
 
 <div class="sdiv"></div>
 <div class="sdiv"></div>
+
+<div class="sdiv"></div>
+
+<!-- ══ LOSSE DIENSTEN ══ -->
+<section class="sp aanbod-bg" style="padding-top:48px;">
+<div class="w">
+<div style="display:flex;align-items:center;gap:16px;margin:8px 0 24px;">
+    <div style="flex:1;height:1px;background:rgba(201,168,76,0.07);"></div>
+    <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.55);">Liever een losse dienst?</span>
+    <div style="flex:1;height:1px;background:rgba(201,168,76,0.07);"></div>
+  </div>
+
+  <!-- LOSSE DIENSTEN — secundair, gedimpt, met context -->
+  <div class="rv">
+    <p style="font-size:13px;color:rgba(162,142,88,0.42);line-height:1.85;margin-bottom:16px;">Wil je liever zelf de controle houden en voor een specifieke dienst betalen? Dat kan — maar elk traject begint altijd met een <strong style="color:rgba(201,168,76,0.6);">Visie Consult</strong>. Zo zorg ik dat mijn tijd en jouw investering zinvol zijn.</p>
+
+    <div class="block-paid" id="diensten">
+      <div class="bpaid-hdr">
+        <div class="badge gold"><span>◆ Losse diensten — vaste prijs</span></div>
+        <div class="bpaid-title">Specifieke hulp, vaste prijs</div>
+        <p class="bpaid-sub">Altijd te beginnen met een Visie Consult. Hogere bedragen in delen te betalen.</p>
+      </div>
+
+      <!-- CONSULT & COACHING -->
+      <div style="border-bottom:1px solid rgba(201,168,76,0.06);">
+        <div style="padding:14px 20px 8px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(167,139,250,0.7);">✦ Consult & Coaching</div>
+        <div class="acc-cat open"><button class="acc-btn" onclick="toggleAcc(this)"><span class="acc-label">Bekijk alle sessies</span><span class="acc-arrow">▼</span></button>
+          <div class="acc-body">
+            <div class="svc">
+              <div><div class="svc-name">Visie Consult</div><div class="svc-desc">Jouw startpunt. In 60 minuten brengen we jouw situatie, doel, positionering en de weg ernaartoe scherp in kaart. Je verlaat het gesprek met een werkdocument en een concrete richting.</div></div>
+              <div class="svc-right"><span class="svc-price">€97</span><span class="svc-cycle">60 min · eenmalig</span></div>
+            </div>
+            <div class="svc">
+              <div><div class="svc-name">Visie Consult + Strategie</div><div class="svc-desc">Alles van het Visie Consult — aangevuld met een volledig uitgewerkte contentstrategie op maat. Welke content, voor wie, op welk platform en hoe jij opvalt. Klaar om direct mee aan de slag te gaan.</div></div>
+              <div class="svc-right"><span class="svc-price">€167</span><span class="svc-cycle">90 min · eenmalig</span></div>
+            </div>
+            <div class="svc">
+              <div><div class="svc-name">Maandelijkse Begeleiding</div><div class="svc-desc">Twee sessies per maand — één gericht op contentstrategie, ideeën en positionering, één op wat je intern tegenhoudt. Samen zijn dit een Visie Consult en Breakthrough Sessie in één. Voor creators die structureel willen groeien op TikTok, Instagram, Facebook of YouTube.</div></div>
+              <div class="svc-right"><span class="svc-price">€297</span><span class="svc-cycle">/maand</span></div>
+            </div>
+            <div class="svc" style="border-bottom:none;">
+              <div><div class="svc-name">Breakthrough Sessie</div><div class="svc-desc">Voor creators die al bezig zijn maar ergens vastlopen — niet op techniek, maar van binnen. Je hoeft geen actiepunten — soms heb je één helder inzicht nodig dat alles verandert. Wat jij nodig hebt, bepalen we samen.</div></div>
+              <div class="svc-right"><span class="svc-price">€147</span><span class="svc-cycle">60 min · eenmalig</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEBSITE & HOSTING -->
+      <div>
+        <div style="padding:14px 20px 8px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(96,165,250,0.7);">✦ Website & Hosting</div>
+        <div class="acc-cat"><button class="acc-btn" onclick="toggleAcc(this)"><span class="acc-label">Bekijk alle opties</span><span class="acc-arrow">▼</span></button>
+          <div class="acc-body">
+            <div class="svc">
+              <div><div class="svc-name">1 pagina</div><div class="svc-desc">Design, bouw en teksten volledig in jouw stem. Ik zet het live — geen platform, geen gedoe aan jouw kant. Wil je betaallinks of digitale producten? Dat kan — in overleg.</div></div>
+              <div class="svc-right"><span class="svc-price">€97</span><span class="svc-cycle">eenmalig + €50 setup<br>+ €10/maand hosting</span></div>
+            </div>
+            <div class="svc">
+              <div><div class="svc-name">3 pagina's — Mini Funnel</div><div class="svc-desc">Landingspagina, informatiepagina en bedankpagina — ontworpen, gebouwd en live. Betaallinks of digitale producten zijn mogelijk als extra, in overleg.</div></div>
+              <div class="svc-right"><span class="svc-price">€247</span><span class="svc-cycle">of 2× €124 + €50 setup<br>+ €10/maand hosting</span></div>
+            </div>
+            <div class="svc" style="border-bottom:none;">
+              <div><div class="svc-name">5 pagina's — Volledige Website</div><div class="svc-desc">Jouw complete online aanwezigheid — design, bouw en copy op maat. Jij hoeft niets te installeren of te beheren. Betaallinks of digitale producten zijn mogelijk als extra, in overleg.</div></div>
+              <div class="svc-right"><span class="svc-price">€397</span><span class="svc-cycle">of 2× €199 + €50 setup<br>+ €10/maand hosting</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="revisie">📌 Websites bevatten 1 revisieronde. Extra revisie: €47. Alle prijzen excl. BTW.</div>
+    </div>
+  </div>
+</div>
+</section>
 
 <div class="sdiv"></div>
 
@@ -1573,6 +2044,102 @@ function toggleCheck(el, value) {
     selectedPlatforms.add(value);
   }
   document.getElementById('platform').value = Array.from(selectedPlatforms).join(', ');
+}
+
+
+// FAQ ACCORDION
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  // close all
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+
+// ═══════════════════════════════════════════════
+// CREATOR SELF-SCAN
+// ═══════════════════════════════════════════════
+const scanAnswers = {};
+let scanCurrentStep = 1;
+const scanTotalSteps = 5;
+
+function scanAnswer(step, value) {
+  scanAnswers[step] = value;
+  if (step < scanTotalSteps) {
+    // Hide current, show next
+    document.querySelector(`.scan-step[data-step="${step}"]`).classList.remove('active');
+    document.querySelector(`.scan-step[data-step="${step + 1}"]`).classList.add('active');
+    scanCurrentStep = step + 1;
+    // Update progress
+    const pct = (scanCurrentStep - 1) / scanTotalSteps * 100;
+    document.getElementById('scanFill').style.width = pct + '%';
+    document.getElementById('scanLabel').textContent = `Vraag ${scanCurrentStep} van ${scanTotalSteps}`;
+  } else {
+    // Show result
+    document.getElementById('scanFill').style.width = '100%';
+    document.getElementById('scanLabel').textContent = 'Jouw resultaat';
+    document.querySelector(`.scan-step[data-step="${step}"]`).classList.remove('active');
+    showScanResult();
+  }
+}
+
+function showScanResult() {
+  const r = scanAnswers;
+  let title, body, tag;
+
+  // Result logic based on combination of answers
+  if (r[1] === 'starter' && r[4] === 'tech') {
+    tag = '✦ Je hebt een sterk fundament nodig';
+    title = 'Jij weet wat je wil — maar de techniek staat in de weg.';
+    body = 'Je hebt een idee, een passie en de wil om te beginnen. <strong>Dat is al meer dan de meeste mensen hebben.</strong> Wat ontbreekt is de structuur — een website, een systeem, een manier om mensen te bereiken en te laten betalen.<br><br>Dat is precies wat ik voor je bouw. <em>Zonder dat jij er ook maar één euro voor betaalt vooraf.</em>';
+  } else if (r[1] === 'starter' && r[4] === 'mindset') {
+    tag = '✦ Jij bent er klaar voor — ook al voelt dat niet zo';
+    title = 'Het stemmetje in je hoofd liegt.';
+    body = 'Dat "wie ben jij om dit te doen" gevoel? <strong>Iedereen die ooit iets heeft opgebouwd heeft dat gehad.</strong> Het verschil is niet talent of volgers — het is of je doorloopt ondanks dat stemmetje.<br><br>Ik help je niet alleen met de techniek. <em>Ik help je door de blokkades heen</em> — zodat jij kunt doen wat jij het beste kan.';
+  } else if (r[1] === 'growing' && r[2] === 'no') {
+    tag = '✦ Jij hebt bereik maar mist het systeem';
+    title = 'Je geeft gratis waarde. Het wordt tijd dat je er ook voor betaald wordt.';
+    body = 'Je bent al bezig, je publiek groeit — maar er is nog geen manier om die aandacht om te zetten in inkomen. <strong>Dat is geen tekort van jou, dat is een ontbrekend systeem.</strong><br><br>Ik bouw dat systeem — digitale producten, website, betaallinks — zodat elke post die je maakt ook <em>daadwerkelijk geld kan opleveren.</em>';
+  } else if (r[1] === 'growing' && r[4] === 'content') {
+    tag = '✦ Jij werkt hard maar mist richting';
+    title = 'Consistentie zonder strategie is energie zonder resultaat.';
+    body = 'Je post, je probeert, je doet wat iedereen zegt. <strong>Maar als je hetzelfde doet als iedereen, bereik je ook hetzelfde.</strong> Het probleem is niet jouw inzet — het is de aanpak.<br><br>Ik geef je een positionering en contentstrategie die <em>specifiek op jou en jouw doelgroep</em> is afgestemd. Geen template. Jouw verhaal.';
+  } else if (r[1] === 'active' && r[2] === 'yes') {
+    tag = '✦ Jij bent klaar voor de volgende stap';
+    title = 'Je hebt de basis. Nu is het tijd om te schalen.';
+    body = 'Je publiek is er, de omzet begint te komen — maar je voelt dat er veel meer in zit. <strong>Dat gevoel klopt.</strong> Wat je nu nodig hebt is een partner die meedenkt over nieuwe producten, nieuwe kanalen en een strategie die schaalbaar is.<br><br><em>Dat is precies wat ik doe — en ik verdien er pas aan als jij meer verdient.</em>';
+  } else if (r[4] === 'mindset') {
+    tag = '✦ Jij bent er klaar voor — ook al voelt dat niet zo';
+    title = 'Je grootste concurrent ben jijzelf — en dat is op te lossen.';
+    body = 'Dat knagende stemmetje? Het is niet de waarheid. <strong>Het is de angst die komt bij elke stap buiten je comfortzone.</strong> Ik heb dat zelf ook meegemaakt — en ik weet hoe je erdoorheen komt.<br><br>Ik help je niet alleen met het systeem. <em>Ik sta naast je door het hele proces heen.</em>';
+  } else {
+    // Default
+    tag = '✦ Jij hebt iets — en het is tijd om het te laten zien';
+    title = 'Je passie is er. Het systeem ontbreekt.';
+    body = 'Wat ik zie in jouw antwoorden: je weet wat je wil, maar de weg ernaartoe is onduidelijk of te complex. <strong>Dat is niet jouw fout — het systeem is gewoon niet gebouwd voor mensen zonder technische achtergrond of groot budget.</strong><br><br>Ik bouw dat systeem voor je. <em>€0 vooraf. Pas verdienen als jij verdient.</em>';
+  }
+
+  document.getElementById('srTag').textContent = tag;
+  document.getElementById('srTitle').textContent = title;
+  document.getElementById('srBody').innerHTML = body;
+  document.getElementById('scanResult').classList.add('show');
+
+  // Scroll to result
+  setTimeout(() => {
+    document.getElementById('scanResult').scrollIntoView({behavior:'smooth', block:'center'});
+  }, 300);
+}
+
+function restartScan() {
+  Object.keys(scanAnswers).forEach(k => delete scanAnswers[k]);
+  scanCurrentStep = 1;
+  document.querySelectorAll('.scan-step').forEach(s => s.classList.remove('active'));
+  document.querySelector('.scan-step[data-step="1"]').classList.add('active');
+  document.getElementById('scanResult').classList.remove('show');
+  document.getElementById('scanFill').style.width = '0%';
+  document.getElementById('scanLabel').textContent = 'Vraag 1 van 5';
+  document.getElementById('scanWrap').scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 // RADIO SELECTION
