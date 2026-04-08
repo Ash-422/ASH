@@ -111,11 +111,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:800;background:rgba(7,7,14,0.94)
 .hero-cta-note{font-family:'DM Mono',monospace;font-size:8px;color:rgba(201,168,76,0.22);letter-spacing:1.5px;}
 
 /* ══ MARQUEE ══ */
-.marquee{overflow:hidden;border-top:1px solid rgba(201,168,76,0.06);border-bottom:1px solid rgba(201,168,76,0.06);background:rgba(11,10,20,0.8);}
+.marquee{overflow:hidden;border-top:1px solid rgba(201,168,76,0.1);border-bottom:1px solid rgba(201,168,76,0.1);background:rgba(8,8,18,0.95);}
 .mtrack{display:flex;width:max-content;animation:marquee 38s linear infinite;}
-.mitem{display:flex;align-items:center;gap:16px;padding:14px 32px;border-right:1px solid rgba(201,168,76,0.05);flex-shrink:0;white-space:nowrap;}
-.msym{color:rgba(201,168,76,0.28);font-size:8px;}
-.mtext{font-family:'DM Mono',monospace;font-size:9px;color:rgba(165,150,115,0.32);letter-spacing:2px;text-transform:uppercase;}
+.mitem{display:flex;align-items:center;gap:14px;padding:13px 28px;border-right:1px solid rgba(201,168,76,0.08);flex-shrink:0;white-space:nowrap;}
+.msym{font-size:9px;}
+.mtext{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:500;}
 @keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 
 .sdiv{height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.1),transparent);}
@@ -563,7 +563,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:800;background:rgba(7,7,14,0.94)
 .acc-cat:last-child{border-bottom:none;}
 .acc-btn{width:100%;padding:13px 20px;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;-webkit-tap-highlight-color:transparent;transition:background 0.2s;}
 .acc-btn:hover{background:rgba(201,168,76,0.015);}
-.acc-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(162,142,90,0.38);}
+.acc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(200,175,120,0.65);}
 .acc-arrow{font-size:9px;color:rgba(201,168,76,0.18);transition:transform 0.3s;}
 .acc-cat.open .acc-arrow{transform:rotate(180deg);}
 .acc-body{display:none;padding:0 20px 10px;}
@@ -571,11 +571,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:800;background:rgba(7,7,14,0.94)
 
 .svc{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:9px 0;border-bottom:1px solid rgba(201,168,76,0.03);}
 .svc:last-child{border-bottom:none;}
-.svc-name{font-size:13px;font-weight:500;color:var(--white);margin-bottom:2px;}
-.svc-desc{font-size:11px;color:rgba(158,140,92,0.32);line-height:1.5;}
+.svc-name{font-size:14px;font-weight:500;color:var(--white);margin-bottom:3px;}
+.svc-desc{font-size:12px;color:rgba(190,170,120,0.55);line-height:1.6;}
 .svc-right{text-align:right;flex-shrink:0;}
 .svc-price{font-family:'Instrument Serif',serif;font-size:16px;font-style:italic;color:var(--gold);display:block;}
-.svc-cycle{font-family:'DM Mono',monospace;font-size:7px;color:rgba(140,120,75,0.25);letter-spacing:0.5px;}
+.svc-cycle{font-family:'DM Mono',monospace;font-size:7px;color:rgba(140,120,75,0.25);letter-spacing:0.5px;line-height:1.8;}
 
 .revisie{padding:10px 20px;font-family:'DM Mono',monospace;font-size:8px;color:rgba(128,108,62,0.28);letter-spacing:0.3px;line-height:1.85;border-top:1px solid rgba(201,168,76,0.04);}
 
@@ -613,19 +613,146 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
   .pad-grid{grid-template-columns:1fr;}
   footer{flex-direction:column;text-align:center;}
 }
+
+/* ══ RADIO OPTIONS ══ */
+.radio-group{display:flex;flex-direction:column;gap:8px;}
+.radio-opt{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px 16px;
+  background:var(--bg);border:1px solid rgba(201,168,76,0.08);
+  cursor:pointer;transition:all 0.25s;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+}
+.radio-opt:hover{border-color:rgba(201,168,76,0.22);}
+.radio-opt.selected{border-color:var(--gold);background:rgba(201,168,76,0.04);}
+.radio-box{
+  width:18px;height:18px;border-radius:50%;flex-shrink:0;margin-top:2px;
+  border:1px solid rgba(201,168,76,0.2);
+  transition:all 0.25s;position:relative;
+}
+.radio-opt.selected .radio-box{
+  border-color:var(--gold);background:var(--gold);
+}
+.radio-opt.selected .radio-box::after{
+  content:'';position:absolute;inset:4px;border-radius:50%;background:#07070E;
+}
+.radio-content{display:flex;flex-direction:column;gap:3px;}
+.radio-title{font-size:13px;font-weight:500;color:var(--white);line-height:1.3;}
+.radio-opt.selected .radio-title{color:var(--gold);}
+.radio-desc{font-size:11px;color:rgba(162,142,88,0.38);line-height:1.5;}
+
+/* ══ MOBILE OPTIMIZATIONS ══ */
+@media(max-width:600px){
+  .hero{padding:88px 0 52px;}
+  .hero-cta{max-width:100%;}
+  .btn-primary{font-size:10px;padding:15px 20px;letter-spacing:1.5px;}
+  .btn-secondary{font-size:8px;padding:12px 20px;}
+  .sh{font-size:clamp(24px,7vw,38px);}
+  .w{padding:0 20px;}
+  .block-free{padding:20px 16px;}
+  .form-block{padding:22px 16px;}
+  .radio-opt{padding:12px 14px;gap:10px;}
+  .radio-title{font-size:12px;}
+  .svc{flex-direction:column;gap:4px;}
+  .svc-right{text-align:left;}
+  .jo-browser{margin-left:-20px;margin-right:-20px;}
+  .jo-stats{margin-left:-20px;margin-right:-20px;}
+  .bpaid-hdr{padding:16px;}
+  nav{padding:0 16px;}
+  .nav-link{font-size:8px;padding:7px 10px;letter-spacing:1.5px;}
+  .float-cta a{font-size:11px;padding:13px 22px;}
+  .rm-node{grid-template-columns:36px 1fr;gap:0 10px;}
+  .rm-dot{width:36px;height:36px;font-size:14px;}
+  .rm-connector{left:18px;}
+  .rm-connector-fill{left:18px;}
+  .hero-sub-wrap{height:auto;min-height:30px;}
+  .hero-sub-a,.hero-sub-b{position:relative;font-size:clamp(13px,3.5vw,16px);}
+}
+@media(max-width:380px){
+  .w{padding:0 16px;}
+  .btn-primary{font-size:9px;letter-spacing:1px;}
+  .sh{font-size:clamp(22px,7vw,34px);}
+}
+
+/* ══ HERO TAGS — rainbow shimmer ══ */
+.hero-tags-wrap{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:8px 6px;max-width:380px;margin:0 auto 36px;
+  opacity:0;animation:fadeUp 1s ease 0.45s forwards;
+}
+.htag{
+  font-family:'DM Mono',monospace;font-size:8px;letter-spacing:2px;
+  text-transform:uppercase;padding:5px 11px;
+  border-radius:0;position:relative;overflow:hidden;
+  border:1px solid rgba(201,168,76,0.15);
+  background:
+    linear-gradient(90deg,#C9A84C,#A78BFA,#60A5FA,#34D399,#F59E0B,#C9A84C,#A78BFA,#C9A84C);
+  background-size:300% 100%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:rbTag 5s linear infinite;
+  animation-delay:var(--d,0s);
+}
+.htag::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.08) 50%,transparent 100%);
+  background-size:200% 100%;
+  animation:shimmer 3s linear infinite;
+  animation-delay:var(--d,0s);
+  pointer-events:none;
+}
+@keyframes rbTag{
+  0%{background-position:0% 50%;}
+  100%{background-position:300% 50%;}
+}
+@keyframes shimmer{
+  0%{background-position:200% 0;}
+  100%{background-position:-200% 0;}
+}
+
+/* ══ PLATFORM CHECKBOXES ══ */
+.check-group{display:flex;flex-wrap:wrap;gap:8px;}
+.check-opt{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 14px;
+  background:var(--bg);border:1px solid rgba(201,168,76,0.08);
+  cursor:pointer;transition:all 0.2s;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+}
+.check-opt:hover{border-color:rgba(201,168,76,0.22);}
+.check-opt.selected{border-color:var(--gold);background:rgba(201,168,76,0.04);}
+.check-box{
+  width:16px;height:16px;flex-shrink:0;
+  border:1px solid rgba(201,168,76,0.2);
+  transition:all 0.2s;position:relative;
+  border-radius:2px;
+}
+.check-opt.selected .check-box{
+  background:var(--gold);border-color:var(--gold);
+}
+.check-opt.selected .check-box::after{
+  content:'✓';position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;color:#07070E;font-weight:700;line-height:1;
+}
+.check-label{font-size:12px;font-weight:500;color:rgba(220,205,175,0.7);transition:color 0.2s;}
+.check-opt.selected .check-label{color:var(--white);}
 </style>
 </head>
 <body>
 
 <!-- FLOATING CTA -->
 <div class="float-cta" id="floatCta">
-  <a href="#aanvraag">Breng mijn idee tot leven →</a>
+  <a href="#aanvraag">Stel jezelf voor →</a>
 </div>
 
 <nav>
   <a href="#top" class="nav-logo">Ash</a>
   <div class="nav-links">
-    <a href="#gratis" class="nav-link free">Gratis starten</a>
+    <a href="#aanvraag" class="nav-link free">Stel je voor</a>
     <a href="#werkt" class="nav-link info">Hoe het werkt</a>
   </div>
 </nav>
@@ -636,35 +763,40 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
 <section class="hero">
   <div class="hero-orb1"></div><div class="hero-orb2"></div><div class="hero-orb3"></div>
 
-  <div class="hero-feel-wrap">
-    <div class="hero-feel-line"></div>
-    <span class="hero-feel">Er brandt iets in je. Dat voel je al zo lang.</span>
-  </div>
+  <div class="hero-poem" style="margin-bottom:20px;">
+    <span class="hero-line-small" style="font-size:clamp(18px,4.5vw,26px);color:rgba(240,235,227,0.5);margin-bottom:18px;display:block;">Je geeft al waarde.</span>
 
-  <div class="hero-poem">
-    <span class="hero-line-small">Ik breng jouw</span>
-    <div class="word-stage" id="wordStage">
-      <span class="word-item" data-i="0">verlangen</span>
-      <span class="word-item" data-i="1">gave</span>
-      <span class="word-item" data-i="2">gloed</span>
-      <span class="word-item" data-i="3">essentie</span>
-      <span class="word-item" data-i="4">ontwaking</span>
-      <span class="word-item" data-i="5">thuiskomst</span>
-      <span class="word-item" data-i="6">schittering</span>
-      <span class="word-item" data-i="7">vuur</span>
+    <div class="word-stage" id="wordStage" style="height:clamp(70px,15vw,110px);margin:0 0 4px;">
+      <span class="word-item" data-i="0">De wereld</span>
+      <span class="word-item" data-i="1">Je volgers</span>
+      <span class="word-item" data-i="2">Je niche</span>
+      <span class="word-item" data-i="3">Je publiek</span>
     </div>
-    <span class="hero-line-small">tot leven.</span>
+
+    <span class="hero-line-small" style="font-size:clamp(18px,4.5vw,26px);color:rgba(240,235,227,0.5);margin-top:8px;display:block;">verdient eraan. Jij nog niet.</span>
   </div>
 
-  <div class="hero-sub-wrap">
-    <span class="hero-sub-a" id="subA">Jij focust op je passie. Ik regel alles achter de schermen.</span>
-    <span class="hero-sub-b" id="subB">Jij focust op je passie. Ik regel alles achter de schermen.</span>
+  <!-- Word stage 2 — who they are -->
+  <div class="hero-tags-wrap">
+    <span class="htag" style="--d:0s">filmmaker</span>
+    <span class="htag" style="--d:0.3s">trainer</span>
+    <span class="htag" style="--d:0.6s">coach</span>
+    <span class="htag" style="--d:0.9s">artiest</span>
+    <span class="htag" style="--d:1.2s">spreker</span>
+    <span class="htag" style="--d:1.5s">creator</span>
+    <span class="htag" style="--d:1.8s">schrijver</span>
+    <span class="htag" style="--d:2.1s">ondernemer</span>
+  </div>
+
+  <div class="hero-sub-wrap" style="margin-bottom:36px;">
+    <span class="hero-sub-a" id="subA" style="color:rgba(200,185,155,0.55);font-size:clamp(14px,3.5vw,17px);">Ik bouw het systeem achter jouw passie — zodat jij eindelijk verdient wat je waard bent.</span>
+    <span class="hero-sub-b" id="subB" style="color:rgba(200,185,155,0.55);font-size:clamp(14px,3.5vw,17px);">Ik bouw het systeem achter jouw passie — zodat jij eindelijk verdient wat je waard bent.</span>
   </div>
 
   <div class="hero-cta">
-    <a href="#gratis" class="btn-primary">Begin gratis — €0 vooraf →</a>
+    <a href="#model" class="btn-primary">Ik wil dit — vertel me meer →</a>
     <a href="#werkt" class="btn-secondary">Bekijk hoe het werkt</a>
-    <span class="hero-cta-note">// voor creators die iets willen verkopen online</span>
+    <span class="hero-cta-note">// €0 vooraf · ik verdien alleen als jij verdient</span>
   </div>
 </section>
 
@@ -673,32 +805,130 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
 <!-- MARQUEE -->
 <div class="marquee">
   <div class="mtrack">
-    <div class="mitem"><span class="msym">◆</span><span class="mtext">Website & Funnels</span></div>
-    <div class="mitem"><span class="msym">◆</span><span class="mtext">Content & Posts</span></div>
-    <div class="mitem"><span class="msym">◆</span><span class="mtext">Schaling & Groei</span></div>
-    <div class="mitem"><span class="msym">◆</span><span class="mtext">€0 Upfront</span></div>
-    <div class="mitem"><span class="msym">◆</span><span class="mtext">Digitale Producten</span></div>
-    <div class="mitem"><span class="msym">◆</span><span class="mtext">Mindset Coaching</span></div>
-    <div class="mitem"><span class="msym">◆</span><span class="mtext">Jouw Passie — Mijn Werk</span></div>
-    <div class="mitem"><span class="msym">◆</span><span class="mtext">Eén Aanspreekpunt</span></div>
-    <div class="mitem"><span class="msym">◆</span><span class="mtext">Website & Funnels</span></div>
-    <div class="mitem"><span class="msym">◆</span><span class="mtext">Content & Posts</span></div>
-    <div class="mitem"><span class="msym">◆</span><span class="mtext">Schaling & Groei</span></div>
-    <div class="mitem"><span class="msym">◆</span><span class="mtext">€0 Upfront</span></div>
-    <div class="mitem"><span class="msym">◆</span><span class="mtext">Digitale Producten</span></div>
-    <div class="mitem"><span class="msym">◆</span><span class="mtext">Mindset Coaching</span></div>
-    <div class="mitem"><span class="msym">◆</span><span class="mtext">Jouw Passie — Mijn Werk</span></div>
-    <div class="mitem"><span class="msym">◆</span><span class="mtext">Eén Aanspreekpunt</span></div>
+    <div class="mitem"><span class="msym" style="color:#C9A84C;">◆</span><span class="mtext" style="color:rgba(201,168,76,0.75);">€0 Vooraf — Altijd</span></div>
+    <div class="mitem"><span class="msym" style="color:#A78BFA;">◆</span><span class="mtext" style="color:rgba(167,139,250,0.65);">Website & Funnels</span></div>
+    <div class="mitem"><span class="msym" style="color:#34D399;">◆</span><span class="mtext" style="color:rgba(52,211,153,0.65);">Jij Verdient — Ik Verdien</span></div>
+    <div class="mitem"><span class="msym" style="color:#60A5FA;">◆</span><span class="mtext" style="color:rgba(96,165,250,0.65);">TikTok · Instagram · YouTube</span></div>
+    <div class="mitem"><span class="msym" style="color:#F59E0B;">◆</span><span class="mtext" style="color:rgba(245,158,11,0.65);">Digitale Producten</span></div>
+    <div class="mitem"><span class="msym" style="color:#C9A84C;">◆</span><span class="mtext" style="color:rgba(201,168,76,0.75);">Percentage op Omzet</span></div>
+    <div class="mitem"><span class="msym" style="color:#A78BFA;">◆</span><span class="mtext" style="color:rgba(167,139,250,0.65);">Strategie & Schaling</span></div>
+    <div class="mitem"><span class="msym" style="color:#34D399;">◆</span><span class="mtext" style="color:rgba(52,211,153,0.65);">Jouw Passie — Mijn Werk</span></div>
+    <div class="mitem"><span class="msym" style="color:#60A5FA;">◆</span><span class="mtext" style="color:rgba(96,165,250,0.65);">Creators & Ondernemers</span></div>
+    <div class="mitem"><span class="msym" style="color:#F59E0B;">◆</span><span class="mtext" style="color:rgba(245,158,11,0.65);">Eén Partner. Alles Inbegrepen.</span></div>
+    <div class="mitem"><span class="msym" style="color:#C9A84C;">◆</span><span class="mtext" style="color:rgba(201,168,76,0.75);">€0 Vooraf — Altijd</span></div>
+    <div class="mitem"><span class="msym" style="color:#A78BFA;">◆</span><span class="mtext" style="color:rgba(167,139,250,0.65);">Website & Funnels</span></div>
+    <div class="mitem"><span class="msym" style="color:#34D399;">◆</span><span class="mtext" style="color:rgba(52,211,153,0.65);">Jij Verdient — Ik Verdien</span></div>
+    <div class="mitem"><span class="msym" style="color:#60A5FA;">◆</span><span class="mtext" style="color:rgba(96,165,250,0.65);">TikTok · Instagram · YouTube</span></div>
+    <div class="mitem"><span class="msym" style="color:#F59E0B;">◆</span><span class="mtext" style="color:rgba(245,158,11,0.65);">Digitale Producten</span></div>
+    <div class="mitem"><span class="msym" style="color:#C9A84C;">◆</span><span class="mtext" style="color:rgba(201,168,76,0.75);">Percentage op Omzet</span></div>
+    <div class="mitem"><span class="msym" style="color:#A78BFA;">◆</span><span class="mtext" style="color:rgba(167,139,250,0.65);">Strategie & Schaling</span></div>
+    <div class="mitem"><span class="msym" style="color:#34D399;">◆</span><span class="mtext" style="color:rgba(52,211,153,0.65);">Jouw Passie — Mijn Werk</span></div>
+    <div class="mitem"><span class="msym" style="color:#60A5FA;">◆</span><span class="mtext" style="color:rgba(96,165,250,0.65);">Creators & Ondernemers</span></div>
+    <div class="mitem"><span class="msym" style="color:#F59E0B;">◆</span><span class="mtext" style="color:rgba(245,158,11,0.65);">Eén Partner. Alles Inbegrepen.</span></div>
   </div>
 </div>
 
 <div class="w">
 
+<!-- ══ HERKENNING ══ -->
+<section class="sp herk-bg">
+  <span class="tag amber rv">Herken jij dit?</span>
+  <h2 class="sh rv d1" style="color:var(--white);">"Ik wil zo graag —<br><em style="color:#D97706;">maar weet niet hoe."</em></h2>
+  <div class="vragen">
+    <div class="vraag rv d1"><span class="vraag-icon">💸</span><p>"Bureaus vragen duizenden euro's vooraf. <strong>Ik word niet goed begeleid</strong> — en sta er alsnog alleen voor."</p></div>
+    <div class="vraag rv d2"><span class="vraag-icon">🔀</span><p>"Ik moet een designer, copywriter, coach én techneut inhuren. <strong>Allemaal apart, allemaal duur.</strong> Ik wil één persoon die het snapt."</p></div>
+    <div class="vraag rv d3"><span class="vraag-icon">📉</span><p>"Ik ben al een tijdje bezig maar het <strong>groeit niet.</strong> Ik mis de strategie en weet niet wat ik fout doe."</p></div>
+    <div class="vraag rv d4"><span class="vraag-icon">🔁</span><p>"Ik heb het advies gevolgd. Consistent gepost. Alles geprobeerd. <strong>Maar ik doe hetzelfde als iedereen — en bereik ook hetzelfde: niets.</strong>"</p></div>
+  </div>
+  <div class="bridge rv">
+    <p>Ik werk anders. <em>Geen uurtarief. Geen factuur vooraf.</em> Ik bouw jouw volledige online aanwezigheid en verdien alleen als jij verdient — <strong>want jouw succes is mijn succes.</strong> Één partner. Alles inbegrepen. Niets vooraf.</p>
+  </div>
+</section>
+
+<div class="sdiv"></div>
+
+
+<div class="sdiv"></div>
+<div class="sdiv"></div>
+
+<div class="sdiv"></div>
+
+<!-- ══ AANBOD ══ -->
+<!-- ══ AANBOD ══ -->
+<section class="sp aanbod-bg" id="model">
+  <span class="tag green rv">Het model</span>
+  <h2 class="sh rv d1" style="color:var(--white);">Jij betaalt me<br><em style="color:var(--green);">nooit iets vooraf.</em></h2>
+
+  <div class="rv d2" style="font-size:14px;color:rgba(182,212,195,0.45);line-height:1.9;margin-bottom:28px;">
+    Geen factuur. Geen uurtarief. Geen risico. <strong style="color:rgba(240,235,227,0.9);">Ik verdien een percentage van wat jij verkoopt — en pas als jij verdient.</strong> Dat percentage bepalen we samen. Want dit is geen aanbod dat ik aan iedereen doe.
+  </div>
+
+  <!-- HOOFDBLOK — €0 model — full width, maximale energie -->
+  <div class="block-free rv d2" style="margin-bottom:28px;">
+    <div class="badge green"><span>✦ Partnerschap — €0 vooraf · altijd</span></div>
+    <div class="block-title">Ik bouw alles. Jij betaalt me niets.</div>
+    <p class="block-desc">Ik bouw jouw volledige online aanwezigheid — website, digitale producten, funnels, strategie en schaling — <strong>volledig in jouw stem, volledig op maat.</strong> Ik verdien een percentage van wat jij verkoopt. Jij focust op je passie. De rest is mijn werk.</p>
+
+    <div class="block-for-who" style="margin-top:22px;margin-bottom:22px;">
+      <span class="block-for-who-label">✦ Dit is voor jou als je</span>
+      <span class="block-for-who-text">digitale producten · cursussen · e-books · diensten online wil verkopen — en klaar bent voor een samenwerking op de lange termijn</span>
+    </div>
+
+    <!-- Wat ik bouw -->
+    <div style="margin-bottom:20px;">
+      <div style="font-family:'DM Mono',monospace;font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(52,211,153,0.4);margin-bottom:12px;">✦ Wat ik voor jou bouw</div>
+      <div class="block-items">
+        <div class="block-item">Complete website of funnel — volledig gebouwd en live</div>
+        <div class="block-item">Digitale producten gemaakt in jouw stem — klaar om te verkopen</div>
+        <div class="block-item">Betalingssysteem ingesteld — automatisch, geen gedoe</div>
+        <div class="block-item">Strategie en positionering die niemand anders in jouw niche gebruikt</div>
+        <div class="block-item">Schaling via nieuwe producten — ik groei mee als jij groeit</div>
+      </div>
+    </div>
+
+    <!-- Hoe het financieel werkt — geen vaste percentages -->
+    <div style="padding:18px 16px;background:rgba(52,211,153,0.04);border:1px solid rgba(52,211,153,0.12);margin-bottom:22px;">
+      <div style="font-family:'DM Mono',monospace;font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(52,211,153,0.38);margin-bottom:14px;">✦ Hoe het financieel werkt</div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:16px;">
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <span style="color:var(--green);font-size:13px;margin-top:1px;flex-shrink:0;">→</span>
+          <span style="font-size:13px;color:rgba(182,212,195,0.6);line-height:1.7;">Jij betaalt me <strong style="color:rgba(240,235,227,0.85);">nooit iets vooraf.</strong> Geen factuur, geen uurtarief, geen risico.</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <span style="color:var(--green);font-size:13px;margin-top:1px;flex-shrink:0;">→</span>
+          <span style="font-size:13px;color:rgba(182,212,195,0.6);line-height:1.7;">Ik verdien een <strong style="color:rgba(240,235,227,0.85);">percentage op jouw omzet</strong> — automatisch uitbetaald, transparant, geen gedoe.</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <span style="color:var(--green);font-size:13px;margin-top:1px;flex-shrink:0;">→</span>
+          <span style="font-size:13px;color:rgba(182,212,195,0.6);line-height:1.7;"><strong style="color:rgba(240,235,227,0.85);">Het percentage bepalen we samen</strong> — in het eerste gesprek, eerlijk en transparant. Ik ga alleen een samenwerking aan als ik er volledig achter sta. En als jij er volledig achter staat.</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;">
+          <span style="color:var(--green);font-size:13px;margin-top:1px;flex-shrink:0;">→</span>
+          <span style="font-size:13px;color:rgba(182,212,195,0.6);line-height:1.7;"><strong style="color:rgba(240,235,227,0.85);">Website, systemen en hosting blijven in mijn beheer</strong> zolang de samenwerking loopt. Alles wat ik bouw is er voor jou — en blijft werken zolang wij samenwerken.</span>
+        </div>
+      </div>
+
+      <!-- Selectiviteitsblok -->
+      <div style="padding:14px 16px;background:rgba(0,0,0,0.25);border-left:2px solid rgba(52,211,153,0.25);">
+        <div style="font-family:'DM Mono',monospace;font-size:7px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(52,211,153,0.35);margin-bottom:8px;">// dit is geen aanbod voor iedereen</div>
+        <p style="font-size:12px;color:rgba(162,195,178,0.5);line-height:1.85;font-style:italic;">Ik werk met een klein aantal creators tegelijk. Geen grote portfolio, geen snelle deals. Ik kies bewust voor mensen waar ik in geloof — zodat ik mijn volledige aandacht en expertise inzet voor jouw groei. Als wij een match zijn, merk je dat direct.</p>
+      </div>
+    </div>
+
+    <a href="#aanvraag" class="btn-primary" style="display:block;text-align:center;">Stel jezelf voor — ik lees het persoonlijk →</a>
+    <div style="font-family:'DM Mono',monospace;font-size:8px;color:rgba(52,211,153,0.22);letter-spacing:1px;text-align:center;margin-top:10px;">// ik reageer binnen 48u · alleen als ik zie dat wij een match zijn</div>
+  </div>
+
+  <!-- SCHEIDINGSLIJN met context -->
+
+<div class="sdiv"></div>
+
 <!-- ══ ROADMAP ══ -->
-<section class="sp rm-bg" id="werkt">
-  <span class="tag violet rv">De reis</span>
-  <h2 class="sh rv d1" style="color:var(--white);">Van gevoel naar <em style="color:var(--violet);">business.</em></h2>
-  <p class="rm-intro rv d2">Iedereen begint met een gevoel. Ik zorg dat jij die reis volledig kan afleggen — zonder technische chaos, zonder vijf professionals, en zonder grote investering vooraf.</p>
+<div id="werkt" style="margin-top:52px;padding-top:48px;border-top:1px solid rgba(201,168,76,0.07);">
+<span class="tag violet rv">Hoe het werkt</span>
+  <h2 class="sh rv d1" style="color:var(--white);">Zo werken<br><em style="color:var(--violet);">wij samen.</em></h2>
+  <p class="rm-intro rv d2">Van jouw eerste bericht tot een draaiend systeem — dit is hoe onze samenwerking eruitziet. Geen verrassingen, geen kleine lettertjes. Gewoon een eerlijk traject, stap voor stap.</p>
 
   <div class="rm-controls rv d2">
     <div class="rm-dots" id="rmDots">
@@ -719,10 +949,10 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
       <div class="rm-dot">🌱</div>
       <div class="rm-content">
         <span class="rm-num">01</span>
-        <span class="rm-title">Het verlangen</span>
+        <span class="rm-title">Jij stelt jezelf voor</span>
         <div class="rm-body">
-          <span class="rm-text">"Ik wil dit zo graag delen. Ik voel het van binnen — er zijn mensen die dit nodig hebben en ik weet dat ik het hen kan geven. Maar hoe?"</span>
-          <div class="rm-pain">Dat gevoel is het bewijs dat je iets hebt. Niet iedereen voelt het zo. Maar weten wat je hebt en weten wat je ermee doet, zijn twee verschillende dingen.</div>
+          <span class="rm-text">Vul het formulier in. Wees eerlijk over wie je bent, wat je doet en waar je vastloopt. Ik lees elke aanvraag persoonlijk — en reageer alleen als ik zie dat wij een echte match zijn.</span>
+          <div class="rm-pain">Dit is geen intake — het is de eerste filter. Ik werk met weinig mensen tegelijk. Jouw antwoord bepaalt of wij verder gaan.</div>
         </div>
       </div>
     </div>
@@ -731,10 +961,10 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
       <div class="rm-dot">💡</div>
       <div class="rm-content">
         <span class="rm-num">02</span>
-        <span class="rm-title">Het begin</span>
+        <span class="rm-title">We voeren een gesprek</span>
         <div class="rm-body">
-          <span class="rm-text">"Ik ga gewoon starten. Social media lijkt het beste — het is gratis, iedereen doet het, en als mijn boodschap goed is komt het wel goed."</span>
-          <div class="rm-pain">Het probleem: iedereen doet hetzelfde. Dezelfde tips, dezelfde formats, dezelfde aanpak. En precies daardoor verdwijnt jouw stem in de massa.</div>
+          <span class="rm-text">Als ik je aanvraag interessant vind, neem ik contact op via WhatsApp. We plannen een open gesprek — jouw situatie, jouw doel, wat ik zie en hoe ik denk dat we het aanpakken.</span>
+          <div class="rm-pain">Geen pitch, geen verkoopgesprek. Als het klikt, doen we het. Als het niet klikt, zeg ik dat ook.</div>
         </div>
       </div>
     </div>
@@ -743,10 +973,10 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
       <div class="rm-dot">😶</div>
       <div class="rm-content">
         <span class="rm-num">03</span>
-        <span class="rm-title">De muur</span>
+        <span class="rm-title">We spreken een percentage af</span>
         <div class="rm-body">
-          <span class="rm-text">"Maar waarom groeit het niet? Ik post, ik probeer, ik doe wat iedereen zegt. En toch lijkt het alsof ik tegen een muur praat. Doe ik iets fout?"</span>
-          <div class="rm-pain">Nee. Je doet hetzelfde als iedereen — en dat ís het probleem. Jouw verhaal verdient een aanpak die niemand anders gebruikt. Dat is precies wat ik doe.</div>
+          <span class="rm-text">We leggen het percentage vast — eerlijk, transparant, voor beide partijen. Wat ik verdien hangt direct af van wat jij verdient. Geen vast bedrag, geen risico voor jou.</span>
+          <div class="rm-pain">Dit is het moment waarop het partnerschap officieel begint. Jij behoudt volledige eigendom van alles. Ik lever het werk.</div>
         </div>
       </div>
     </div>
@@ -755,10 +985,10 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
       <div class="rm-dot">🌀</div>
       <div class="rm-content">
         <span class="rm-num">04</span>
-        <span class="rm-title">De overload</span>
+        <span class="rm-title">Ik bouw alles</span>
         <div class="rm-body">
-          <span class="rm-text">"En dan die techniek nog. Een website. Betalingen. Funnels. Hoe verdien ik hier eigenlijk iets mee? Waar begin ik? Het voelt alsof ik alles tegelijk moet weten."</span>
-          <div class="rm-pain">Je hoeft het niet te weten. Ik neem de volledige backend over — website, systemen, strategie en schaling. Jij ziet het resultaat. Niemand ziet mij. En ik verdien alleen als jij verdient.</div>
+          <span class="rm-text">Website, digitale producten, funnels, strategie, positionering, schaling — ik regel alles achter de schermen. Volledig in jouw stem. Niemand ziet mij. Jij schittert.</span>
+          <div class="rm-pain">Jij focust op je passie en je publiek. Ik bouw het systeem dat voor jou verdient terwijl jij dat doet.</div>
         </div>
       </div>
     </div>
@@ -767,133 +997,93 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
       <div class="rm-dot">✨</div>
       <div class="rm-content">
         <span class="rm-num">05</span>
-        <span class="rm-title">De oplossing</span>
+        <span class="rm-title">Samen groeien</span>
         <div class="rm-body">
-          <span class="rm-text">"Stel dat er iemand is die dit allemaal regelt. Die alles achter de schermen opbouwt — zodat ik gewoon kan doen wat ik het liefste doe. En er toch van kan leven."</span>
-          <div class="rm-pain">Dat is wat ik doe. Geen bureau. Geen uurtarief. Geen kosten vooraf. Gewoon één partner die volledig in jouw hoek staat — omdat jouw succes mijn succes is.</div>
+          <span class="rm-text">Als jij verkoopt, verdienen we allebei. Ik schaal mee — nieuwe producten, nieuwe kanalen, nieuwe omzetstromen. Het doel is een samenwerking die jaren standhoudt, niet één die na de eerste factuur stopt.</span>
+          <div class="rm-pain">Dit is waarom ik kieskeurig ben op wie ik binnenlaat. Drie partners die groeien zijn meer waard dan twintig losse klanten.</div>
         </div>
       </div>
     </div>
   </div>
+</div>
+
 </section>
+
 
 <div class="sdiv"></div>
 
-<!-- ══ HERKENNING ══ -->
-<section class="sp herk-bg">
-  <span class="tag amber rv">Herken jij dit?</span>
-  <h2 class="sh rv d1" style="color:var(--white);">"Ik wil zo graag —<br><em style="color:#D97706;">maar weet niet hoe."</em></h2>
-  <div class="vragen">
-    <div class="vraag rv d1"><span class="vraag-icon">💸</span><p>"Bureaus vragen duizenden euro's vooraf. <strong>Ik word niet goed begeleid</strong> — en sta er alsnog alleen voor."</p></div>
-    <div class="vraag rv d2"><span class="vraag-icon">🔀</span><p>"Ik moet een designer, copywriter, coach én techneut inhuren. <strong>Allemaal apart, allemaal duur.</strong> Ik wil één persoon die het snapt."</p></div>
-    <div class="vraag rv d3"><span class="vraag-icon">📉</span><p>"Ik ben al een tijdje bezig maar het <strong>groeit niet.</strong> Ik mis de strategie en weet niet wat ik fout doe."</p></div>
-    <div class="vraag rv d4"><span class="vraag-icon">🔁</span><p>"Ik heb het advies gevolgd. Consistent gepost. Alles geprobeerd. <strong>Maar ik doe hetzelfde als iedereen — en bereik ook hetzelfde: niets.</strong>"</p></div>
-  </div>
-  <div class="bridge rv">
-    <p>Ik werk anders. <em>Geen uurtarief. Geen factuur vooraf.</em> Ik bouw jouw volledige online aanwezigheid en verdien alleen als jij verdient — <strong>want jouw succes is mijn succes.</strong> Één partner. Alles inbegrepen. Niets vooraf.</p>
-  </div>
-</section>
-
 <div class="sdiv"></div>
 
-<!-- ══ GAMIFICATION ══ -->
-<section class="sp pad-bg">
-  <span class="tag violet rv">Waar sta jij nu?</span>
-  <h2 class="sh rv d1" style="color:var(--white);">Kies jouw <em style="color:var(--violet);">startpunt.</em></h2>
-  <p class="pad-intro rv d2">Herken jij jezelf hieronder? Klik op wat bij jou past — ik laat je direct zien wat de eerste stap is.</p>
-
-  <div class="pad-grid rv d2">
-
-    <div class="pad-card" style="--acc:var(--violet);" data-key="idee" onclick="selectPad(this)">
-      <div class="pad-particles"></div>
-      <div class="pad-top">
-        <span class="pad-icon">💡</span>
-        <div class="pad-main">
-          <div class="pad-title">Ik heb een passie maar weet niet waar te beginnen</div>
-          <div class="pad-desc">Het brandt van binnen — maar de eerste stap voelt te groot.</div>
-        </div>
-        <div class="pad-check">✓</div>
-      </div>
-      <div class="pad-inline-result">
-        <div class="pad-result-inner">
-          <span class="pad-unlock">✦ Jouw pad</span>
-          <p class="pad-result-text"><strong>Een Visie Consult is jouw eerste stap.</strong> In 60 minuten brengen we jouw passie scherp in kaart. Je verlaat het gesprek met een concreet plan — wat je wil, voor wie, en hoe we het samen bouwen en schalen.</p>
-          <a href="#aanvraag" class="pad-cta">Plan een Visie Consult →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pad-card" style="--acc:var(--green);" data-key="verkopen" onclick="selectPad(this)">
-      <div class="pad-particles"></div>
-      <div class="pad-top">
-        <span class="pad-icon">🌐</span>
-        <div class="pad-main">
-          <div class="pad-title">Ik wil iets online verkopen maar heb geen website of systeem</div>
-          <div class="pad-desc">Je wil verdienen met jouw kennis, dienst of product — maar de techniek staat in de weg.</div>
-        </div>
-        <div class="pad-check">✓</div>
-      </div>
-      <div class="pad-inline-result">
-        <div class="pad-result-inner">
-          <span class="pad-unlock">✦ Jouw pad</span>
-          <p class="pad-result-text"><strong>Jij betaalt me niets. Ooit.</strong> Ik bouw jouw volledige website, systeem en strategie — op maat, in jouw stem. Ik verdien een percentage van wat je verkoopt. Digitale producten, diensten, cursussen — wat jij wil brengen, ik bouw het.</p>
-          <a href="#gratis" class="pad-cta">Begin gratis — €0 vooraf →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pad-card" style="--acc:var(--blue);" data-key="zichtbaar" onclick="selectPad(this)">
-      <div class="pad-particles"></div>
-      <div class="pad-top">
-        <span class="pad-icon">📱</span>
-        <div class="pad-main">
-          <div class="pad-title">Ik wil zichtbaar zijn maar weet niet wat te posten</div>
-          <div class="pad-desc">Je wil online gaan — maar loopt vast op je verhaal en de inhoud.</div>
-        </div>
-        <div class="pad-check">✓</div>
-      </div>
-      <div class="pad-inline-result">
-        <div class="pad-result-inner">
-          <span class="pad-unlock">✦ Jouw pad</span>
-          <p class="pad-result-text"><strong>Content maken hoeft niet moeilijk te zijn.</strong> Ik schrijf jouw posts en captions in jouw stem — klaar om te posten. Jij hoeft alleen jezelf te zijn.</p>
-          <a href="#aanvraag" class="pad-cta">Start met content →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pad-card" style="--acc:#F59E0B;" data-key="groeien" onclick="selectPad(this)">
-      <div class="pad-particles"></div>
-      <div class="pad-top">
-        <span class="pad-icon">🚀</span>
-        <div class="pad-main">
-          <div class="pad-title">Ik ben bezig maar het groeit niet zoals ik wil</div>
-          <div class="pad-desc">Je bent actief — maar de resultaten blijven achter.</div>
-        </div>
-        <div class="pad-check">✓</div>
-      </div>
-      <div class="pad-inline-result">
-        <div class="pad-result-inner">
-          <span class="pad-unlock">✦ Jouw pad</span>
-          <p class="pad-result-text"><strong>Niet groeien heeft altijd een oorzaak — en het ligt zelden aan jou.</strong> Het standaard advies werkt voor iedereen hetzelfde. En precies daar zit het probleem: jij bent niet iedereen. Samen bouwen we iets dat past bij jouw verhaal — niet bij een template.</p>
-          <a href="#aanvraag" class="pad-cta">Ontdek wat ontbreekt →</a>
-        </div>
-      </div>
-    </div>
-
+<!-- ══ LOSSE DIENSTEN ══ -->
+<section class="sp aanbod-bg" style="padding-top:48px;">
+<div class="w">
+<div style="display:flex;align-items:center;gap:16px;margin:8px 0 24px;">
+    <div style="flex:1;height:1px;background:rgba(201,168,76,0.07);"></div>
+    <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.55);">Liever een losse dienst?</span>
+    <div style="flex:1;height:1px;background:rgba(201,168,76,0.07);"></div>
   </div>
-</section>
 
-<div class="sdiv"></div>
+  <!-- LOSSE DIENSTEN — secundair, gedimpt, met context -->
+  <div class="rv">
+    <p style="font-size:13px;color:rgba(162,142,88,0.42);line-height:1.85;margin-bottom:16px;">Wil je liever zelf de controle houden en voor een specifieke dienst betalen? Dat kan — maar elk traject begint altijd met een <strong style="color:rgba(201,168,76,0.6);">Visie Consult</strong>. Zo zorg ik dat mijn tijd en jouw investering zinvol zijn.</p>
 
-<!-- ══ STAPPEN ══ -->
-<section class="sp stap-bg">
-  <span class="tag blue rv">Het proces</span>
-  <h2 class="sh rv d1" style="color:var(--white);">Drie stappen.<br><em style="color:var(--blue);">Dan draait het.</em></h2>
-  <div class="stap-cards rv d2">
-    <div class="stap-card"><span class="stap-num">1</span><div><div class="stap-title">Vertel me wie je bent</div><p class="stap-desc">Vul het formulier in. Wees eerlijk — ik lees alles persoonlijk en reageer binnen 48 uur als wij een match zijn.</p></div></div>
-    <div class="stap-card"><span class="stap-num">2</span><div><div class="stap-title">We doen een Visie Consult</div><p class="stap-desc">We bespreken jouw situatie, doel en het plan. Open, eerlijk, zonder kleine lettertjes of verborgen kosten.</p></div></div>
-    <div class="stap-card"><span class="stap-num">3</span><div><div class="stap-title">Ik bouw. Jij schittert.</div><p class="stap-desc">Website, content, digitale producten en schaling — ik regel alles achter de schermen. Jij doet wat jij het beste kan.</p></div></div>
+    <div class="block-paid" id="diensten">
+      <div class="bpaid-hdr">
+        <div class="badge gold"><span>◆ Losse diensten — vaste prijs</span></div>
+        <div class="bpaid-title">Specifieke hulp, vaste prijs</div>
+        <p class="bpaid-sub">Altijd te beginnen met een Visie Consult. Hogere bedragen in delen te betalen.</p>
+      </div>
+
+      <!-- CONSULT & COACHING -->
+      <div style="border-bottom:1px solid rgba(201,168,76,0.06);">
+        <div style="padding:14px 20px 8px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(167,139,250,0.7);">✦ Consult & Coaching</div>
+        <div class="acc-cat open"><button class="acc-btn" onclick="toggleAcc(this)"><span class="acc-label">Bekijk alle sessies</span><span class="acc-arrow">▼</span></button>
+          <div class="acc-body">
+            <div class="svc">
+              <div><div class="svc-name">Visie Consult</div><div class="svc-desc">Jouw startpunt. In 60 minuten brengen we jouw situatie, doel en de weg ernaartoe scherp in kaart. Je verlaat het gesprek met een werkdocument en een concrete richting.</div></div>
+              <div class="svc-right"><span class="svc-price">€97</span><span class="svc-cycle">60 min · eenmalig</span></div>
+            </div>
+            <div class="svc">
+              <div><div class="svc-name">Visie Consult + Strategie</div><div class="svc-desc">Alles van het Visie Consult — aangevuld met een volledig uitgewerkte contentstrategie op maat. Klaar om direct mee aan de slag te gaan.</div></div>
+              <div class="svc-right"><span class="svc-price">€167</span><span class="svc-cycle">90 min · eenmalig</span></div>
+            </div>
+            <div class="svc">
+              <div><div class="svc-name">Maandelijkse Begeleiding</div><div class="svc-desc">Twee sessies per maand — één gericht op strategie en richting, één op wat je intern tegenhoudt. Samen zijn dit een Visie Consult en Breakthrough Sessie in één. Voor creators die doorlopend willen groeien op TikTok, Instagram, Facebook of YouTube.</div></div>
+              <div class="svc-right"><span class="svc-price">€297</span><span class="svc-cycle">/maand</span></div>
+            </div>
+            <div class="svc" style="border-bottom:none;">
+              <div><div class="svc-name">Breakthrough Sessie</div><div class="svc-desc">Voor creators die al bezig zijn maar ergens vastlopen — niet op techniek, maar van binnen. Je hoeft geen actiepunten — soms heb je één helder inzicht nodig dat alles verandert. Wat jij nodig hebt, bepalen we samen.</div></div>
+              <div class="svc-right"><span class="svc-price">€147</span><span class="svc-cycle">60 min · eenmalig</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEBSITE & HOSTING -->
+      <div>
+        <div style="padding:14px 20px 8px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(96,165,250,0.7);">✦ Website & Hosting</div>
+        <div class="acc-cat"><button class="acc-btn" onclick="toggleAcc(this)"><span class="acc-label">Bekijk alle opties</span><span class="acc-arrow">▼</span></button>
+          <div class="acc-body">
+            <div class="svc">
+              <div><div class="svc-name">1 pagina</div><div class="svc-desc">Design, bouw en teksten volledig in jouw stem. Ik zet het live — geen platform, geen gedoe aan jouw kant. Wil je betaallinks of digitale producten? Dat kan — in overleg.</div></div>
+              <div class="svc-right"><span class="svc-price">€97</span><span class="svc-cycle">eenmalig + €50 setup<br>+ €10/maand hosting</span></div>
+            </div>
+            <div class="svc">
+              <div><div class="svc-name">3 pagina's — Mini Funnel</div><div class="svc-desc">Landingspagina, informatiepagina en bedankpagina — ontworpen, gebouwd en live. Betaallinks of digitale producten zijn mogelijk als extra, in overleg.</div></div>
+              <div class="svc-right"><span class="svc-price">€247</span><span class="svc-cycle">of 2× €124 + €50 setup<br>+ €10/maand hosting</span></div>
+            </div>
+            <div class="svc" style="border-bottom:none;">
+              <div><div class="svc-name">5 pagina's — Volledige Website</div><div class="svc-desc">Jouw complete online aanwezigheid — design, bouw en copy op maat. Jij hoeft niets te installeren, configureren of beheren. Inclusief hosting.</div></div>
+              <div class="svc-right"><span class="svc-price">€397</span><span class="svc-cycle">of 2× €199 + €50 setup<br>+ €10/maand hosting</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="revisie">📌 Websites bevatten 1 revisieronde. Extra revisie: €47. Alle prijzen excl. BTW.</div>
+    </div>
   </div>
+</div>
 </section>
 
 <div class="sdiv"></div>
@@ -949,6 +1139,7 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
           <div class="jo-ebook">
             <span class="jo-ebook-em" style="color:#D4789A;">♥</span>
             <span class="jo-ebook-ti rose">Je Ultieme Relatie Manifesteren.</span>
+            <span style="font-size:10px;color:rgba(212,120,154,0.45);font-style:italic;line-height:1.4;margin-bottom:6px;display:block;">Waarom de ander jou nog niet kiest — en hoe jij dit verandert.</span>
             <span class="jo-ebook-pr">€ 15,15</span>
             <span class="jo-ebook-btn rb">Lees meer →</span>
           </div>
@@ -956,6 +1147,7 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
           <div class="jo-ebook">
             <span class="jo-ebook-em" style="color:#7AAFD4;">♥</span>
             <span class="jo-ebook-ti blue">Je Bent Niet Zwak. Je Bent Je Kracht Vergeten.</span>
+            <span style="font-size:10px;color:rgba(122,175,212,0.45);font-style:italic;line-height:1.4;margin-bottom:6px;display:block;">Stop met jezelf weggeven. Jouw kracht wacht op je.</span>
             <span class="jo-ebook-pr">€ 15,15</span>
             <span class="jo-ebook-btn bb">Lees meer →</span>
           </div>
@@ -967,18 +1159,11 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
           <span class="jo-sec-ti">Soms heeft jouw ziel<br>een persoonlijk antwoord nodig.</span>
           <span class="jo-sec-su">De gidsen geven je de principes. Een reading geeft je <em>jouw</em> antwoord.</span>
         </div>
-        <div class="jo-toggle" id="joToggle" onclick="(function(){var r=document.getElementById('joReadings'),t=document.getElementById('joToggle'),o=r.classList.toggle('open');t.textContent=o?'↑ Verberg readings':'↓ Toon alle readings';})()" >↓ Toon alle readings</div>
-        <div class="jo-readings" id="joReadings">
-          <div class="jo-reading"><span class="jo-r-icon">🤍</span><div><span class="jo-r-name">Mini Reading</span><span class="jo-r-desc">Één gerichte vraag · snel inzicht · laagdrempelig</span></div><span class="jo-r-cta">Ja, ik wil dit →</span></div>
-          <div class="jo-reading"><span class="jo-r-icon">🌑</span><div><span class="jo-r-name">Schaduw Reading</span><span class="jo-r-desc">Verborgen patronen zichtbaar maken · diep en transformerend</span></div><span class="jo-r-cta">Ja, ik wil dit →</span></div>
-          <div class="jo-reading"><span class="jo-r-icon">✨</span><div><span class="jo-r-name">Zielspad Reading</span><span class="jo-r-desc">Jouw zielsmissie en energetische blokkades · richting</span></div><span class="jo-r-cta">Ja, ik wil dit →</span></div>
-          <div class="jo-reading"><span class="jo-r-icon">🖤</span><div><span class="jo-r-name">Persoonlijke 1-op-1 Reading</span><span class="jo-r-desc">Volledig op jou afgestemd · intens · transformerend</span></div><span class="jo-r-cta">Ja, ik wil dit →</span></div>
-          <div class="jo-reading"><span class="jo-r-icon">📜</span><div><span class="jo-r-name">Zielscode Rapport</span><span class="jo-r-desc">Jouw unieke zielscode uitgewerkt in een persoonlijk rapport</span></div><span class="jo-r-cta">Ja, ik wil dit →</span></div>
-        </div>
+
 
         <!-- Quote -->
         <div class="jo-over">
-          <span class="jo-qt">"Ik weet hoe het voelt om te zoeken. <em>Naar liefde. Naar jezelf.</em><br>Naar antwoorden die niemand om je heen lijkt te hebben.<br><br>En als jij hier bent —<br>dan weet ik dat jij ook klaar bent om te voelen."</span>
+          <span class="jo-qt">"Ik weet hoe het voelt om te zoeken. <em>Naar liefde. Naar jezelf.</em><br>Naar antwoorden die niemand om je heen lijkt te hebben.<br><br>Ik ben iemand die voelt, ziet en deelt<br>vanuit het diepste van mijn hart.<br><br>En als jij hier bent —<br>dan weet ik dat jij ook klaar bent om te voelen."</span>
           <span class="jo-sig">— Jo 🤍</span>
         </div>
 
@@ -1000,110 +1185,104 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
 
 <div class="sdiv"></div>
 
-<!-- ══ AANBOD ══ -->
-<section class="sp aanbod-bg" id="gratis">
-  <span class="tag green rv">Wat ik aanbied</span>
-  <h2 class="sh rv d1" style="color:var(--white);">Kies jouw<br><em style="color:var(--green);">startpunt.</em></h2>
-  <div class="blocks rv d2">
 
-    <div class="block-free">
-      <div class="badge green"><span>✦ Gratis starten — €0 vooraf</span></div>
-      <div class="block-title">Jij betaalt me niets. Ooit.</div>
-      <p class="block-desc">Geen factuur. Geen uurtarief. Geen risico. <strong>Ik bouw jouw volledige online aanwezigheid</strong> — website, producten, strategie en schaling — volledig in jouw stem. Ik verdien een percentage van wat je verkoopt. Jij focust op je passie. De rest is mijn werk.</p>
-
-      <div class="block-for-who">
-        <span class="block-for-who-label">✦ Dit is voor jou als je</span>
-        <span class="block-for-who-text">digitale producten · diensten · cursussen · e-books online wil verkopen</span>
-      </div>
-
-      <div class="block-items">
-        <div class="block-item">Complete website of funnel — volledig gebouwd en live</div>
-        <div class="block-item">Betalingen ingesteld — klaar om direct te ontvangen</div>
-        <div class="block-item">Strategie, positionering en teksten in jouw stem</div>
-        <div class="block-item">Schaling via ads en nieuwe digitale producten</div>
-        <div class="block-item">Percentage op de omzet — samen bepaald in het eerste gesprek</div>
-      </div>
-      <a href="#aanvraag" class="btn-primary" style="display:block;text-align:center;">Gratis beginnen →</a>
-    </div>
-
-    <div class="block-paid" id="diensten">
-      <div class="bpaid-hdr">
-        <div class="badge gold"><span>◆ Losse diensten — vaste prijs</span></div>
-        <div class="bpaid-title">Alles wat jij nodig hebt</div>
-        <p class="bpaid-sub">Van één post tot een volledig traject. Vaste prijs, geen verrassingen. Hogere bedragen in delen te betalen.</p>
-      </div>
-
-      <div class="acc-cat open"><button class="acc-btn" onclick="toggleAcc(this)"><span class="acc-label">💡 Visie Consult — altijd de eerste stap</span><span class="acc-arrow">▼</span></button>
-        <div class="acc-body">
-          <div class="svc"><div><div class="svc-name">Visie Consult</div><div class="svc-desc">60 min. Jouw situatie helder. Concreet plan. Werkdocument achteraf.</div></div><div class="svc-right"><span class="svc-price">€97</span><span class="svc-cycle">eenmalig</span></div></div>
-          <div class="svc"><div><div class="svc-name">+ Contentstrategie</div><div class="svc-desc">Visie Consult plus een uitgewerkte strategie op maat.</div></div><div class="svc-right"><span class="svc-price">€167</span><span class="svc-cycle">eenmalig</span></div></div>
-        </div>
-      </div>
-
-      <div class="acc-cat"><button class="acc-btn" onclick="toggleAcc(this)"><span class="acc-label">✍️ Content & Posts</span><span class="acc-arrow">▼</span></button>
-        <div class="acc-body">
-          <div class="svc"><div><div class="svc-name">Caption only</div><div class="svc-desc">Jij levert beelden — ik schrijf de tekst in jouw stem.</div></div><div class="svc-right"><span class="svc-price">€9</span><span class="svc-cycle">per post</span></div></div>
-          <div class="svc"><div><div class="svc-name">Caption + beeld</div><div class="svc-desc">Ik zoek of bewerk beelden + schrijf de caption.</div></div><div class="svc-right"><span class="svc-price">€17</span><span class="svc-cycle">per post</span></div></div>
-          <div class="svc"><div><div class="svc-name">Volledig custom post</div><div class="svc-desc">Caption + op maat gemaakte visual (Photoshop/Illustrator).</div></div><div class="svc-right"><span class="svc-price">€27</span><span class="svc-cycle">per post</span></div></div>
-          <div class="svc"><div><div class="svc-name">Video strategie & richting</div><div class="svc-desc">Ik help je denken in de juiste richting voor video content — strategie en aanpak. Jij neemt op.</div></div><div class="svc-right"><span class="svc-price">€97</span><span class="svc-cycle">per sessie</span></div></div>
-          <div class="svc"><div><div class="svc-name">Van Idee naar Post</div><div class="svc-desc">10 posts + visueel concept + Breakthrough Sessie inbegrepen.</div></div><div class="svc-right"><span class="svc-price">€187</span><span class="svc-cycle">eenmalig</span></div></div>
-          <div class="svc"><div><div class="svc-name">Maandelijkse content</div><div class="svc-desc">Tot 20 posts per maand — klaar om te posten.</div></div><div class="svc-right"><span class="svc-price">€297</span><span class="svc-cycle">/maand</span></div></div>
-        </div>
-      </div>
-
-      <div class="acc-cat"><button class="acc-btn" onclick="toggleAcc(this)"><span class="acc-label">🌐 Website & Pagina's</span><span class="acc-arrow">▼</span></button>
-        <div class="acc-body">
-          <div class="svc"><div><div class="svc-name">1 pagina</div><div class="svc-desc">Design + bouw + teksten in jouw stem.</div></div><div class="svc-right"><span class="svc-price">€97</span><span class="svc-cycle">eenmalig</span></div></div>
-          <div class="svc"><div><div class="svc-name">3 pagina's</div><div class="svc-desc">Complete mini-funnel — alles inbegrepen.</div></div><div class="svc-right"><span class="svc-price">€247</span><span class="svc-cycle">of 2x €124</span></div></div>
-          <div class="svc"><div><div class="svc-name">5 pagina's</div><div class="svc-desc">Volledige website — design, bouw en teksten.</div></div><div class="svc-right"><span class="svc-price">€397</span><span class="svc-cycle">of 2x €199</span></div></div>
-          <div class="svc"><div><div class="svc-name">Hosting via mij</div><div class="svc-desc">Ik zorg dat het online staat en blijft.</div></div><div class="svc-right"><span class="svc-price">€27</span><span class="svc-cycle">/maand + €67 setup</span></div></div>
-        </div>
-      </div>
-
-      <div class="acc-cat"><button class="acc-btn" onclick="toggleAcc(this)"><span class="acc-label">🧠 Coaching, Mindset & Schaling</span><span class="acc-arrow">▼</span></button>
-        <div class="acc-body">
-          <div class="svc"><div><div class="svc-name">Breakthrough Sessie</div><div class="svc-desc">90 min. Één blokkade — opgelost. 3 concrete actiestappen.</div></div><div class="svc-right"><span class="svc-price">€127</span><span class="svc-cycle">eenmalig</span></div></div>
-          <div class="svc"><div><div class="svc-name">Schaling Sessie</div><div class="svc-desc">60 min. Groeistrategie — ads, nieuwe producten of verfijning. Verdere schaling op percentagebasis.</div></div><div class="svc-right"><span class="svc-price">€97</span><span class="svc-cycle">eenmalig</span></div></div>
-          <div class="svc"><div><div class="svc-name">Mindset Traject</div><div class="svc-desc">Tweewekelijkse sessie + doorlopende begeleiding. Min. 2 maanden.</div></div><div class="svc-right"><span class="svc-price">€347</span><span class="svc-cycle">/maand</span></div></div>
-        </div>
-      </div>
-
-      <div class="acc-cat"><button class="acc-btn" onclick="toggleAcc(this)"><span class="acc-label">🚀 Intensief traject — 3 maanden</span><span class="acc-arrow">▼</span></button>
-        <div class="acc-body">
-          <div class="svc"><div><div class="svc-name">Stem & Zichtbaarheid</div><div class="svc-desc">30 captions/maand + coaching + schalingsstrategie.</div></div><div class="svc-right"><span class="svc-price">€597</span><span class="svc-cycle">/maand · 3x te betalen</span></div></div>
-          <div class="svc"><div><div class="svc-name">Volledig Verzorgd</div><div class="svc-desc">30 posts met beelden + coaching + schalingsstrategie.</div></div><div class="svc-right"><span class="svc-price">€897</span><span class="svc-cycle">/maand · 3x te betalen</span></div></div>
-          <div class="svc"><div><div class="svc-name">Volledige Partner</div><div class="svc-desc">Posts + video strategie + website + coaching + schaling. Alles.</div></div><div class="svc-right"><span class="svc-price">€1.197</span><span class="svc-cycle">/maand · 3x te betalen</span></div></div>
-        </div>
-      </div>
-
-      <div class="revisie">📌 Elke dienst bevat 1 revisieronde. Extra revisie: €47. Alle prijzen excl. BTW.</div>
-    </div>
-  </div>
-</section>
+<div class="sdiv"></div>
+<div class="sdiv"></div>
 
 <div class="sdiv"></div>
 
 <!-- ══ FORMULIER ══ -->
 <section class="sp form-bg" id="aanvraag">
   <span class="tag violet rv">De eerste stap</span>
-  <h2 class="sh rv d1" style="color:var(--white);">Klaar om te<br><em style="color:var(--gold);">beginnen?</em></h2>
-  <p class="form-sub rv d2"><strong>Wees eerlijk en stort je hart uit.</strong> Ik lees elke aanvraag persoonlijk. Als wij een goede match zijn neem ik binnen 48 uur contact op via WhatsApp.</p>
+  <h2 class="sh rv d1" style="color:var(--white);">Stel jezelf<br><em style="color:var(--gold);">voor.</em></h2>
+  <p class="form-sub rv d2">Ik lees elke aanvraag persoonlijk. <strong>Wees eerlijk — hoe concreter jij bent, hoe beter ik kan beoordelen of wij een match zijn.</strong> Als dat zo is, neem ik binnen 48 uur contact op via WhatsApp.</p>
 
   <div class="form-block rv d2" id="formBlock">
     <form id="ashForm" novalidate>
-      <div class="fg"><label>Jouw naam <span class="req">*</span></label><input type="text" id="naam" placeholder="Hoe mag ik je noemen?" required/></div>
-      <div class="fg"><label>Wat is jouw passie? <span class="req">*</span></label><input type="text" id="niche" placeholder="bijv. spiritualiteit, fitness, koken, kunst..." required/></div>
-      <div class="fg"><label>Platform <span class="req">*</span></label>
-        <select id="platform" required><option value="" disabled selected>Kies platform</option><option>TikTok</option><option>Instagram</option><option>Facebook</option><option>TikTok + Instagram</option><option>Meerdere platforms</option><option>Nog nergens actief</option></select>
+
+      <div class="fg">
+        <label>Jouw naam <span class="req">*</span></label>
+        <input type="text" id="naam" placeholder="Hoe mag ik je noemen?" required/>
       </div>
-      <div class="fg"><label>Jouw profiel of link <span style="opacity:0.45;font-size:11px;">(optioneel maar fijn)</span></label><input type="text" id="profiel" placeholder="bijv. instagram.com/jouwnaam of @jouwnaam"/></div>
-      <div class="fg"><label>Waar loop je nu op vast? <span class="req">*</span></label><textarea id="blokkade" placeholder="Wees eerlijk en stort je hart uit — juist hier begin ik." required></textarea></div>
-      <div class="fg"><label>Hoe kan ik je het beste helpen? <span class="req">*</span></label>
-        <select id="hulp" required><option value="" disabled selected>Kies optie</option><option>Website of funnel — gratis op percentage</option><option>Content en posts maken</option><option>Strategie, schaling en groei</option><option>Coaching en mindset</option><option>Alles tegelijk — ik weet het nog niet</option></select>
+
+      <div class="fg">
+        <label>Wat doe jij? <span class="req">*</span></label>
+        <input type="text" id="niche" placeholder="bijv. fitness coach, lifestyle creator, muzikant..." required/>
       </div>
-      <div class="fg"><label>Jouw WhatsApp nummer <span class="req">*</span></label><input type="tel" id="whatsapp" placeholder="+32 4 00 00 00 00  of  +31 6 00000000" required/></div>
+
+      <div class="fg">
+        <label>Op welk platform wil jij groeien? <span class="req">*</span></label>
+        <p style="font-size:11px;color:rgba(162,142,88,0.45);margin:-4px 0 10px;line-height:1.6;">Vink aan waar jij op actief bent én waar je mee geholpen wil worden.</p>
+        <div class="check-group" id="platformGroup">
+          <label class="check-opt" onclick="toggleCheck(this,'TikTok')">
+            <span class="check-box"></span>
+            <span class="check-label">TikTok</span>
+          </label>
+          <label class="check-opt" onclick="toggleCheck(this,'Instagram')">
+            <span class="check-box"></span>
+            <span class="check-label">Instagram</span>
+          </label>
+          <label class="check-opt" onclick="toggleCheck(this,'Facebook')">
+            <span class="check-box"></span>
+            <span class="check-label">Facebook</span>
+          </label>
+          <label class="check-opt" onclick="toggleCheck(this,'YouTube')">
+            <span class="check-box"></span>
+            <span class="check-label">YouTube</span>
+          </label>
+          <label class="check-opt" onclick="toggleCheck(this,'Nog nergens actief')">
+            <span class="check-box"></span>
+            <span class="check-label">Nog nergens actief</span>
+          </label>
+        </div>
+        <input type="hidden" id="platform" required/>
+      </div>
+
+      <div class="fg">
+        <label>Jouw profiel <span style="opacity:0.45;font-size:11px;">(optioneel maar fijn)</span></label>
+        <input type="text" id="profiel" placeholder="@jouwnaam of link naar jouw profiel"/>
+      </div>
+
+      <div class="fg">
+        <label>Waarmee kan ik je helpen? <span class="req">*</span></label>
+        <div class="radio-group" id="hulpGroup">
+          <label class="radio-opt" onclick="selectRadio(this,'Partnerschap — €0 vooraf, percentage op omzet')">
+            <span class="radio-box"></span>
+            <span class="radio-content">
+              <span class="radio-title">Partnerschap — €0 vooraf</span>
+              <span class="radio-desc">Ik bouw alles. Jij betaalt me niets vooraf. We delen de omzet.</span>
+            </span>
+          </label>
+          <label class="radio-opt" onclick="selectRadio(this,'Consult of Coaching')">
+            <span class="radio-box"></span>
+            <span class="radio-content">
+              <span class="radio-title">Consult of Coaching</span>
+              <span class="radio-desc">Visie Consult, strategie of Breakthrough Sessie.</span>
+            </span>
+          </label>
+          <label class="radio-opt" onclick="selectRadio(this,'Website')">
+            <span class="radio-box"></span>
+            <span class="radio-content">
+              <span class="radio-title">Website</span>
+              <span class="radio-desc">Eén pagina, mini-funnel of volledige website. Extra's zoals betaallinks in overleg.</span>
+            </span>
+          </label>
+        </div>
+        <input type="hidden" id="hulp" required/>
+      </div>
+
+      <div class="fg">
+        <label>Waar loop je nu op vast? <span class="req">*</span></label>
+        <textarea id="blokkade" placeholder="Wees eerlijk — hoe directer jij bent, hoe beter ik kan beoordelen of wij een match zijn." required></textarea>
+      </div>
+
+      <div class="fg">
+        <label>Jouw WhatsApp <span class="req">*</span></label>
+        <input type="tel" id="whatsapp" placeholder="+32 4 00 00 00 00 of +31 6 00000000" required/>
+      </div>
+
       <button type="submit" class="btn-submit">Stuur mijn aanvraag →</button>
-      <p class="form-note">// Als wij een goede match zijn neem ik binnen 48 uur contact op via WhatsApp.</p>
+      <p class="form-note">// Ik reageer binnen 48 uur als wij een match zijn.</p>
     </form>
   </div>
   <div class="bedankt" id="bedankt">
@@ -1115,7 +1294,7 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
 
 <footer>
   <span class="footer-logo">Ash</span>
-  <span class="footer-note">// Jouw passie. Mijn missie.</span>
+  <span class="footer-note">// Ik verdien alleen als jij verdient.</span>
 </footer>
 
 </div>
@@ -1140,7 +1319,7 @@ window.addEventListener('scroll',updateFloat,{passive:true});
 const wItems=document.querySelectorAll('.word-item');
 let wCur=0;
 // Variable durations per word — creates tension + surprise, like a racing heartbeat
-const wDurations=[1600,2200,1400,2600,1500,2000,1300,1800];
+const wDurations=[2000,1600,2400,1800];
 function initWords(){
   wItems.forEach(w=>{
     w.style.opacity='0';
@@ -1305,6 +1484,28 @@ function selectPad(card){
 function toggleAcc(btn){btn.closest('.acc-cat').classList.toggle('open');}
 
 const WA='32472891570';
+
+
+// PLATFORM CHECKBOX TOGGLE
+const selectedPlatforms = new Set();
+function toggleCheck(el, value) {
+  if (el.classList.contains('selected')) {
+    el.classList.remove('selected');
+    selectedPlatforms.delete(value);
+  } else {
+    el.classList.add('selected');
+    selectedPlatforms.add(value);
+  }
+  document.getElementById('platform').value = Array.from(selectedPlatforms).join(', ');
+}
+
+// RADIO SELECTION
+function selectRadio(el, value) {
+  document.querySelectorAll('.radio-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('hulp').value = value;
+}
+
 document.getElementById('ashForm').addEventListener('submit',function(e){
   e.preventDefault();
   const naam=document.getElementById('naam').value.trim();
@@ -1314,8 +1515,8 @@ document.getElementById('ashForm').addEventListener('submit',function(e){
   const blokkade=document.getElementById('blokkade').value.trim();
   const hulp=document.getElementById('hulp').value;
   const whatsapp=document.getElementById('whatsapp').value.trim();
-  if(!naam||!niche||!platform||!blokkade||!hulp||!whatsapp){alert('Vul alle verplichte velden in.');return;}
-  const msg=`🔔 NIEUWE AANVRAAG — ASH\n\n👤 Naam: ${naam}\n🎯 Passie: ${niche}\n📱 Platform: ${platform}${profiel?'\n🔗 Profiel: '+profiel:''}\n🛠 Hulp bij: ${hulp}\n📞 WhatsApp: ${whatsapp}\n\n❓ Waar loopt hen op vast:\n${blokkade}`;
+  if(!naam||!niche||!platform||!blokkade||!hulp||!whatsapp){alert('Vul alle verplichte velden in — vergeet ook niet een platform en hulpvraag te kiezen.');return;}
+  const msg=`🔔 NIEUWE AANVRAAG — ASH\n\n👤 Naam: ${naam}\n🎯 Wat zij doen: ${niche}\n📱 Platform: ${platform}${profiel?'\n🔗 Profiel: '+profiel:''}\n✦ Interesse in: ${hulp}\n📞 WhatsApp: ${whatsapp}\n\n❓ Waar lopen zij op vast:\n${blokkade}`;
   window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,'_blank');
   document.getElementById('formBlock').style.display='none';
   const b=document.getElementById('bedankt');b.classList.add('on');b.scrollIntoView({behavior:'smooth',block:'center'});
