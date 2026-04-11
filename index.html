@@ -921,6 +921,40 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
   .scan-opt{padding:12px 14px;gap:10px;}
   .scan-result-card{padding:20px 16px;}
 }
+
+/* ══ THEMED PIJNPUNTEN ══ */
+.pijn-grid{display:flex;flex-direction:column;gap:2px;margin:24px 0;}
+.pijn-blok{
+  padding:20px 20px;
+  background:rgba(14,12,22,0.7);
+  border-left:2px solid var(--pijn-kleur, rgba(201,168,76,0.3));
+  position:relative;overflow:hidden;
+  transition:border-color 0.3s;
+}
+.pijn-blok:hover{border-left-color:var(--pijn-kleur-vol, var(--gold));}
+.pijn-blok::before{
+  content:'';position:absolute;top:0;right:0;bottom:0;
+  width:1px;background:linear-gradient(to bottom,transparent,var(--pijn-kleur,rgba(201,168,76,0.1)),transparent);
+}
+.pijn-theme-label{
+  font-family:'DM Mono',monospace;font-size:7px;letter-spacing:3px;
+  text-transform:uppercase;display:flex;align-items:center;gap:8px;
+  margin-bottom:10px;
+}
+.pijn-items{display:flex;flex-direction:column;gap:8px;}
+.pijn-item{
+  font-size:13px;color:rgba(200,180,140,0.5);
+  line-height:1.8;padding-left:14px;position:relative;
+}
+.pijn-item::before{
+  content:'';position:absolute;left:0;top:9px;
+  width:5px;height:1px;background:currentColor;opacity:0.4;
+}
+.pijn-item strong{color:rgba(240,235,227,0.82);font-weight:500;}
+@media(max-width:600px){
+  .pijn-blok{padding:16px 16px;}
+  .pijn-item{font-size:12px;}
+}
 </style>
 </head>
 <body>
@@ -1013,16 +1047,68 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
 
 <!-- ══ HERKENNING ══ -->
 <section class="sp herk-bg">
-  <span class="tag amber rv">Herken jij dit?</span>
-  <h2 class="sh rv d1" style="color:var(--white);">"Ik wil zo graag —<br><em style="color:#D97706;">maar weet niet hoe."</em></h2>
-  <div class="vragen">
-    <div class="vraag rv d1"><span class="vraag-icon">💸</span><p>"Bureaus vragen duizenden euro's vooraf. <strong>Ik word niet goed begeleid</strong> — en sta er alsnog alleen voor."</p></div>
-    <div class="vraag rv d2"><span class="vraag-icon">🔀</span><p>"Ik moet een designer, copywriter, coach én techneut inhuren. <strong>Allemaal apart, allemaal duur.</strong> Ik wil één persoon die het snapt."</p></div>
-    <div class="vraag rv d3"><span class="vraag-icon">📉</span><p>"Ik ben al een tijdje bezig maar het <strong>groeit niet.</strong> Ik mis de strategie en weet niet wat ik fout doe."</p></div>
-    <div class="vraag rv d4"><span class="vraag-icon">🔁</span><p>"Ik heb het advies gevolgd. Consistent gepost. Alles geprobeerd. <strong>Maar ik doe hetzelfde als iedereen — en bereik ook hetzelfde: niets.</strong>"</p></div>
-    <div class="vraag rv d4"><span class="vraag-icon">🎯</span><p>"Ik post, maar ik bereik niet de mensen die écht iets bij mij willen kopen. <strong>Mijn content trekt de verkeerde mensen aan — of helemaal niemand.</strong>"</p></div>
-    <div class="vraag rv d4"><span class="vraag-icon">🧠</span><p>"Ik weet dat ik iets moois heb. Maar er is een stemmetje in mijn hoofd dat zegt: <strong>wie ben jij om dit te doen? Wat als het mislukt? Misschien doe ik het later wel.</strong> En zo blijf ik steken."</p></div>
+
+  <!-- Ultieme pijnpunt — breed, geen oplossing verklappen -->
+  <div class="rv" style="margin-bottom:40px;padding:24px 20px;background:rgba(215,119,6,0.04);border:1px solid rgba(215,119,6,0.12);position:relative;overflow:hidden;">
+    <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(215,119,6,0.4),transparent);"></div>
+    <div style="font-family:'DM Mono',monospace;font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(215,119,6,0.45);margin-bottom:14px;">✦ De waarheid die niemand hardop zegt</div>
+    <p style="font-family:'Instrument Serif',serif;font-size:clamp(18px,4.5vw,24px);font-style:italic;color:var(--white);line-height:1.4;margin-bottom:14px;">Je werkt keihard. Maar elke euro die je verdient, kost je tijd die je nooit meer terugkrijgt.</p>
+    <p style="font-size:13px;color:rgba(215,170,100,0.6);line-height:1.9;">Of je nu readings geeft, coacht, traint, begeleidt of je expertise verkoopt — jij bent degene die het draait. Jij bent het product. En dat heeft een plafond: het aantal uren in een dag.<br><br>
+    <em style="color:rgba(215,119,6,0.65);">Je weet dit. Je voelt dit. Maar je weet niet hoe je eruit komt.</em></p>
   </div>
+
+  <!-- Thematische pijnpunten -->
+  <span class="tag amber rv">Herken jij dit?</span>
+  <h2 class="sh rv d1" style="color:var(--white);">Het zit hem niet in<br><em style="color:#D97706;">één ding.</em></h2>
+
+  <div class="pijn-grid rv d2">
+
+    <!-- Blok 1: Tijd -->
+    <div class="pijn-blok" style="--pijn-kleur:rgba(245,158,11,0.25);--pijn-kleur-vol:rgba(245,158,11,0.6);">
+      <div class="pijn-theme-label" style="color:rgba(245,158,11,0.55);">
+        <span>⏳</span><span>Tijd & Capaciteit</span>
+      </div>
+      <div class="pijn-items">
+        <div class="pijn-item">"Ik wil groeien, maar mijn agenda zit vol. <strong>Meer verdienen betekent meer werken — en ik heb geen uren meer over.</strong>"</div>
+        <div class="pijn-item">"Als ik een week ziek ben of op vakantie ga, <strong>stopt het inkomen.</strong> Dat is geen vrijheid — dat is een andere vorm van gevangenis."</div>
+      </div>
+    </div>
+
+    <!-- Blok 2: Online aanwezigheid -->
+    <div class="pijn-blok" style="--pijn-kleur:rgba(96,165,250,0.25);--pijn-kleur-vol:rgba(96,165,250,0.6);">
+      <div class="pijn-theme-label" style="color:rgba(96,165,250,0.55);">
+        <span>🌐</span><span>Online aanwezigheid</span>
+      </div>
+      <div class="pijn-items">
+        <div class="pijn-item">"Ik heb geen website, geen systeem, geen manier om iets te verkopen als ik er niet ben. <strong>Ik besta online niet.</strong>"</div>
+        <div class="pijn-item">"Bureaus vragen duizenden euro's vooraf. <strong>Ik word niet goed begeleid</strong> — en sta er alsnog alleen voor."</div>
+      </div>
+    </div>
+
+    <!-- Blok 3: Social media -->
+    <div class="pijn-blok" style="--pijn-kleur:rgba(167,139,250,0.25);--pijn-kleur-vol:rgba(167,139,250,0.6);">
+      <div class="pijn-theme-label" style="color:rgba(167,139,250,0.55);">
+        <span>📱</span><span>Social media & Bereik</span>
+      </div>
+      <div class="pijn-items">
+        <div class="pijn-item">"Ik post, ik probeer, ik doe wat iedereen zegt. <strong>Maar ik doe hetzelfde als iedereen — en bereik ook hetzelfde: niets.</strong>"</div>
+        <div class="pijn-item">"Ik bereik niet de mensen die écht iets bij mij willen kopen. <strong>Mijn content trekt de verkeerde mensen aan — of helemaal niemand.</strong>"</div>
+      </div>
+    </div>
+
+    <!-- Blok 4: Mindset -->
+    <div class="pijn-blok" style="--pijn-kleur:rgba(52,211,153,0.2);--pijn-kleur-vol:rgba(52,211,153,0.5);">
+      <div class="pijn-theme-label" style="color:rgba(52,211,153,0.5);">
+        <span>🧠</span><span>Mindset & Blokkades</span>
+      </div>
+      <div class="pijn-items">
+        <div class="pijn-item">"Ik weet dat ik iets moois heb. Maar er is een stemmetje dat zegt: <strong>wie ben jij om dit te doen? Wat als het mislukt?</strong> En zo blijf ik steken."</div>
+        <div class="pijn-item">"Ik mis de strategie en weet niet wat ik fout doe. <strong>Ik groei niet — en ik weet niet waarom.</strong>"</div>
+      </div>
+    </div>
+
+  </div>
+
   <div class="bridge rv">
     <p>Ik werk anders. <em>Geen uurtarief. Geen factuur vooraf.</em> Ik bouw jouw volledige online aanwezigheid en verdien alleen als jij verdient — <strong>want jouw succes is mijn succes.</strong> Één partner. Alles inbegrepen. Niets vooraf.</p>
   </div>
