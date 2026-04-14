@@ -955,6 +955,17 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
   .pijn-blok{padding:16px 16px;}
   .pijn-item{font-size:12px;}
 }
+
+/* ══ BUILDING BLOCKS — 4 modules ══ */
+.bm-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px;}
+.bm-card{padding:16px 14px;background:rgba(14,12,24,0.85);border:1px solid rgba(255,255,255,0.04);border-top:2px solid var(--bm-color,var(--gold));transition:all 0.3s;}
+.bm-card:hover{border-color:rgba(255,255,255,0.06);background:rgba(20,17,34,0.9);}
+.bm-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.bm-icon{font-size:18px;flex-shrink:0;}
+.bm-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--bm-color,var(--gold));display:block;font-weight:500;}
+.bm-sub{font-size:10px;color:rgba(162,142,88,0.4);display:block;margin-top:2px;}
+.bm-text{font-size:12px;color:rgba(200,180,140,0.55);line-height:1.75;margin:0;}
+@media(max-width:480px){.bm-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -1004,8 +1015,8 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
   </div>
 
   <div class="hero-sub-wrap" style="margin-bottom:36px;">
-    <span class="hero-sub-a" id="subA" style="color:rgba(200,185,155,0.55);font-size:clamp(14px,3.5vw,17px);">Ik bouw het systeem achter jouw passie — zodat jij eindelijk verdient wat je waard bent.</span>
-    <span class="hero-sub-b" id="subB" style="color:rgba(200,185,155,0.55);font-size:clamp(14px,3.5vw,17px);">Ik bouw het systeem achter jouw passie — zodat jij eindelijk verdient wat je waard bent.</span>
+    <span class="hero-sub-a" id="subA" style="color:rgba(200,185,155,0.55);font-size:clamp(14px,3.5vw,17px);">Jouw personal operating system voor value creation — gebouwd door mij, draait voor jou.</span>
+    <span class="hero-sub-b" id="subB" style="color:rgba(200,185,155,0.55);font-size:clamp(14px,3.5vw,17px);">Eén partner. Nul euro vooraf. Jouw omzet werkt ook als jij slaapt.</span>
   </div>
 
   <div class="hero-cta">
@@ -1021,23 +1032,23 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
 <div class="marquee">
   <div class="mtrack">
     <div class="mitem"><span class="msym" style="color:#C9A84C;">◆</span><span class="mtext" style="color:rgba(201,168,76,0.75);">€0 Vooraf — Altijd</span></div>
-    <div class="mitem"><span class="msym" style="color:#A78BFA;">◆</span><span class="mtext" style="color:rgba(167,139,250,0.65);">Website & Funnels</span></div>
+    <div class="mitem"><span class="msym" style="color:#A78BFA;">◆</span><span class="mtext" style="color:rgba(167,139,250,0.65);">Engine · Growth · Monetization · Mindset</span></div>
     <div class="mitem"><span class="msym" style="color:#34D399;">◆</span><span class="mtext" style="color:rgba(52,211,153,0.65);">Jij Verdient — Ik Verdien</span></div>
     <div class="mitem"><span class="msym" style="color:#60A5FA;">◆</span><span class="mtext" style="color:rgba(96,165,250,0.65);">TikTok · Instagram · YouTube</span></div>
     <div class="mitem"><span class="msym" style="color:#F59E0B;">◆</span><span class="mtext" style="color:rgba(245,158,11,0.65);">Digitale Producten</span></div>
     <div class="mitem"><span class="msym" style="color:#C9A84C;">◆</span><span class="mtext" style="color:rgba(201,168,76,0.75);">Percentage op Omzet</span></div>
-    <div class="mitem"><span class="msym" style="color:#A78BFA;">◆</span><span class="mtext" style="color:rgba(167,139,250,0.65);">Strategie & Schaling</span></div>
-    <div class="mitem"><span class="msym" style="color:#34D399;">◆</span><span class="mtext" style="color:rgba(52,211,153,0.65);">Jouw Passie — Mijn Werk</span></div>
+    <div class="mitem"><span class="msym" style="color:#A78BFA;">◆</span><span class="mtext" style="color:rgba(167,139,250,0.65);">Personal OS — Value Creation</span></div>
+    <div class="mitem"><span class="msym" style="color:#34D399;">◆</span><span class="mtext" style="color:rgba(52,211,153,0.65);">Capacity Escape — Jouw Vrijheid</span></div>
     <div class="mitem"><span class="msym" style="color:#60A5FA;">◆</span><span class="mtext" style="color:rgba(96,165,250,0.65);">Creators & Ondernemers</span></div>
     <div class="mitem"><span class="msym" style="color:#F59E0B;">◆</span><span class="mtext" style="color:rgba(245,158,11,0.65);">Eén Partner. Alles Inbegrepen.</span></div>
     <div class="mitem"><span class="msym" style="color:#C9A84C;">◆</span><span class="mtext" style="color:rgba(201,168,76,0.75);">€0 Vooraf — Altijd</span></div>
-    <div class="mitem"><span class="msym" style="color:#A78BFA;">◆</span><span class="mtext" style="color:rgba(167,139,250,0.65);">Website & Funnels</span></div>
+    <div class="mitem"><span class="msym" style="color:#A78BFA;">◆</span><span class="mtext" style="color:rgba(167,139,250,0.65);">Engine · Growth · Monetization · Mindset</span></div>
     <div class="mitem"><span class="msym" style="color:#34D399;">◆</span><span class="mtext" style="color:rgba(52,211,153,0.65);">Jij Verdient — Ik Verdien</span></div>
     <div class="mitem"><span class="msym" style="color:#60A5FA;">◆</span><span class="mtext" style="color:rgba(96,165,250,0.65);">TikTok · Instagram · YouTube</span></div>
     <div class="mitem"><span class="msym" style="color:#F59E0B;">◆</span><span class="mtext" style="color:rgba(245,158,11,0.65);">Digitale Producten</span></div>
     <div class="mitem"><span class="msym" style="color:#C9A84C;">◆</span><span class="mtext" style="color:rgba(201,168,76,0.75);">Percentage op Omzet</span></div>
-    <div class="mitem"><span class="msym" style="color:#A78BFA;">◆</span><span class="mtext" style="color:rgba(167,139,250,0.65);">Strategie & Schaling</span></div>
-    <div class="mitem"><span class="msym" style="color:#34D399;">◆</span><span class="mtext" style="color:rgba(52,211,153,0.65);">Jouw Passie — Mijn Werk</span></div>
+    <div class="mitem"><span class="msym" style="color:#A78BFA;">◆</span><span class="mtext" style="color:rgba(167,139,250,0.65);">Personal OS — Value Creation</span></div>
+    <div class="mitem"><span class="msym" style="color:#34D399;">◆</span><span class="mtext" style="color:rgba(52,211,153,0.65);">Capacity Escape — Jouw Vrijheid</span></div>
     <div class="mitem"><span class="msym" style="color:#60A5FA;">◆</span><span class="mtext" style="color:rgba(96,165,250,0.65);">Creators & Ondernemers</span></div>
     <div class="mitem"><span class="msym" style="color:#F59E0B;">◆</span><span class="mtext" style="color:rgba(245,158,11,0.65);">Eén Partner. Alles Inbegrepen.</span></div>
   </div>
@@ -1048,13 +1059,14 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
 <!-- ══ HERKENNING ══ -->
 <section class="sp herk-bg">
 
-  <!-- Ultieme pijnpunt — breed, geen oplossing verklappen -->
+  <!-- Ultieme pijnpunt — capacity escape framing -->
   <div class="rv" style="margin-bottom:40px;padding:24px 20px;background:rgba(215,119,6,0.04);border:1px solid rgba(215,119,6,0.12);position:relative;overflow:hidden;">
     <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(215,119,6,0.4),transparent);"></div>
     <div style="font-family:'DM Mono',monospace;font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(215,119,6,0.45);margin-bottom:14px;">✦ De waarheid die niemand hardop zegt</div>
-    <p style="font-family:'Instrument Serif',serif;font-size:clamp(18px,4.5vw,24px);font-style:italic;color:var(--white);line-height:1.4;margin-bottom:14px;">Je werkt keihard. Maar elke euro die je verdient, kost je tijd die je nooit meer terugkrijgt.</p>
-    <p style="font-size:13px;color:rgba(215,170,100,0.6);line-height:1.9;">Of je nu readings geeft, coacht, traint, begeleidt of je expertise verkoopt — jij bent degene die het draait. Jij bent het product. En dat heeft een plafond: het aantal uren in een dag.<br><br>
-    <em style="color:rgba(215,119,6,0.65);">Je weet dit. Je voelt dit. Maar je weet niet hoe je eruit komt.</em></p>
+    <p style="font-family:'Instrument Serif',serif;font-size:clamp(18px,4.5vw,24px);font-style:italic;color:var(--white);line-height:1.4;margin-bottom:14px;">Je zit vol — en je verdient nog steeds te weinig.</p>
+    <p style="font-size:13px;color:rgba(215,170,100,0.6);line-height:1.9;">Of je nu coacht, traint, readings geeft of jouw expertise deelt — jij bent het product. Jij bent de bottleneck. Elke euro die je verdient kost je een uur dat je nooit meer terugkrijgt. Meer klanten betekent meer van jezelf weggeven. En ergens in de weg wacht burnout.<br><br>
+    Dit heet <strong style="color:rgba(215,119,6,0.85);">tijd-voor-geld.</strong> En er is een uitweg.<br><br>
+    <em style="color:rgba(215,119,6,0.65);">Ik help je loskomen van 1-op-1 werk — zonder dat je minder verdient. Dat is de <strong style="color:rgba(215,119,6,0.9);">Capacity Escape.</strong></em></p>
   </div>
 
   <!-- Thematische pijnpunten -->
@@ -1069,8 +1081,9 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
         <span>⏳</span><span>Tijd & Capaciteit</span>
       </div>
       <div class="pijn-items">
-        <div class="pijn-item">"Ik wil groeien, maar mijn agenda zit vol. <strong>Meer verdienen betekent meer werken — en ik heb geen uren meer over.</strong>"</div>
+        <div class="pijn-item">"Je zit vol — maar je verdient nog steeds te weinig. <strong>Ieder extra uur kost jou een uur. Er lijkt geen uitweg te zijn.</strong>"</div>
         <div class="pijn-item">"Als ik een week ziek ben of op vakantie ga, <strong>stopt het inkomen.</strong> Dat is geen vrijheid — dat is een andere vorm van gevangenis."</div>
+        <div class="pijn-item">"Ik heb een volle agenda en een uitgeputte energievoorraad. <strong>Maar ik wil niet minder verdienen — ik wil anders verdienen.</strong> En ik weet niet hoe."</div>
       </div>
     </div>
 
@@ -1112,7 +1125,7 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
   </div>
 
   <div class="bridge rv">
-    <p>Ik werk anders. <em>Geen uurtarief. Geen factuur vooraf.</em> Ik bouw jouw volledige online aanwezigheid en verdien alleen als jij verdient — <strong>want jouw succes is mijn succes.</strong> Één partner. Alles inbegrepen. Niets vooraf.</p>
+    <p>Er is een andere manier. <em>Geen bureau. Geen uurtarief. Geen factuur vooraf.</em> Ik bouw jouw complete operating system voor value creation — engine, strategie, producten, begeleiding. <strong>Alles in jouw stem. Eén partner. Ik verdien alleen als jij verdient.</strong></p>
   </div>
 </section>
 
@@ -1141,7 +1154,7 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
     <div class="over-sig">
       <div>
         <span class="over-sig-name">Ash</span>
-        <span class="over-sig-role">// Creatief strateeg · Backend partner · Creator van het model</span>
+        <span class="over-sig-role">// Architect van jouw personal operating system · Creatief strateeg · Backend partner</span>
       </div>
       <div class="over-sig-line"></div>
     </div>
@@ -1287,31 +1300,46 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
   <span class="tag green rv">Het model</span>
   <h2 class="sh rv d1" style="color:var(--white);">Ik verdien geen geld aan jou.<br><em style="color:var(--green);">Wij verdienen samen.</em></h2>
 
-  <div class="rv d2" style="font-size:14px;color:rgba(182,212,195,0.45);line-height:1.9;margin-bottom:28px;">
+  <div class="rv d2" style="font-size:14px;color:rgba(182,212,195,0.45);line-height:1.9;margin-bottom:20px;">
     Geen factuur. Geen uurtarief. Geen risico. <strong style="color:rgba(240,235,227,0.9);">Ik bouw alles. Jij betaalt me niks vooraf.</strong> Ik verdien een percentage van wat jij verkoopt — pas als jij verdient. Dat percentage bepalen we samen, eerlijk en transparant. Want dit is geen aanbod dat ik aan iedereen doe.
+  </div>
+  <!-- Uitkomst + zekerheid callout -->
+  <div class="rv d2" style="padding:16px 18px;background:rgba(167,139,250,0.04);border-left:2px solid rgba(167,139,250,0.22);margin-bottom:28px;">
+    <div style="font-family:'DM Mono',monospace;font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(167,139,250,0.45);margin-bottom:8px;">✦ Wat je werkelijk koopt</div>
+    <p style="font-size:13px;color:rgba(205,185,155,0.65);line-height:1.85;margin:0;">Niemand betaalt voor een website of een funnel. <strong style="color:rgba(240,235,227,0.9);">Ze betalen voor uitkomst en zekerheid.</strong> Het risico ligt bij mij — jij betaalt nooit iets vooraf. Jij koopt de zekerheid dat iemand volledig geïnvesteerd is in jouw succes. Want als jij niet verdient, verdien ik ook niets.</p>
   </div>
 
   <!-- HOOFDBLOK — €0 model — full width, maximale energie -->
   <div class="block-free rv d2" style="margin-bottom:28px;">
     <div class="badge green"><span>✦ Partnerschap — €0 vooraf · altijd</span></div>
     <div class="block-title">Ik bouw alles. Jij betaalt me niets.</div>
-    <p class="block-desc">Ik bouw jouw volledige online aanwezigheid — website, digitale producten, funnels, strategie en schaling — <strong>volledig in jouw stem, volledig op maat.</strong> Ik verdien een percentage van wat jij verkoopt. Jij focust op je passie. De rest is mijn werk.</p>
+    <p class="block-desc">Ik bouw jouw complete <strong>personal operating system voor value creation</strong> — van technische infrastructuur tot positionering, van digitale producten tot doorlopende schaling. Volledig in jouw stem. Volledig op maat. Jij focust op wat jij het beste kunt. Het systeem werkt voor jou.</p>
 
     <div class="block-for-who" style="margin-top:22px;margin-bottom:22px;">
       <span class="block-for-who-label">✦ Dit is voor jou als je</span>
-      <span class="block-for-who-text">digitale producten · cursussen · e-books · diensten online wil verkopen — en klaar bent voor een samenwerking op de lange termijn</span>
+      <span class="block-for-who-text">digitale producten · cursussen · e-books · programma's · diensten online wil verkopen — en klaar bent voor een serieuze samenwerking op de lange termijn</span>
     </div>
 
-    <!-- Wat ik bouw -->
+    <!-- 4 Building Blocks -->
     <div style="margin-bottom:20px;">
-      <div style="font-family:'DM Mono',monospace;font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(52,211,153,0.4);margin-bottom:12px;">✦ Wat ik voor jou doe</div>
-      <div class="block-items">
-        <div class="block-item">Complete website of funnel — volledig gebouwd, in jouw stem en direct live.</div>
-        <div class="block-item">Digitale producten gemaakt in jouw stem — klaar voor verkoop, nationaal en internationaal. Ik regel de betaallinks zodat mensen overal ter wereld bij jou kunnen kopen.</div>
-        <div class="block-item">Content ideeën, strategie en een duidelijke richting — zodat de juiste mensen jou vinden, herkennen en volgen. Geen willekeurige volgers, maar mensen die écht willen wat jij aanbiedt.</div>
-        <div class="block-item">Een aanpak die volledig op jou is afgestemd — niet het standaard playbook dat iedereen gebruikt. Jouw verhaal, jouw niche, jouw positionering. Zo worden mensen nieuwsgierig naar wat jij doet.</div>
-        <div class="block-item">Schaling via nieuwe producten en kanalen — ik groei mee als jij groeit. Ik bedenk de strategie, de producten en breng ze op de juiste manier naar buiten, in de juiste volgorde.</div>
-        <div class="block-item">Coaching door blokkades heen — wanneer dat knagende stemmetje zegt dat je het toch niet kan, ben ik er. Jij hoeft niet op zoek naar iemand anders. Ik ken jou, ik ken jouw verhaal — en ik help je verder.</div>
+      <div style="font-family:'DM Mono',monospace;font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(52,211,153,0.4);margin-bottom:16px;">✦ Jouw operating system — vier modules</div>
+      <div class="bm-grid">
+        <div class="bm-card" style="--bm-color:#A78BFA;">
+          <div class="bm-head"><span class="bm-icon">⚙️</span><div><span class="bm-label">Engine</span><span class="bm-sub">Techniek & Infrastructuur</span></div></div>
+          <p class="bm-text">Website, funnels, betaallinks, automatisering — de complete technische infrastructuur waarmee jij 24/7 verkoopt. Nationaal en internationaal. Ook als jij niet achter je telefoon zit.</p>
+        </div>
+        <div class="bm-card" style="--bm-color:#60A5FA;">
+          <div class="bm-head"><span class="bm-icon">📡</span><div><span class="bm-label">Growth</span><span class="bm-sub">Strategie & Positionering</span></div></div>
+          <p class="bm-text">Content richting, doelgroep, boodschap die aantrekt. Niet het standaard playbook dat iedereen gebruikt. Jouw verhaal, jouw niche — jouw aanpak.</p>
+        </div>
+        <div class="bm-card" style="--bm-color:#34D399;">
+          <div class="bm-head"><span class="bm-icon">💰</span><div><span class="bm-label">Monetization</span><span class="bm-sub">Producten & Revenue</span></div></div>
+          <p class="bm-text">E-books, cursussen, programma's, bundels — in jouw stem, klaar voor verkoop wereldwijd. Revenue streams die schalen zonder dat jij er extra tijd in steekt.</p>
+        </div>
+        <div class="bm-card" style="--bm-color:#F59E0B;">
+          <div class="bm-head"><span class="bm-icon">🧠</span><div><span class="bm-label">Mindset</span><span class="bm-sub">Coaching & Begeleiding</span></div></div>
+          <p class="bm-text">Als het knagende stemmetje terugkomt, ben ik er. Ik ken jouw verhaal, ik ken jouw fase. Jij hoeft daarvoor nergens anders naartoe.</p>
+        </div>
       </div>
     </div>
 
@@ -1345,9 +1373,9 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
       <!-- Selectiviteitsblok -->
       <div style="padding:16px 18px;background:rgba(0,0,0,0.25);border-left:2px solid rgba(52,211,153,0.25);">
         <div style="font-family:'DM Mono',monospace;font-size:7px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(52,211,153,0.35);margin-bottom:10px;">// dit is geen aanbod voor iedereen</div>
-        <p style="font-size:13px;color:rgba(182,212,195,0.55);line-height:1.9;margin-bottom:10px;">Ik werk met een klein aantal creators tegelijk. Bewust. Zodat ik volledig aanwezig ben voor iedereen met wie ik samenwerk — niet als leverancier, maar als partner.</p>
-        <p style="font-size:13px;color:rgba(182,212,195,0.55);line-height:1.9;margin-bottom:10px;">Omdat ik jou leer kennen, jouw verhaal ken en regelmatig contact heb, kan ik je ook snel door blokkades helpen. Dat knagende stemmetje dat zegt dat je het toch niet kunt — ik herken het, en ik weet hoe ik je er doorheen krijg. Jij hoeft daarvoor nergens anders naartoe.</p>
-        <p style="font-size:13px;color:rgba(162,195,178,0.45);line-height:1.9;font-style:italic;">Terwijl anderen zich afvragen hoe jij dit zo snel voor elkaar hebt gekregen — zijn wij aan het groeien en geschiedenis aan het schrijven.</p>
+        <p style="font-size:13px;color:rgba(182,212,195,0.55);line-height:1.9;margin-bottom:10px;">Ik werk met een select aantal partners tegelijk. Bewust. Zodat ik volledig aanwezig ben voor iedereen met wie ik samenwerk — niet als leverancier, maar als de architect van jouw operating system.</p>
+        <p style="font-size:13px;color:rgba(182,212,195,0.55);line-height:1.9;margin-bottom:10px;">Omdat ik jou ken, jouw verhaal ken en doorlopend betrokken ben, kan ik je ook snel door blokkades helpen. Dat knagende stemmetje dat zegt dat je het toch niet kunt — ik herken het, en ik weet hoe ik je er doorheen krijg. Jij hoeft daarvoor nergens anders naartoe.</p>
+        <p style="font-size:13px;color:rgba(162,195,178,0.45);line-height:1.9;font-style:italic;">Terwijl anderen zich afvragen hoe jij dit zo snel voor elkaar hebt gekregen — bouwen wij verder aan jouw operating system en schrijven we geschiedenis.</p>
       </div>
     </div>
 
@@ -1472,15 +1500,16 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
           <div class="faq-highlight">
             <strong>Ter vergelijking — wat dit los kost bij anderen:</strong>
             <table class="price-table" style="margin-top:12px;">
-              <thead><tr><th>Wat ik lever</th><th>Losse marktprijs</th></tr></thead>
+              <thead><tr><th>Wat de markt rekent</th><th>Reële marktprijs</th></tr></thead>
               <tbody>
-                <tr><td class="pt-item">Website (5 pagina's)</td><td class="pt-price">€1.500 – €3.000</td></tr>
-                <tr><td class="pt-item">Digitale producten bouwen</td><td class="pt-price">€500 – €1.500</td></tr>
-                <tr><td class="pt-item">Content strategie</td><td class="pt-price">€800 – €2.000</td></tr>
-                <tr><td class="pt-item">Doorlopende begeleiding</td><td class="pt-price">€300/maand</td></tr>
-                <tr><td class="pt-item">Betaallinks & technisch beheer</td><td class="pt-price">€200 – €500</td></tr>
-                <tr class="pt-total"><td>Totaal upfront bij anderen</td><td>€3.300 – €8.000+</td></tr>
-                <tr class="pt-ash"><td>Wat jij betaalt bij mij</td><td>€0 vooraf</td></tr>
+                <tr><td class="pt-item">Website — standaard</td><td class="pt-price">€3.000 – €10.000</td></tr>
+                <tr><td class="pt-item">Website — maatwerk</td><td class="pt-price">€10.000 – €30.000+</td></tr>
+                <tr><td class="pt-item">Funnels & marketing (per maand)</td><td class="pt-price">€1.000 – €25.000/mnd</td></tr>
+                <tr><td class="pt-item">Strategie & positionering</td><td class="pt-price">€1.500 – €5.000</td></tr>
+                <tr><td class="pt-item">Digitale producten bouwen</td><td class="pt-price">€800 – €2.500</td></tr>
+                <tr><td class="pt-item">Doorlopende begeleiding</td><td class="pt-price">€500/maand</td></tr>
+                <tr class="pt-total"><td>Totaal — wat de markt vraagt</td><td>€16.000 – €70.000+</td></tr>
+                <tr class="pt-ash"><td>Wat jij betaalt bij Ash</td><td>€0 vooraf</td></tr>
               </tbody>
             </table>
           </div>
@@ -1495,10 +1524,10 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
       </button>
       <div class="faq-a">
         <div class="faq-a-inner">
-          Het percentage is alleen hoog als je vergeet dat <strong>zonder mij die omzet er niet is.</strong> Ik bouw het systeem, de producten, de strategie — en ik doe dat zonder een cent vooraf te vragen. Mijn percentage is de prijs van het risico dat ik neem.<br><br>
-          <em>Vergelijk het zo:</em> een investeerder die jouw bedrijf financiert en alles opbouwt vraagt ook een aandeel. Het verschil is dat ik geen aandelen neem — alleen een percentage van de omzet die ik help creëren. Zolang jij verdient, verdien ik. Als jij niks verdient, verdien ik ook niks.
+          Het percentage is alleen hoog als je vergeet dat <strong>zonder mij die omzet er niet is.</strong> Ik bouw het systeem, de producten, de strategie — en ik doe dat zonder een cent vooraf te vragen. Mijn percentage is de prijs van het risico dat ik draag.<br><br>
+          <em>Denk er zo over:</em> je betaalt niet voor een website of een funnel. <strong>Je betaalt voor uitkomst en zekerheid.</strong> Het financiële risico ligt volledig bij mij — jij investeert niets vooraf. En wat de markt anders rekent? Kijk naar de tabel hierboven.
           <div class="faq-highlight">
-            <strong>Het percentage is geen kostenpost. Het is de vergoeding voor alles wat jij anders zelf had moeten betalen — of nooit had kunnen doen.</strong>
+            <strong>Het percentage is geen kostenpost. Het is de vergoeding voor uitkomst, zekerheid en een partner die pas verdient als jij verdient.</strong>
           </div>
         </div>
       </div>
@@ -1909,7 +1938,7 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
 
 <footer>
   <span class="footer-logo">Ash</span>
-  <span class="footer-note">// Ik verdien alleen als jij verdient.</span>
+  <span class="footer-note">// Personal OS voor Value Creation · Ik verdien alleen als jij verdient.</span>
 </footer>
 
 </div>
