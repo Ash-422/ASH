@@ -850,77 +850,8 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
   .over-text{font-size:13px;}
 }
 
-/* ══ CREATOR SELF-SCAN ══ */
+/* ══ SCAN BG ══ */
 .scan-bg{background:linear-gradient(180deg,var(--bg2) 0%,#0A0E18 100%);}
-.scan-intro{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:24px;}
-.scan-progress-wrap{margin-bottom:28px;}
-.scan-progress-bar{height:2px;background:rgba(167,139,250,0.1);position:relative;overflow:hidden;}
-.scan-progress-fill{height:100%;background:linear-gradient(90deg,var(--violet),var(--blue));width:0%;transition:width 0.5s cubic-bezier(.16,1,.3,1);}
-.scan-progress-label{font-family:'DM Mono',monospace;font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(167,139,250,0.35);margin-top:6px;display:block;}
-
-.scan-step{display:none;}
-.scan-step.active{display:block;animation:fadeUp 0.4s ease both;}
-
-.scan-q{
-  font-family:'Instrument Serif',serif;font-size:clamp(20px,5vw,28px);
-  font-style:italic;color:var(--white);line-height:1.25;
-  margin-bottom:8px;
-}
-.scan-sub{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.7;}
-
-.scan-opts{display:flex;flex-direction:column;gap:8px;}
-.scan-opt{
-  padding:14px 18px;background:var(--bg);
-  border:1px solid rgba(167,139,250,0.1);
-  cursor:pointer;transition:all 0.25s;
-  display:flex;align-items:flex-start;gap:12px;
-  -webkit-tap-highlight-color:transparent;
-  text-align:left;width:100%;
-}
-.scan-opt:hover,.scan-opt:active{border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.04);}
-.scan-opt-icon{font-size:18px;flex-shrink:0;margin-top:1px;}
-.scan-opt-text{font-size:13px;color:rgba(210,195,165,0.7);line-height:1.5;}
-.scan-opt-text strong{color:var(--white);display:block;margin-bottom:2px;font-size:14px;}
-
-/* Result */
-.scan-result{display:none;animation:fadeUp 0.5s ease both;}
-.scan-result.show{display:block;}
-.scan-result-card{
-  padding:24px 20px;
-  border:1px solid rgba(201,168,76,0.18);
-  background:rgba(201,168,76,0.03);
-  position:relative;overflow:hidden;
-}
-.scan-result-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
-}
-.scan-result-tag{
-  font-family:'DM Mono',monospace;font-size:7px;letter-spacing:3px;
-  text-transform:uppercase;color:rgba(201,168,76,0.45);
-  display:block;margin-bottom:12px;
-}
-.scan-result-title{
-  font-family:'Instrument Serif',serif;font-size:clamp(20px,5vw,26px);
-  font-style:italic;color:var(--white);margin-bottom:10px;line-height:1.2;
-}
-.scan-result-body{font-size:13px;color:rgba(200,180,140,0.6);line-height:1.9;margin-bottom:20px;}
-.scan-result-body strong{color:var(--white);}
-.scan-result-body em{color:var(--gold);font-style:normal;}
-.scan-cta-row{display:flex;flex-direction:column;gap:10px;}
-.scan-restart{
-  font-family:'DM Mono',monospace;font-size:8px;letter-spacing:2px;
-  text-transform:uppercase;color:rgba(162,142,88,0.35);
-  background:none;border:none;cursor:pointer;padding:8px 0;
-  text-align:center;transition:color 0.2s;
-  -webkit-tap-highlight-color:transparent;
-}
-.scan-restart:hover{color:rgba(201,168,76,0.55);}
-@media(max-width:600px){
-  .scan-q{font-size:clamp(18px,5.5vw,24px);}
-  .scan-opt{padding:12px 14px;gap:10px;}
-  .scan-result-card{padding:20px 16px;}
-}
 
 /* ══ THEMED PIJNPUNTEN ══ */
 .pijn-grid{display:flex;flex-direction:column;gap:2px;margin:24px 0;}
@@ -980,6 +911,67 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
 #top,#model,#werkt,#scan,#faq,#aanvraag,#diensten,#herkenning{scroll-margin-top:68px;}
 /* ══ DESKTOP ══ */
 @media(min-width:900px){.w{max-width:700px;}.sh{font-size:clamp(28px,4vw,48px);}.hero-line-small{font-size:clamp(20px,3vw,30px);}}
+
+/* ══ SCAN TEASER (prominente sectie) ══ */
+.scan-teaser{
+  position:relative;overflow:hidden;
+  padding:36px 28px;
+  background:rgba(8,7,18,0.95);
+  border:1px solid rgba(167,139,250,0.15);
+}
+.scan-teaser::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--violet),transparent);
+}
+.scan-teaser-orb{
+  position:absolute;bottom:-60px;right:-40px;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(167,139,250,0.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.scan-qs{
+  display:flex;flex-direction:column;gap:6px;
+  margin:16px 0 22px;
+}
+.scan-q-pill{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;
+  background:rgba(167,139,250,0.04);
+  border:1px solid rgba(167,139,250,0.08);
+  font-size:12px;color:rgba(220,210,200,0.5);
+  line-height:1.4;
+}
+.scan-q-pill-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:rgba(167,139,250,0.4);flex-shrink:0;
+}
+.btn-scan{
+  display:block;width:100%;
+  background:rgba(167,139,250,0.12);
+  border:1px solid rgba(167,139,250,0.3);
+  color:var(--violet);
+  font-family:'DM Sans',sans-serif;
+  font-size:13px;font-weight:500;
+  padding:15px 20px;
+  text-align:center;
+  text-decoration:none;
+  transition:all 0.25s;
+  letter-spacing:0.2px;
+  cursor:pointer;
+}
+.btn-scan:hover{
+  background:rgba(167,139,250,0.2);
+  border-color:rgba(167,139,250,0.5);
+  color:#C4B5FD;
+}
+.scan-trust{
+  display:flex;gap:16px;margin-top:14px;flex-wrap:wrap;
+}
+.scan-trust-item{
+  font-family:'DM Mono',monospace;
+  font-size:7px;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(167,139,250,0.25);
+}
 </style>
 </head>
 <body>
@@ -1034,8 +1026,8 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
   </div>
 
   <div class="hero-cta">
-    <a href="#model" class="btn-primary">Stel jezelf voor — ik lees het persoonlijk →</a>
-    <a href="#werkt" class="btn-secondary">Bekijk hoe het werkt</a>
+    <a href="creatorscan.html" class="btn-scan" style="width:100%;max-width:320px;display:block;margin-bottom:0;">Weet jij waar jij geld laat liggen? →</a>
+    <a href="#model" class="btn-primary" style="background:transparent;border:1px solid rgba(201,168,76,0.25);color:rgba(201,168,76,0.7);font-size:10px;letter-spacing:1.5px;padding:13px 20px;">Stel jezelf voor →</a>
     <span class="hero-cta-note">// €0 vooraf · ik verdien alleen als jij verdient</span>
   </div>
 </section>
@@ -1069,6 +1061,37 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
 </div>
 
 <div class="w">
+
+<!-- ══ CREATOR SELF-SCAN ══ -->
+<section class="sp scan-bg" id="scan">
+<div class="w">
+  <span class="tag violet rv">Creator Scan</span>
+  <h2 class="sh rv d1" style="color:var(--white);">Weet jij waar jij<br><em style="color:var(--violet);">geld laat liggen?</em></h2>
+  <p class="rv d2" style="font-size:13px;color:rgba(220,210,200,0.45);line-height:1.9;margin-bottom:24px;">De meeste creators hebben bereik, kennis en ideeën — maar missen de structuur om er daadwerkelijk van te verdienen. <strong style="color:rgba(240,235,227,0.8);">De Creator Scan laat in zeven vragen zien waar jij staat en wat de logische volgende stap is.</strong></p>
+
+  <div class="scan-teaser rv d2">
+    <div class="scan-teaser-orb"></div>
+    <div style="font-family:'DM Mono',monospace;font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(167,139,250,0.45);margin-bottom:10px;">✦ Zeven vragen · Geen e-mail · Direct inzicht</div>
+    <p style="font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(17px,4.5vw,22px);color:var(--white);line-height:1.25;margin-bottom:4px;">Jouw eerlijke situatie als creator —<br>in minder dan drie minuten.</p>
+    <div class="scan-qs">
+      <div class="scan-q-pill"><span class="scan-q-pill-dot"></span>Waar staat jij nu als creator?</div>
+      <div class="scan-q-pill"><span class="scan-q-pill-dot"></span>Verdien jij al geld met jouw kennis?</div>
+      <div class="scan-q-pill"><span class="scan-q-pill-dot"></span>Waar loop jij het meest in vast?</div>
+      <div class="scan-q-pill" style="opacity:0.5;"><span class="scan-q-pill-dot"></span>En vier vragen meer&hellip;</div>
+    </div>
+    <a href="creatorscan.html" class="btn-scan">Start de Creator Scan &rarr;</a>
+    <div class="scan-trust">
+      <span class="scan-trust-item">// Geen e-mail vereist</span>
+      <span class="scan-trust-item">// Geen verkooppraatje</span>
+      <span class="scan-trust-item">// Eerlijk inzicht</span>
+    </div>
+  </div>
+
+  <p class="rv" style="font-size:11px;color:rgba(162,142,88,0.3);margin-top:20px;text-align:center;font-style:italic;">De scan is geen test en geen score — het is een analyse van jouw situatie als creator.</p>
+</div>
+</section>
+
+<div class="sdiv"></div>
 
 <!-- ══ HERKENNING ══ -->
 <section class="sp herk-bg" id="herkenning">
@@ -1686,136 +1709,7 @@ footer{padding:26px 0;border-top:1px solid rgba(201,168,76,0.05);display:flex;al
 
 <div class="sdiv"></div>
 
-<!-- ══ CREATOR SELF-SCAN ══ -->
-<section class="sp scan-bg" id="scan">
-  <span class="tag violet rv">Creator Zelf-Scan</span>
-  <h2 class="sh rv d1" style="color:var(--white);">Waar sta jij<br><em style="color:var(--violet);">nu echt?</em></h2>
-  <p class="scan-intro rv d2">Vijf vragen. Geen e-mail. Geen verkooppraatje. Gewoon eerlijk inzicht in wat jou tegenhoudt — en wat de volgende stap is.</p>
 
-  <div class="rv d2" id="scanWrap">
-    <!-- Progress -->
-    <div class="scan-progress-wrap">
-      <div class="scan-progress-bar"><div class="scan-progress-fill" id="scanFill"></div></div>
-      <span class="scan-progress-label" id="scanLabel">Vraag 1 van 5</span>
-    </div>
-
-    <!-- Step 1 -->
-    <div class="scan-step active" data-step="1">
-      <p class="scan-q">Hoe lang ben je al bezig als creator?</p>
-      <p class="scan-sub">Eerlijk — er is geen goed of fout antwoord.</p>
-      <div class="scan-opts">
-        <button class="scan-opt" onclick="scanAnswer(1,'starter')">
-          <span class="scan-opt-icon">🌱</span>
-          <span class="scan-opt-text"><strong>Ik ben net begonnen</strong>Ik heb een idee maar weet nog niet hoe ik moet starten.</span>
-        </button>
-        <button class="scan-opt" onclick="scanAnswer(1,'growing')">
-          <span class="scan-opt-icon">📱</span>
-          <span class="scan-opt-text"><strong>Ik ben al een tijdje bezig</strong>Ik post, ik probeer — maar het groeit niet zoals ik wil.</span>
-        </button>
-        <button class="scan-opt" onclick="scanAnswer(1,'active')">
-          <span class="scan-opt-icon">🚀</span>
-          <span class="scan-opt-text"><strong>Ik ben actief en groeiend</strong>Ik heb een publiek maar verdien er nog niet genoeg aan.</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Step 2 -->
-    <div class="scan-step" data-step="2">
-      <p class="scan-q">Heb je al iets verkocht aan je publiek?</p>
-      <p class="scan-sub">Een product, dienst, e-book — wat dan ook.</p>
-      <div class="scan-opts">
-        <button class="scan-opt" onclick="scanAnswer(2,'no')">
-          <span class="scan-opt-icon">❌</span>
-          <span class="scan-opt-text"><strong>Nog niet</strong>Ik weet niet goed hoe ik moet beginnen of wat ik moet aanbieden.</span>
-        </button>
-        <button class="scan-opt" onclick="scanAnswer(2,'tried')">
-          <span class="scan-opt-icon">⚡</span>
-          <span class="scan-opt-text"><strong>Ik heb het geprobeerd</strong>Maar het leverde weinig op of ik wist niet hoe ik het goed moest aanpakken.</span>
-        </button>
-        <button class="scan-opt" onclick="scanAnswer(2,'yes')">
-          <span class="scan-opt-icon">✅</span>
-          <span class="scan-opt-text"><strong>Ja, maar het kan veel meer</strong>Er komt omzet binnen, maar ik zie dat er veel meer in zit.</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Step 3 -->
-    <div class="scan-step" data-step="3">
-      <p class="scan-q">Weet je wie je ideale klant is?</p>
-      <p class="scan-sub">De persoon die écht iets heeft aan wat jij doet.</p>
-      <div class="scan-opts">
-        <button class="scan-opt" onclick="scanAnswer(3,'unclear')">
-          <span class="scan-opt-icon">🌫️</span>
-          <span class="scan-opt-text"><strong>Niet echt</strong>Ik wil iedereen bereiken — of ik weet het gewoon nog niet precies.</span>
-        </button>
-        <button class="scan-opt" onclick="scanAnswer(3,'kinda')">
-          <span class="scan-opt-icon">🎯</span>
-          <span class="scan-opt-text"><strong>Een beetje</strong>Ik heb een idee, maar mijn content trekt niet altijd de juiste mensen aan.</span>
-        </button>
-        <button class="scan-opt" onclick="scanAnswer(3,'clear')">
-          <span class="scan-opt-icon">💡</span>
-          <span class="scan-opt-text"><strong>Ja, heel duidelijk</strong>Ik weet precies voor wie ik het doe — maar het schaalt niet.</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Step 4 -->
-    <div class="scan-step" data-step="4">
-      <p class="scan-q">Wat houdt je het meeste tegen?</p>
-      <p class="scan-sub">Wees eerlijk — dit is de meest waardevolle vraag.</p>
-      <div class="scan-opts">
-        <button class="scan-opt" onclick="scanAnswer(4,'tech')">
-          <span class="scan-opt-icon">⚙️</span>
-          <span class="scan-opt-text"><strong>De techniek en het opzetten</strong>Website, betaallinks, systemen — ik weet niet waar ik moet beginnen.</span>
-        </button>
-        <button class="scan-opt" onclick="scanAnswer(4,'content')">
-          <span class="scan-opt-icon">✍️</span>
-          <span class="scan-opt-text"><strong>Wat ik moet posten en hoe</strong>Ik post maar het groeit niet. Ik mis richting en strategie.</span>
-        </button>
-        <button class="scan-opt" onclick="scanAnswer(4,'mindset')">
-          <span class="scan-opt-icon">🧠</span>
-          <span class="scan-opt-text"><strong>Mezelf</strong>Dat stemmetje dat zegt: wie ben jij om dit te doen? Wat als het mislukt?</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Step 5 -->
-    <div class="scan-step" data-step="5">
-      <p class="scan-q">Wat zou jij doen als de techniek en strategie volledig geregeld waren?</p>
-      <p class="scan-sub">Sluit je ogen even. Wat zie je?</p>
-      <div class="scan-opts">
-        <button class="scan-opt" onclick="scanAnswer(5,'content')">
-          <span class="scan-opt-icon">🎬</span>
-          <span class="scan-opt-text"><strong>Volledig focussen op content en mijn publiek</strong>Eindelijk doen wat ik écht leuk vind, zonder afgeleid te worden.</span>
-        </button>
-        <button class="scan-opt" onclick="scanAnswer(5,'grow')">
-          <span class="scan-opt-icon">📈</span>
-          <span class="scan-opt-text"><strong>Groeien en schalen</strong>Meer bereik, meer producten, meer omzet — en weten hoe ik dat doe.</span>
-        </button>
-        <button class="scan-opt" onclick="scanAnswer(5,'free')">
-          <span class="scan-opt-icon">🌍</span>
-          <span class="scan-opt-text"><strong>Vrijheid</strong>Leven van wat ik maak, op mijn eigen voorwaarden, zonder aan een baas te hoeven vragen.</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Result -->
-    <div class="scan-result" id="scanResult">
-      <div class="scan-result-card">
-        <span class="scan-result-tag" id="srTag">✦ Jouw diagnose</span>
-        <div class="scan-result-title" id="srTitle"></div>
-        <div class="scan-result-body" id="srBody"></div>
-        <div class="scan-cta-row">
-          <a href="#aanvraag" class="btn-primary" style="display:block;text-align:center;">Stel jezelf voor — ik lees het persoonlijk →</a>
-          <button class="scan-restart" onclick="restartScan()">↩ Doe de scan opnieuw</button>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="sdiv"></div>
 
 <div class="sdiv"></div>
 
@@ -2260,89 +2154,6 @@ function toggleFaq(btn) {
 
 
 // ═══════════════════════════════════════════════
-// CREATOR SELF-SCAN
-// ═══════════════════════════════════════════════
-const scanAnswers = {};
-let scanCurrentStep = 1;
-const scanTotalSteps = 5;
-
-function scanAnswer(step, value) {
-  scanAnswers[step] = value;
-  if (step < scanTotalSteps) {
-    // Hide current, show next
-    document.querySelector(`.scan-step[data-step="${step}"]`).classList.remove('active');
-    document.querySelector(`.scan-step[data-step="${step + 1}"]`).classList.add('active');
-    scanCurrentStep = step + 1;
-    // Update progress
-    const pct = (scanCurrentStep - 1) / scanTotalSteps * 100;
-    document.getElementById('scanFill').style.width = pct + '%';
-    document.getElementById('scanLabel').textContent = `Vraag ${scanCurrentStep} van ${scanTotalSteps}`;
-  } else {
-    // Show result
-    document.getElementById('scanFill').style.width = '100%';
-    document.getElementById('scanLabel').textContent = 'Jouw resultaat';
-    document.querySelector(`.scan-step[data-step="${step}"]`).classList.remove('active');
-    showScanResult();
-  }
-}
-
-function showScanResult() {
-  const r = scanAnswers;
-  let title, body, tag;
-
-  // Result logic based on combination of answers
-  if (r[1] === 'starter' && r[4] === 'tech') {
-    tag = '✦ Je hebt een sterk fundament nodig';
-    title = 'Jij weet wat je wil — maar de techniek staat in de weg.';
-    body = 'Je hebt een idee, een passie en de bereidheid om te beginnen. Je weet waarvoor je het doet — alleen de weg ernaartoe is een muur van techniek, systemen en vragen zonder antwoord. <strong>Dat is niet jouw probleem. Dat is mijn werk.</strong><br><br>Ik bouw de structuur die jij nodig hebt — website, producten, betaallinks — zodat jij kunt beginnen met waar je goed in bent. <em>Zonder dat jij er één euro voor betaalt vooraf.</em>';
-  } else if (r[1] === 'starter' && r[4] === 'mindset') {
-    tag = '✦ Jij bent er klaar voor — ook al voelt dat niet zo';
-    title = 'Het stemmetje in je hoofd liegt.';
-    body = 'Je voelt dat je iets hebt — maar er is iets dat je tegenhoudt. Dat "wie ben jij om dit te doen" gevoel kent iedereen die ooit iets heeft gebouwd. <strong>Het verschil tussen wie het doet en wie het niet doet: je loopt er doorheen, niet omheen.</strong><br><br>Ik help je niet alleen met de techniek. <em>Ik sta naast je door het hele proces</em> — ook als het knagende stemmetje terugkomt.';
-  } else if (r[1] === 'growing' && r[2] === 'no') {
-    tag = '✦ Jij hebt bereik maar mist het systeem';
-    title = 'Je geeft gratis waarde. Het wordt tijd dat je er ook voor betaald wordt.';
-    body = 'Je publiek is er. Ze volgen je, ze kijken — maar er is geen manier om die aandacht om te zetten in iets dat voor jou werkt. <strong>Dat is geen tekort van jou. Dat is een ontbrekende laag.</strong><br><br>Ik bouw die laag — digitale producten, website, betaallinks — zodat elke post die je maakt ook <em>daadwerkelijk kan renderen.</em>';
-  } else if (r[1] === 'growing' && r[4] === 'content') {
-    tag = '✦ Jij werkt hard maar mist richting';
-    title = 'Consistentie zonder strategie is energie zonder resultaat.';
-    body = 'Je post. Je probeert. Je doet wat iedereen zegt — en je vraagt je af waarom het niet harder groeit. <strong>Het probleem is niet jouw inzet. Het is dat iedereen hetzelfde doet — en jij ook.</strong><br><br>Ik bouw een positionering en strategie die <em>specifiek op jou</em> is afgestemd. Niet het playbook dat iedereen al heeft. Jouw verhaal, jouw niche, jouw aanpak.';
-  } else if (r[1] === 'active' && r[2] === 'yes') {
-    tag = '✦ Jij bent klaar voor de volgende stap';
-    title = 'Je hebt de basis. Nu is het tijd om te schalen.';
-    body = 'Je publiek is er. De omzet begint te komen. En toch heb je het gevoel dat je nog lang niet op het niveau zit waar je eigenlijk hoort. <strong>Dat gevoel klopt.</strong><br><br>Wat je nu mist is een partner die meedenkt over nieuwe producten, nieuwe kanalen en een systeem dat schaalt zonder dat jij er evenredig meer tijd in steekt. <em>Dat is precies wat ik doe — en ik verdien er pas aan als jij meer verdient.</em>';
-  } else if (r[4] === 'mindset') {
-    tag = '✦ Jij bent er klaar voor — ook al voelt dat niet zo';
-    title = 'Je grootste concurrent ben jijzelf — en dat is op te lossen.';
-    body = 'Je weet dat je iets hebt. Maar er is iets dat steeds zwaarder weegt dan de stap vooruit. <strong>Dat knagende stemmetje is niet de waarheid — het is de angst die bij elke echte stap vooruit komt.</strong> Iedereen die ooit iets heeft gebouwd kent het.<br><br>Ik help je niet alleen met het systeem. <em>Ik sta naast je — ook als het moeilijk wordt.</em>';
-  } else {
-    // Default
-    tag = '✦ Jij hebt iets — en het is tijd om het te laten zien';
-    title = 'Je passie is er. Het systeem ontbreekt.';
-    body = 'Je weet wat je wil. Maar de weg ernaartoe voelt complex, onduidelijk of gewoon overweldigend. <strong>Dat is niet jouw tekortkoming — het systeem is simpelweg niet gebouwd voor mensen zonder technische achtergrond of groot budget.</strong><br><br>Ik bouw dat systeem voor je. Zodat jij kunt doen wat jij het beste kunt. <em>€0 vooraf. Ik verdien pas als jij verdient.</em>';
-  }
-
-  document.getElementById('srTag').textContent = tag;
-  document.getElementById('srTitle').textContent = title;
-  document.getElementById('srBody').innerHTML = body;
-  document.getElementById('scanResult').classList.add('show');
-
-  // Scroll to result
-  setTimeout(() => {
-    document.getElementById('scanResult').scrollIntoView({behavior:'smooth', block:'center'});
-  }, 300);
-}
-
-function restartScan() {
-  Object.keys(scanAnswers).forEach(k => delete scanAnswers[k]);
-  scanCurrentStep = 1;
-  document.querySelectorAll('.scan-step').forEach(s => s.classList.remove('active'));
-  document.querySelector('.scan-step[data-step="1"]').classList.add('active');
-  document.getElementById('scanResult').classList.remove('show');
-  document.getElementById('scanFill').style.width = '0%';
-  document.getElementById('scanLabel').textContent = 'Vraag 1 van 5';
-  document.getElementById('scanWrap').scrollIntoView({behavior:'smooth', block:'start'});
-}
 
 // SERVICE SELECTIE — met deselect
 function selectService(el, value) {

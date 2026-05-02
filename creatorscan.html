@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Creator Scan — Ash</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#07070E;--bg2:#0C0B18;--bg3:#11101F;
+  --gold:#C9A84C;--gold2:#E8C46A;
+  --white:#F0EBE3;--muted:rgba(220,210,200,0.45);
+  --violet:#A78BFA;--green:#34D399;
+  --border:rgba(201,168,76,0.1);--border2:rgba(201,168,76,0.22);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--white);
+  font-family:'DM Sans',sans-serif;
+  font-weight:300;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* ── GRAIN ── */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;opacity:0.55;
+}
+
+/* ── LAYOUT ── */
+.wrap{
+  max-width:560px;
+  margin:0 auto;
+  padding:0 24px 80px;
+  position:relative;z-index:1;
+}
+
+/* ── TOPBAR ── */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 0 0;
+  margin-bottom:32px;
+}
+.topbar-logo{
+  font-family:'Instrument Serif',serif;
+  font-style:italic;font-size:22px;
+  color:var(--gold);
+  text-decoration:none;
+}
+.topbar-back{
+  font-family:'DM Mono',monospace;
+  font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(201,168,76,0.45);
+  text-decoration:none;
+  transition:color 0.2s;
+}
+.topbar-back:hover{color:var(--gold);}
+
+/* ── INTRO ── */
+.intro{margin-bottom:40px;}
+.intro-tag{
+  display:inline-block;
+  font-family:'DM Mono',monospace;
+  font-size:7px;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(167,139,250,0.55);
+  border:1px solid rgba(167,139,250,0.15);
+  padding:5px 10px;
+  margin-bottom:18px;
+}
+.intro-h{
+  font-family:'Instrument Serif',serif;
+  font-style:italic;
+  font-size:clamp(26px,7vw,40px);
+  color:var(--white);
+  line-height:1.15;
+  margin-bottom:14px;
+}
+.intro-sub{
+  font-size:13px;
+  color:rgba(220,210,200,0.5);
+  line-height:1.85;
+}
+.intro-sub strong{color:rgba(240,235,227,0.85);}
+
+/* ── PROGRESS ── */
+.prog-wrap{margin-bottom:28px;}
+.prog-bar{
+  height:2px;background:rgba(201,168,76,0.08);
+  border-radius:2px;margin-bottom:8px;
+  overflow:hidden;
+}
+.prog-fill{
+  height:100%;
+  background:linear-gradient(90deg,var(--gold),var(--gold2));
+  border-radius:2px;
+  transition:width 0.5s cubic-bezier(0.4,0,0.2,1);
+  width:0%;
+}
+.prog-label{
+  font-family:'DM Mono',monospace;
+  font-size:8px;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(201,168,76,0.35);
+}
+
+/* ── QUESTION SCREEN ── */
+.screen{display:none;animation:fadeUp 0.4s ease both;}
+.screen.active{display:block;}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(14px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.q-number{
+  font-family:'DM Mono',monospace;
+  font-size:7px;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(167,139,250,0.4);
+  margin-bottom:12px;display:block;
+}
+.q-text{
+  font-family:'Instrument Serif',serif;
+  font-style:italic;
+  font-size:clamp(20px,5.5vw,28px);
+  color:var(--white);
+  line-height:1.25;
+  margin-bottom:6px;
+}
+.q-sub{
+  font-size:12px;
+  color:rgba(220,210,200,0.38);
+  margin-bottom:24px;
+  line-height:1.6;
+}
+
+/* ── OPTIONS ── */
+.opts{display:flex;flex-direction:column;gap:8px;}
+.opt{
+  width:100%;text-align:left;
+  background:rgba(12,11,24,0.8);
+  border:1px solid rgba(201,168,76,0.08);
+  padding:16px 16px;
+  cursor:pointer;
+  transition:all 0.25s;
+  position:relative;overflow:hidden;
+}
+.opt::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(201,168,76,0.15),transparent);
+  opacity:0;transition:opacity 0.25s;
+}
+.opt:hover{
+  border-color:rgba(201,168,76,0.25);
+  background:rgba(17,16,31,0.9);
+}
+.opt:hover::before{opacity:1;}
+.opt-title{
+  display:block;
+  font-size:13px;font-weight:500;
+  color:var(--white);
+  margin-bottom:3px;
+}
+.opt-desc{
+  display:block;
+  font-size:11px;
+  color:rgba(220,210,200,0.4);
+  line-height:1.6;
+}
+
+/* ── RESULT ── */
+.result{display:none;animation:fadeUp 0.5s ease both;}
+.result.active{display:block;}
+
+.result-eyebrow{
+  font-family:'DM Mono',monospace;
+  font-size:7px;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(52,211,153,0.55);
+  margin-bottom:16px;display:block;
+}
+.result-h{
+  font-family:'Instrument Serif',serif;
+  font-style:italic;
+  font-size:clamp(22px,6vw,34px);
+  color:var(--white);
+  line-height:1.2;
+  margin-bottom:20px;
+}
+
+.result-block{
+  padding:20px 18px;
+  margin-bottom:12px;
+  position:relative;overflow:hidden;
+}
+.result-block::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--block-color,rgba(201,168,76,0.3)),transparent);
+}
+.result-block-analyse{background:rgba(12,11,24,0.8);border:1px solid rgba(201,168,76,0.08);--block-color:rgba(201,168,76,0.25);}
+.result-block-gap{background:rgba(10,9,22,0.9);border:1px solid rgba(167,139,250,0.08);--block-color:rgba(167,139,250,0.25);}
+.result-block-kans{background:rgba(8,18,14,0.7);border:1px solid rgba(52,211,153,0.08);--block-color:rgba(52,211,153,0.2);}
+
+.result-block-label{
+  font-family:'DM Mono',monospace;
+  font-size:7px;letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:10px;display:block;
+}
+.label-gold{color:rgba(201,168,76,0.5);}
+.label-violet{color:rgba(167,139,250,0.5);}
+.label-green{color:rgba(52,211,153,0.5);}
+
+.result-block-text{
+  font-size:13px;
+  color:rgba(220,210,200,0.6);
+  line-height:1.9;
+}
+.result-block-text strong{color:rgba(240,235,227,0.9);}
+
+.result-gap-list{
+  list-style:none;margin-top:10px;
+  display:flex;flex-direction:column;gap:6px;
+}
+.result-gap-list li{
+  font-size:12px;
+  color:rgba(220,210,200,0.55);
+  padding-left:16px;position:relative;line-height:1.6;
+}
+.result-gap-list li::before{
+  content:'—';
+  position:absolute;left:0;
+  color:rgba(167,139,250,0.4);
+}
+
+/* ── VOLGENDE STAP BLOK ── */
+.next-block{
+  margin-top:28px;
+  padding:22px 20px;
+  background:rgba(5,4,12,0.95);
+  border:1px solid rgba(201,168,76,0.12);
+  position:relative;overflow:hidden;
+}
+.next-block::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.next-block-label{
+  font-family:'DM Mono',monospace;
+  font-size:7px;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(201,168,76,0.4);
+  margin-bottom:12px;display:block;
+}
+.next-block-h{
+  font-family:'Instrument Serif',serif;
+  font-style:italic;
+  font-size:20px;color:var(--white);
+  margin-bottom:8px;
+}
+.next-block-text{
+  font-size:12px;
+  color:rgba(220,210,200,0.45);
+  line-height:1.85;
+  margin-bottom:18px;
+}
+.next-block-sub{
+  font-size:11px;
+  color:rgba(162,142,88,0.4);
+  margin-top:10px;
+  font-style:italic;
+  line-height:1.6;
+}
+
+/* ── CTA BUTTONS ── */
+.btn-primary{
+  display:block;width:100%;
+  background:var(--green);
+  color:#07140F;
+  font-family:'DM Sans',sans-serif;
+  font-weight:500;font-size:13px;
+  letter-spacing:0.3px;
+  padding:15px 20px;
+  text-align:center;
+  text-decoration:none;
+  border:none;cursor:pointer;
+  transition:all 0.25s;
+  margin-bottom:8px;
+}
+.btn-primary:hover{background:#5FFFD0;transform:translateY(-1px);}
+.btn-secondary{
+  display:block;width:100%;
+  background:transparent;
+  color:rgba(201,168,76,0.7);
+  font-family:'DM Sans',sans-serif;
+  font-size:12px;font-weight:400;
+  padding:13px 20px;
+  text-align:center;
+  text-decoration:none;
+  border:1px solid rgba(201,168,76,0.18);
+  cursor:pointer;
+  transition:all 0.25s;
+  margin-bottom:8px;
+}
+.btn-secondary:hover{border-color:rgba(201,168,76,0.35);color:var(--gold);}
+.btn-restart{
+  display:block;width:100%;
+  background:transparent;border:none;
+  font-family:'DM Mono',monospace;
+  font-size:8px;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(220,210,200,0.25);
+  padding:10px;
+  cursor:pointer;text-align:center;
+  transition:color 0.2s;
+  margin-top:6px;
+}
+.btn-restart:hover{color:rgba(220,210,200,0.5);}
+
+/* ── NOT QUALIFIED ── */
+.nq-block{
+  padding:24px 20px;
+  background:rgba(12,11,24,0.8);
+  border:1px solid rgba(220,210,200,0.06);
+  margin-top:20px;
+}
+.nq-h{
+  font-family:'Instrument Serif',serif;
+  font-style:italic;
+  font-size:22px;color:var(--white);
+  margin-bottom:10px;
+}
+.nq-text{
+  font-size:13px;color:rgba(220,210,200,0.45);
+  line-height:1.85;
+}
+
+/* ── FOOTER ── */
+.scan-footer{
+  margin-top:48px;
+  padding-top:20px;
+  border-top:1px solid rgba(201,168,76,0.06);
+  text-align:center;
+}
+.scan-footer-note{
+  font-family:'DM Mono',monospace;
+  font-size:7px;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(201,168,76,0.2);
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <a href="index.html" class="topbar-logo">Ash</a>
+    <a href="index.html" class="topbar-back">← Terug naar de website</a>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro" id="introBlock">
+    <span class="intro-tag">Creator Scan</span>
+    <h1 class="intro-h">Waar staat jij<br><em>nu echt?</em></h1>
+    <p class="intro-sub">
+      Zeven vragen. Geen e-mail. Geen verkooppraatje.<br>
+      <strong>Eerlijk inzicht in waar jij staat</strong> — en wat de logische volgende stap is.
+    </p>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="prog-wrap" id="progWrap" style="display:none;">
+    <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+    <span class="prog-label" id="progLabel">Vraag 1 van 7</span>
+  </div>
+
+  <!-- QUESTIONS -->
+  <div id="questionsWrap">
+
+    <!-- Q1 -->
+    <div class="screen" data-q="1">
+      <span class="q-number">// 01 van 07</span>
+      <p class="q-text">Wat is jouw huidige situatie als creator?</p>
+      <p class="q-sub">Er is geen goed of fout antwoord.</p>
+      <div class="opts">
+        <button class="opt" onclick="answer(1,'bereik')">
+          <span class="opt-title">Ik heb een actief publiek en bereik</span>
+          <span class="opt-desc">Er zijn mensen die mij volgen en mijn content zien.</span>
+        </button>
+        <button class="opt" onclick="answer(1,'consistent')">
+          <span class="opt-title">Ik ben consistent bezig met content</span>
+          <span class="opt-desc">Ik post regelmatig maar het publiek groeit langzaam.</span>
+        </button>
+        <button class="opt" onclick="answer(1,'begonnen')">
+          <span class="opt-title">Ik ben net begonnen</span>
+          <span class="opt-desc">Ik bouw nu mijn aanwezigheid op.</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="screen" data-q="2">
+      <span class="q-number">// 02 van 07</span>
+      <p class="q-text">Verdien jij momenteel geld met je content of kennis?</p>
+      <p class="q-sub">Wees eerlijk — dit is de meest waardevolle vraag.</p>
+      <div class="opts">
+        <button class="opt" onclick="answer(2,'consistent')">
+          <span class="opt-title">Ja, consistent</span>
+          <span class="opt-desc">Er komt geregeld omzet binnen uit mijn content of kennis.</span>
+        </button>
+        <button class="opt" onclick="answer(2,'soms')">
+          <span class="opt-title">Af en toe</span>
+          <span class="opt-desc">Ik verdien er soms iets mee, maar het is niet structureel.</span>
+        </button>
+        <button class="opt" onclick="answer(2,'niet')">
+          <span class="opt-title">Nog niet</span>
+          <span class="opt-desc">Er is nog geen directe omzet uit mijn content of kennis.</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="screen" data-q="3">
+      <span class="q-number">// 03 van 07</span>
+      <p class="q-text">Hoe groot is jouw bereik momenteel?</p>
+      <p class="q-sub">Volgers, netwerk, e-maillijst — alles telt mee.</p>
+      <div class="opts">
+        <button class="opt" onclick="answer(3,'groot')">
+          <span class="opt-title">10.000+ volgers of een sterk netwerk</span>
+          <span class="opt-desc">Er is duidelijk bereik aanwezig.</span>
+        </button>
+        <button class="opt" onclick="answer(3,'middel')">
+          <span class="opt-title">Tussen de 1.000 en 10.000</span>
+          <span class="opt-desc">Er is een basis maar het schaalt nog niet.</span>
+        </button>
+        <button class="opt" onclick="answer(3,'klein')">
+          <span class="opt-title">Minder dan 1.000</span>
+          <span class="opt-desc">Het publiek is er nog niet of is klein.</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="screen" data-q="4">
+      <span class="q-number">// 04 van 07</span>
+      <p class="q-text">Heb jij al geprobeerd iets te verkopen?</p>
+      <p class="q-sub">Een product, dienst, sessie — wat dan ook.</p>
+      <div class="opts">
+        <button class="opt" onclick="answer(4,'werkte')">
+          <span class="opt-title">Ja, en het werkte</span>
+          <span class="opt-desc">Er zijn daadwerkelijk verkopen geweest.</span>
+        </button>
+        <button class="opt" onclick="answer(4,'geprobeerd')">
+          <span class="opt-title">Ja, maar zonder resultaat</span>
+          <span class="opt-desc">Ik heb iets gelanceerd maar het leverde weinig op.</span>
+        </button>
+        <button class="opt" onclick="answer(4,'nee')">
+          <span class="opt-title">Nog niet</span>
+          <span class="opt-desc">Ik heb nog geen product of dienst aangeboden.</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="screen" data-q="5">
+      <span class="q-number">// 05 van 07</span>
+      <p class="q-text">Waar loop jij momenteel het meest in vast?</p>
+      <p class="q-sub">Kies wat het meest herkenbaar is.</p>
+      <div class="opts">
+        <button class="opt" onclick="answer(5,'monetization')">
+          <span class="opt-title">Monetization</span>
+          <span class="opt-desc">Ik heb bereik of kennis maar weet niet hoe ik er geld mee verdien.</span>
+        </button>
+        <button class="opt" onclick="answer(5,'structuur')">
+          <span class="opt-title">Structuur</span>
+          <span class="opt-desc">Ik doe van alles maar mis een duidelijke strategie en richting.</span>
+        </button>
+        <button class="opt" onclick="answer(5,'uitvoering')">
+          <span class="opt-title">Uitvoering</span>
+          <span class="opt-desc">Ik doe te veel zelf en kom niet toe aan de dingen die echt tellen.</span>
+        </button>
+        <button class="opt" onclick="answer(5,'schaal')">
+          <span class="opt-title">Schaalbaarheid</span>
+          <span class="opt-desc">Ik verdien al iets maar groei niet door — het plafond is bereikt.</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="screen" data-q="6">
+      <span class="q-number">// 06 van 07</span>
+      <p class="q-text">Wat is jouw doel voor de komende drie maanden?</p>
+      <p class="q-sub">Wat wil jij daadwerkelijk bereiken?</p>
+      <div class="opts">
+        <button class="opt" onclick="answer(6,'eerste')">
+          <span class="opt-title">Eerste serieuze inkomsten</span>
+          <span class="opt-desc">Ik wil voor het eerst echt geld verdienen met wat ik doe.</span>
+        </button>
+        <button class="opt" onclick="answer(6,'consistent')">
+          <span class="opt-title">Consistente sales</span>
+          <span class="opt-desc">Ik wil niet af en toe, maar elke maand structureel verdienen.</span>
+        </button>
+        <button class="opt" onclick="answer(6,'schalen')">
+          <span class="opt-title">Schalen van bestaande inkomsten</span>
+          <span class="opt-desc">De basis staat — ik wil het groter en schaalbaarder maken.</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="screen" data-q="7">
+      <span class="q-number">// 07 van 07</span>
+      <p class="q-text">Sta jij open voor een samenwerking waarbij iemand de backend en strategie volledig overneemt?</p>
+      <p class="q-sub">Jij focust op je content. De rest wordt gebouwd door een partner.</p>
+      <div class="opts">
+        <button class="opt" onclick="answer(7,'ja')">
+          <span class="opt-title">Ja</span>
+          <span class="opt-desc">Als het model klopt, ben ik er klaar voor.</span>
+        </button>
+        <button class="opt" onclick="answer(7,'misschien')">
+          <span class="opt-title">Misschien</span>
+          <span class="opt-desc">Ik wil er eerst meer over weten voor ik iets beslis.</span>
+        </button>
+        <button class="opt" onclick="answer(7,'nee')">
+          <span class="opt-title">Nee</span>
+          <span class="opt-desc">Ik doe het liever zelf of heb al iemand.</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RESULT -->
+  <div class="result" id="resultWrap">
+
+    <!-- Niet gekwalificeerd -->
+    <div id="res-nq" style="display:none;">
+      <span class="result-eyebrow">// Jouw analyse</span>
+      <h2 class="result-h">Goed dat je eerlijk bent.</h2>
+      <div class="nq-block">
+        <p class="nq-text">
+          Op basis van je antwoorden is dit model waarschijnlijk nog niet de juiste fit — op dit moment.<br><br>
+          Mijn samenwerking is bedoeld voor creators die klaar zijn om de volgende stap te zetten met een partner. Dat vraagt een bepaalde openheid en bereidheid.<br><br>
+          <strong style="color:rgba(240,235,227,0.8);">Dat wil niet zeggen dat het niet voor jou is — misschien gewoon nog niet nu.</strong>
+        </p>
+      </div>
+      <div style="margin-top:24px;">
+        <a href="index.html" class="btn-secondary">← Terug naar de website</a>
+        <button class="btn-restart" onclick="restartScan()">↩ Doe de scan opnieuw</button>
+      </div>
+    </div>
+
+    <!-- Profiel 1: bereik maar geen inkomsten -->
+    <div id="res-1" style="display:none;">
+      <span class="result-eyebrow">// Jouw situatie als creator</span>
+      <h2 class="result-h">Je hebt bereik —<br><em>maar benut het nog niet.</em></h2>
+
+      <div class="result-block result-block-analyse">
+        <span class="result-block-label label-gold">✦ Analyse</span>
+        <p class="result-block-text">Je hebt een basis opgebouwd. Er is aandacht, er zijn mensen die jou volgen — maar dit vertaalt zich nog niet naar inkomsten. <strong>Dat betekent niet dat het er niet in zit. Het betekent dat de achterkant ontbreekt.</strong></p>
+      </div>
+
+      <div class="result-block result-block-gap">
+        <span class="result-block-label label-violet">✦ Wat er mist</span>
+        <ul class="result-gap-list">
+          <li>Een concreet product dat aansluit op jouw publiek</li>
+          <li>Een duidelijke monetization strategie</li>
+          <li>Een systeem dat omzet genereert — ook als jij niet actief bent</li>
+        </ul>
+      </div>
+
+      <div class="result-block result-block-kans">
+        <span class="result-block-label label-green">✦ Waar de kans ligt</span>
+        <p class="result-block-text">De grootste kans zit in het omzetten van jouw kennis en bereik naar een digitaal product dat aansluit op jouw publiek. <strong>Hier zit jouw eerste serieuze omzet.</strong> En dit vereist geen extra volgersgroei — het vereist de juiste structuur.</p>
+      </div>
+
+      <div class="next-block">
+        <span class="next-block-label">✦ Volgende stap</span>
+        <p class="next-block-h">Dit is oplosbaar. Maar niet alleen.</p>
+        <p class="next-block-text">Als dit goed wordt opgezet kan dit relatief snel omgezet worden naar resultaat. Dat vereist een duidelijke strategie en uitvoering — en iemand die dat voor jou bouwt terwijl jij doet waar jij goed in bent.</p>
+        <a href="index.html#aanvraag" class="btn-primary">Plan een gesprek →</a>
+        <a href="index.html#diensten" class="btn-secondary">Bekijk de losse diensten</a>
+        <p class="next-block-sub">In dit gesprek kijken we of er voldoende potentie is om samen te werken en dit op te bouwen. Niet iedereen komt hiervoor in aanmerking.</p>
+      </div>
+      <button class="btn-restart" onclick="restartScan()">↩ Doe de scan opnieuw</button>
+    </div>
+
+    <!-- Profiel 2: eerste inkomsten maar geen structuur -->
+    <div id="res-2" style="display:none;">
+      <span class="result-eyebrow">// Jouw situatie als creator</span>
+      <h2 class="result-h">Je verdient al iets —<br><em>maar het is nog geen systeem.</em></h2>
+
+      <div class="result-block result-block-analyse">
+        <span class="result-block-label label-gold">✦ Analyse</span>
+        <p class="result-block-text">Je hebt al stappen gezet richting monetization. Er komt omzet binnen, maar het is inconsistent en niet schaalbaar. <strong>Je zit op het punt waar de meeste creators blijven hangen.</strong> Niet omdat het niet kan — maar omdat de backend mist.</p>
+      </div>
+
+      <div class="result-block result-block-gap">
+        <span class="result-block-label label-violet">✦ Wat er mist</span>
+        <ul class="result-gap-list">
+          <li>Structuur in je aanbod — wat je verkoopt en hoe</li>
+          <li>Een product dat blijft verkopen zonder actief werk van jouw kant</li>
+          <li>Een backend die jouw inkomsten ondersteunt en schaalt</li>
+        </ul>
+      </div>
+
+      <div class="result-block result-block-kans">
+        <span class="result-block-label label-green">✦ Waar de kans ligt</span>
+        <p class="result-block-text">De grootste kans ligt in het vereenvoudigen en structureren van wat je al doet. <strong>Niet meer doen — maar beter organiseren en positioneren.</strong> Met de juiste structuur worden jouw huidige inspanningen twee keer zo effectief.</p>
+      </div>
+
+      <div class="next-block">
+        <span class="next-block-label">✦ Volgende stap</span>
+        <p class="next-block-h">De basis staat. Nu het systeem.</p>
+        <p class="next-block-text">Met de juiste aanpak zet je dit om naar consistente inkomsten. Daarvoor moet de achterkant goed worden ingericht — en dat is precies wat ik doe.</p>
+        <a href="index.html#aanvraag" class="btn-primary">Plan een gesprek →</a>
+        <a href="index.html#diensten" class="btn-secondary">Bekijk de losse diensten</a>
+        <p class="next-block-sub">We kijken samen hoe dit omgezet kan worden naar een systeem dat blijft werken — ook als jij niet actief bent.</p>
+      </div>
+      <button class="btn-restart" onclick="restartScan()">↩ Doe de scan opnieuw</button>
+    </div>
+
+    <!-- Profiel 3: klaar om te schalen -->
+    <div id="res-3" style="display:none;">
+      <span class="result-eyebrow">// Jouw situatie als creator</span>
+      <h2 class="result-h">Je hebt een werkende basis —<br><em>maar je benut het nog niet volledig.</em></h2>
+
+      <div class="result-block result-block-analyse">
+        <span class="result-block-label label-gold">✦ Analyse</span>
+        <p class="result-block-text">Er is bereik. Er zijn inkomsten. En er zit duidelijk potentie in wat jij doet. <strong>Maar het wordt nog niet maximaal benut.</strong> Ergens is er een plafond — en dat plafond is niet jouw talent. Het is de structuur eromheen.</p>
+      </div>
+
+      <div class="result-block result-block-gap">
+        <span class="result-block-label label-violet">✦ Wat er mist</span>
+        <ul class="result-gap-list">
+          <li>Schaalbaarheid — inkomsten die groeien zonder extra uren</li>
+          <li>Optimalisatie van het aanbod en de funnel</li>
+          <li>Een sterk backend systeem dat het geheel ondersteunt</li>
+        </ul>
+      </div>
+
+      <div class="result-block result-block-kans">
+        <span class="result-block-label label-green">✦ Waar de kans ligt</span>
+        <p class="result-block-text">De grootste kans ligt in het optimaliseren en opschalen van wat er al staat. <strong>Hier zit de stap naar serieuze en consistente inkomsten.</strong> Dit is het punt waar een strategische samenwerking het echte verschil maakt.</p>
+      </div>
+
+      <div class="next-block">
+        <span class="next-block-label">✦ Volgende stap</span>
+        <p class="next-block-h">Niet meer experimenteren. Gericht bouwen.</p>
+        <p class="next-block-text">Dit is het punt waar een partner meer oplevert dan extra werk van jouwkant. Ik bouw de structuur, jij schaalt. Samen bepalen we hoe.</p>
+        <a href="index.html#aanvraag" class="btn-primary">Plan een gesprek →</a>
+        <a href="index.html#diensten" class="btn-secondary">Bekijk de losse diensten</a>
+        <p class="next-block-sub">In dit gesprek kijken we of en hoe dit opgeschaald kan worden — en of een samenwerking de juiste volgende stap is.</p>
+      </div>
+      <button class="btn-restart" onclick="restartScan()">↩ Doe de scan opnieuw</button>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="scan-footer">
+    <span class="scan-footer-note">// Ash · Creator Scan · Geen data opgeslagen</span>
+  </div>
+
+</div>
+
+<script>
+const TOTAL = 7;
+const answers = {};
+
+function answer(q, val) {
+  answers[q] = val;
+  if (q < TOTAL) {
+    showQ(q + 1);
+  } else {
+    showResult();
+  }
+}
+
+function showQ(n) {
+  document.getElementById('introBlock').style.display = 'none';
+  document.getElementById('progWrap').style.display = 'block';
+
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const next = document.querySelector(`.screen[data-q="${n}"]`);
+  if (next) next.classList.add('active');
+
+  const pct = ((n - 1) / TOTAL * 100).toFixed(0);
+  document.getElementById('progFill').style.width = pct + '%';
+  document.getElementById('progLabel').textContent = `Vraag ${n} van ${TOTAL}`;
+
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function showResult() {
+  document.getElementById('progWrap').style.display = 'none';
+  document.getElementById('questionsWrap').style.display = 'none';
+  document.getElementById('introBlock').style.display = 'none';
+
+  document.getElementById('questionsWrap').style.display = 'none';
+  document.getElementById('progWrap').style.display = 'none';
+  const r = document.getElementById('resultWrap');
+  r.style.display = 'block';
+  r.classList.add('active');
+
+  // Niet gekwalificeerd als Q7 = nee
+  if (answers[7] === 'nee') {
+    document.getElementById('res-nq').style.display = 'block';
+    return;
+  }
+
+  // Score systeem
+  let score = 0;
+
+  // Bereik (Q1)
+  if (answers[1] === 'bereik') score += 3;
+  else if (answers[1] === 'consistent') score += 2;
+  else score += 0;
+
+  // Monetization (Q2)
+  if (answers[2] === 'consistent') score += 4;
+  else if (answers[2] === 'soms') score += 2;
+  else score += 0;
+
+  // Bereikgrootte (Q3)
+  if (answers[3] === 'groot') score += 3;
+  else if (answers[3] === 'middel') score += 2;
+  else score += 0;
+
+  // Verkoop ervaring (Q4)
+  if (answers[4] === 'werkte') score += 3;
+  else if (answers[4] === 'geprobeerd') score += 1;
+  else score += 0;
+
+  // Doel (Q6)
+  if (answers[6] === 'schalen') score += 2;
+  else if (answers[6] === 'consistent') score += 1;
+
+  // Profiel bepalen
+  let profiel;
+  if (score >= 10) profiel = 3; // klaar om te schalen
+  else if (score >= 4) profiel = 2; // eerste inkomsten maar geen structuur
+  else profiel = 1; // bereik maar geen inkomsten
+
+  document.getElementById('res-' + profiel).style.display = 'block';
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function restartScan() {
+  // Reset antwoorden
+  Object.keys(answers).forEach(k => delete answers[k]);
+  // Verberg resultaat
+  document.querySelectorAll('[id^="res-"]').forEach(r => r.style.display = 'none');
+  const rw = document.getElementById('resultWrap');
+  rw.style.display = 'none';
+  rw.classList.remove('active');
+  // Toon vragen opnieuw
+  document.getElementById('questionsWrap').style.display = 'block';
+  // Start bij vraag 1
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  showQ(1);
+}
+
+// Start — toon Q1 direct
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('introBlock').style.display = 'none';
+  showQ(1);
+});
+</script>
+</body>
+</html>
